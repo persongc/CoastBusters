@@ -1,4 +1,12 @@
 language: java
 jdk:
 - oraclejdk8
-script: ant build
+addons:
+  sonarcloud:
+    organization: "coastbusters"
+    token:
+      secure: SONAR_TOKEN
+
+script: 
+- ant build
+- sonar-scanner
