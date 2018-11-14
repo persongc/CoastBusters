@@ -22,7 +22,7 @@ public class HomeScreen extends Application {
 	
 	
 	public static void main(String[] args) {
-		/* Rafi is going to hardcode hikes in */
+		/* Rafi is going to hardcode hikes into Hike Database class */
 		
 		launch(args);
 	}
