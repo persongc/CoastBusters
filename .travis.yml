@@ -3,4 +3,5 @@ language: java
 jdk:
 -oraclejdk8
 
-script:ant build
+script: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -B
+mvn test -B
