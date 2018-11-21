@@ -31,6 +31,10 @@ public class HikeInfo //should make use of weather and reviews class
 	public void setHours(Hours hours){
 		this.hours = hours;
 	}
+
+	public String getName(){
+		return name;
+	}
 	
 }
 

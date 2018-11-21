@@ -10,6 +10,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.util.Random;
+
 
 public class HomeScreen extends Application {
 	
@@ -144,6 +146,7 @@ public class HomeScreen extends Application {
 		Button randomButton = new Button("Get Random Hike");
 		randomButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
+				stage.setScene(pickRandomHike());
 				//randomly generate a hike
 			}
 		});
@@ -172,6 +175,29 @@ public class HomeScreen extends Application {
 		Scene scene = new Scene(root, 300, 500);
 
 		return scene;
+	}
+
+	protected Scene pickRandomHike(){
+		Random rand = new Random();
+		int val = rand.nextInt(9);
+		System.out.println("Random val" + val);
+		return displayHikeScene(hikes[val]);
+	}
+
+	protected Scene displayHikeScene(HikeInfo hike){
+		Pane root = new Pane();
+		//title = new Label("Coastbusters");
+		Label hikeName = new Label(hike.getName());
+		Button homeButton = new Button("Home");
+		homeButton.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				stage.setScene(homeScene());
+			}
+		});
+
+		root.getChildren().addAll(homeButton, hikeName);
+
+		return new Scene(root, 300, 500);
 	}
 
 	
