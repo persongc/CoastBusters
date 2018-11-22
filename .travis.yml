@@ -7,4 +7,3 @@ addons:
     token:
       secure: SONAR_TOKEN
 script: mvn clean install sonar:sonar
-- sonar-scanner
