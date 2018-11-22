@@ -6,4 +6,4 @@ addons:
     organization: persongc/CoastBusters
     token:
       secure: SONAR_TOKEN
-script: mvn clean install
+script: mvn clean install sonar:sonar
