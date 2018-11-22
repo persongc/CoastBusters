@@ -6,4 +6,4 @@ addons:
     organization: "persongc-github"
     token:
       secure: SONAR_TOKEN
-script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+script: mvn clean install sonar:sonar
