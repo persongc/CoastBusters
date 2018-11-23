@@ -9,5 +9,5 @@ addons:
 script: mvn sonar:sonar 
   -Dsonar.projectKey=persongc_CoastBusters 
   -Dsonar.organization=persongc-github 
-  -Dsonar.host.url= https:\//sonarcloud.io 
+  -Dsonar.host.url= https:\/\/sonarcloud.io 
   -Dsonar.login=bb1219048547943bc82ada59a65095655628cc1d
