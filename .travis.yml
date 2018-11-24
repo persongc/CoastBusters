@@ -1,11 +1,4 @@
 language: java
 jdk:
 - oraclejdk8
-addons:
-  sonarcloud:
-    organization: "persongc-github"
-    token:
-      SONAR_TOKEN
-
-script: mvn test -B
-- sonar-scanner
+script: mvn clean package
