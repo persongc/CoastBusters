@@ -17,15 +17,11 @@ public class HomeScreen extends Application {
 	
 	protected static Questionnaire questionnaire = new Questionnaire();
 	protected static HikeInfo[] hikes = new HikeInfo[12];
-	//protected String[] questions = {""}
-	//Button random;
-	//Button all;
 
 	private Stage stage;
 	
 	Label title;
 	/*VBox root = new VBox();*/
-	
 	
 	public static void main(String[] args) {
 		/* Rafi is going to hardcode hikes into Hike Database array */
@@ -38,8 +34,8 @@ public class HomeScreen extends Application {
 	/*
 		HIKEINFO: "Name", Bathrooms, Water
 		ACCESS: Bike, Pass, Dog, Horse
-		DIFFICULTY: Length, Elevation Gain, Difficulty Rating
-		HOURS: "open", "close", time
+		DIFFICULTY: Length (mi), Elevation Gain (ft), Difficulty Rating (1-5)
+		HOURS: "open", "close", time to complete (hrs)
 
 	 */
 
@@ -101,34 +97,35 @@ public class HomeScreen extends Application {
 		hike.setHours(new Hours("Sunrise", "Sunset", 2.25));
 		hikes[8] = hike;
 
-		hike = new HikeInfo("Holder 1", F, F);
-		hike.setAccess(new Access(T, F, T, T));
-		hike.setDifficulty(new Difficulty(0, 0, 0));
-		hike.setHours(new Hours("Sunrise", "Sunset", 0));
+		hike = new HikeInfo("Piedras Blancas Elephant Seal Rookery", F, F);
+		hike.setAccess(new Access(T, F, F, F));
+		hike.setDifficulty(new Difficulty(3.2, 25, 1));
+		hike.setHours(new Hours("Sunrise", "Sunset", 1.25));
 		hikes[9] = hike;
 
-		hike = new HikeInfo("Holder 2", F, F);
-		hike.setAccess(new Access(T, F, T, T));
-		hike.setDifficulty(new Difficulty(0, 0, 0));
-		hike.setHours(new Hours("Sunrise", "Sunset", 0));
+		hike = new HikeInfo("Moonstone Beach Boardwalk", F, F);
+		hike.setAccess(new Access(F, F, T, F));
+		hike.setDifficulty(new Difficulty(2.85, 40, 1));
+		hike.setHours(new Hours("Sunrise", "Sunset", 1.25));
 		hikes[10] = hike;
 
-		hike = new HikeInfo("Holder 3", F, F);
-		hike.setAccess(new Access(T, F, T, T));
-		hike.setDifficulty(new Difficulty(0, 0, 0));
-		hike.setHours(new Hours("Sunrise", "Sunset", 0));
+		hike = new HikeInfo("Headlands Trail", F, F);
+		hike.setAccess(new Access(F, F, F, F));
+		hike.setDifficulty(new Difficulty(4.5, 135, 2));
+		hike.setHours(new Hours("Sunrise", "Sunset", 2));
 		hikes[11] = hike;
 	}
 
 	protected static void buildQuestionnaire(){
 		String[] a1 = {"Yes", "No"};
-		String[] a2 = {"1", "2", "3", "4", "5"};
+		String[] a2 = {"1", "2", "3", "4", "5"}; /* Difficulty scale: 1-5 */
+		String[] a3 = {"1-2", "3-4", "4-5", "6+"}; /* Length of hike in miles */
 
-		questionnaire.questions.add(new Question("Dog Friendly?", a1));
-		questionnaire.questions.add(new Question("Horse Friendly?", a1));
-		questionnaire.questions.add(new Question("Bike Friendly?", a1));
-		questionnaire.questions.add(new Question("Difficulty?", a2));
-
+		questionnaire.questions[0] = new Question("Dog Friendly?", a1); /* Dog Friendly Y/N */
+		questionnaire.questions[1] = new Question("Horse Friendly?", a1); /* Horse Friendly Y/N */
+		questionnaire.questions[2] = new Question("Bike Friendly?", a1); /* Bike Friendly Y/N */
+		questionnaire.questions[3] = new Question("Difficulty?", a2); /* Difficulty Scale: 1-5 */
+		questionnaire.questions[4] = new Question("Ideal Hike Length?", a3); /* Hike Length in miles */
 	}
 
 	@Override
@@ -144,14 +141,17 @@ public class HomeScreen extends Application {
 		Pane root = new Pane();
 		title = new Label("Coastbusters");
 
+		/* Prompts the user with a questionnaire to select an ideal hike */
 		Button questionnaireButton = new Button("Find A Hike");
 		questionnaireButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				//go to questionnaire
-				//stage.setScene(QuestionnaireScene());
+				//go to questionnaire()
+				//stage.setScene(runQuestionnaire());
+				runQuestionnaire();
 			}
 		});
 
+		/* Randomly selects a hike for the user */
 		Button randomButton = new Button("Get Random Hike");
 		randomButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
@@ -159,6 +159,7 @@ public class HomeScreen extends Application {
 			}
 		});
 
+		/* Lists all of the hardcoded hikes */
 		Button allButton = new Button("View All Hikes");
 		allButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
@@ -186,14 +187,61 @@ public class HomeScreen extends Application {
 		return scene;
 	}
 
+	protected void runQuestionnaire(){
+		for(int i = 0; i < questionnaire.questions.length; i++){
+			stage.setScene(displayQuestion(questionnaire.questions[i]));
+		}
+
+	}
+
+	/*private void initializeAnswerButtons(Button button, int i){
+		button.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+
+			}
+		});
+
+	}*/
+
+	private Scene displayQuestion(Question q){
+		//Button[] BArray = new Button[q.getAnswers().length];
+
+		/*for(int i = 0; i < q.getAnswers().length; i++){
+			BArray[i] = new Button(q.getQuestion());
+			initializeAnswerButtons(BArray[i], i);
+		}*/
+
+		VBox VRoot = new VBox();
+		HBox HRoot = new HBox();
+		Label question = new Label(q.getQuestion());
+
+		Button homeButton = new Button("Home");
+		homeButton.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				stage.setScene(homeScene());
+			}
+		});
+
+		VRoot.getChildren().add(question);
+		for(int i = 0; i < q.getAnswers().length; i++){
+			VRoot.getChildren().add(q.getAnswers()[i]);
+		}
+		HRoot.getChildren().addAll(homeButton, VRoot);
+
+		return new Scene(HRoot, 300, 500);
+
+	}
+
+	/* Randomly selects a hike */
 	protected Scene pickRandomHike(){
 		Random rand = new Random();
 		int val = rand.nextInt(9);
-		System.out.println("Random val" + val);
 		return displayHikeScene(hikes[val]);
 	}
 
+	/* Displays the information for the hike that is being passed in as a parameter */
 	protected Scene displayHikeScene(HikeInfo hike){
+		VBox Vroot = new VBox();
 		Pane root = new Pane();
 		//title = new Label("Coastbusters");
 		Label hikeName = new Label(hike.getName());
@@ -203,10 +251,20 @@ public class HomeScreen extends Application {
 				stage.setScene(homeScene());
 			}
 		});
+
+		/* Goes to all hikes screen */
+		Button displayAllHikesButton = new Button("All Hikes");
+		displayAllHikesButton.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				stage.setScene(listAllHikes());
+			}
+		});
+
 		hikeName.setLayoutY(30);
 		hikeName.setLayoutX(100);
 
-		root.getChildren().addAll(hikeName, homeButton);
+		Vroot.getChildren().addAll(homeButton, displayAllHikesButton);
+		root.getChildren().addAll(Vroot, hikeName);
 		return new Scene(root, 300, 500);
 	}
 
@@ -245,6 +303,4 @@ public class HomeScreen extends Application {
 
 		return new Scene(HRoot, 300, 500);
 	}
-
-	
 }

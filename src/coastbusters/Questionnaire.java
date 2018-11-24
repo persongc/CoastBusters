@@ -9,7 +9,5 @@ public class Questionnaire
 {
 	Button home;
 	Button done;
-	ArrayList<Question> questions = new ArrayList<Question>();
-
-
+	Question[] questions = new Question[5];
 }
