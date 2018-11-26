@@ -21,6 +21,7 @@ public class HomeScreen extends Application {
 	protected static HikeInfo[] hikes = new HikeInfo[12];
 
 	private Stage stage;
+	protected Random rand = new Random();
 	
 	Label title;
 
@@ -41,8 +42,8 @@ public class HomeScreen extends Application {
 	 */
 
 	private static void buildHikeDB(){
-		Boolean T = new Boolean("TRUE");
-		Boolean F = new Boolean("FALSE");
+		Boolean T = Boolean.TRUE;
+		Boolean F = Boolean.FALSE;
 
 		HikeInfo hike = new HikeInfo("Bishop Peak Trail", F, F);
 		hike.setAccess(new Access(F, F, T, F));
@@ -545,17 +546,16 @@ public class HomeScreen extends Application {
 		}
 
 
-		System.out.println(Arrays.toString(temp1));
+		/*System.out.println(Arrays.toString(temp1));
 		System.out.println(Arrays.toString(temp2));
 		System.out.println(Arrays.toString(temp3));
 		System.out.println(Arrays.toString(temp4));
-		System.out.println(Arrays.toString(temp5));
+		System.out.println(Arrays.toString(temp5));*/
 
 
 		if(qualifiedHikes.size() == 0){
 			return noHikes();
 		}else{
-			Random rand = new Random();
 			int val = rand.nextInt(qualifiedHikes.size());
 			return displayHikeScene(qualifiedHikes.get(val));
 		}
@@ -582,7 +582,6 @@ public class HomeScreen extends Application {
 
 	/* Randomly selects a hike */
 	private Scene pickRandomHike(){
-		Random rand = new Random();
 		int val = rand.nextInt(9);
 		return displayHikeScene(hikes[val]);
 	}
