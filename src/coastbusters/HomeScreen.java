@@ -63,7 +63,7 @@ public class HomeScreen extends Application {
 		hikes[2] = hike;
 
 		hike = new HikeInfo("Serenity Swing", F, F);
-		hike.setAccess(new Access(T, F, T, T));
+		hike.setAccess(new Access(T, F, T, F));
 		hike.setDifficulty(new Difficulty(3.5, 725, 3));
 		hike.setHours(new Hours("Sunrise", "Sunset", 2));
 		hikes[3] = hike;
@@ -543,6 +543,14 @@ public class HomeScreen extends Application {
 				}
 			}
 		}
+
+
+		System.out.println(Arrays.toString(temp1));
+		System.out.println(Arrays.toString(temp2));
+		System.out.println(Arrays.toString(temp3));
+		System.out.println(Arrays.toString(temp4));
+		System.out.println(Arrays.toString(temp5));
+
 
 		if(qualifiedHikes.size() == 0){
 			return noHikes();
