@@ -564,7 +564,7 @@ public class HomeScreen extends Application {
 	private Scene noHikes(){
 		Pane root = new Pane();
 
-		Label label = new Label("No Matching Hikes, bitch!");
+		Label label = new Label("No Matching Hikes, Sorry!");
 		Button homeButton = new Button("Home");
 		homeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
