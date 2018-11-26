@@ -19,33 +19,51 @@ public class HikeInfo //should make use of weather and reviews class
 		this.water = water;
 	}
 
-	public void setAccess(Access access){
-		this.access = access;
-	}
-
-	public void setDifficulty(Difficulty diff){
-		this.difficulty = diff;
-	}
-
-	public void setHours(Hours hours){
-		this.hours = hours;
-	}
-
 	public String getName(){
 		return name;
+	}
+
+	public Boolean getBathrooms(){
+		return bathrooms;
+	}
+
+	public Boolean getWater(){
+		return water;
+	}
+
+	public String getLocation(){
+		return location;
+	}
+
+	public void setAccess(Access access){
+		this.access = access;
 	}
 
 	public Access getAccess(){
 		return access;
 	}
 
+	public void setDifficulty(Difficulty diff){
+		this.difficulty = diff;
+	}
+
 	public Difficulty getDifficulty(){
 		return difficulty;
 	}
-	
+
+	public void setFeatures(Features features){
+		this.features = features;
+	}
+
+	public Features getFeatures(){
+		return features;
+	}
+
+	public void setHours(Hours hours){
+		this.hours = hours;
+	}
+
+	public Hours getHours(){
+		return hours;
+	}
 }
-
-/*public int getRating(String) {} */
-/*public int getTraffic(String) {} */
-/*public void viewComments() {}*/
-

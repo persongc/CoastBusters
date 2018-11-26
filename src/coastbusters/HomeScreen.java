@@ -551,9 +551,6 @@ public class HomeScreen extends Application {
 			int val = rand.nextInt(qualifiedHikes.size());
 			return displayHikeScene(qualifiedHikes.get(val));
 		}
-
-		//return pickRandomHike();
-		//return displayHikeScene(HikeInfo hike);
 	}
 
 	private Scene noHikes(){

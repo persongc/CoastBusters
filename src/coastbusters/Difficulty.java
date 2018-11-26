@@ -23,5 +23,4 @@ public class Difficulty {
 	public double getDiffRating(){
 		return diffRating;
 	}
-
 }

@@ -1,9 +1,9 @@
 package coastbusters;
 
 public class Hours {
-	public String open; /* opening time */
-	public String close; /* closing time */
-	public double time; /* estimated completion time */
+	private String open; /* opening time */
+	private String close; /* closing time */
+	private double time; /* estimated completion time */
 
 	public Hours(String open, String close, double time){
 		this.open = open;
@@ -11,4 +11,15 @@ public class Hours {
 		this.time = time;
 	}
 
+	public String getOpen(){
+		return open;
+	}
+
+	public String getClose(){
+		return close;
+	}
+
+	public double getTime(){
+		return time;
+	}
 }

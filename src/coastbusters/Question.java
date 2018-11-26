@@ -12,20 +12,7 @@ public class Question{
 		public Question(String question, String[] answers){
 			this.question = question;
 			this.answers = answers;
-			//this.answers = answers;
 		}
-
-		private void initializeButtonEvent(Button button, int i){
-			button.setOnAction(new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent event) {
-					answer = i;
-					return;
-				}
-			});
-		}
-
-
-
 
 		public String getQuestion(){
 			return question;
