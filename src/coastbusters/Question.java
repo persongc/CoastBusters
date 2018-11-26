@@ -6,12 +6,12 @@ import javafx.scene.control.Button;
 
 public class Question{
 		private String question;
-		private Button[] answers;
+		private String[] answers;
 		private int answer;
 
 		public Question(String question, String[] answers){
 			this.question = question;
-			this.answers = initializeAnswerButtons(answers);
+			this.answers = answers;
 			//this.answers = answers;
 		}
 
@@ -25,20 +25,13 @@ public class Question{
 		}
 
 
-		private Button[] initializeAnswerButtons(String[] answers){
-			Button[] buttons = new Button[answers.length];
-			for(int i = 0; i < answers.length; i++){
-				buttons[i] = new Button(answers[i]);
-				initializeButtonEvent(buttons[i], i);
-			}
-			return buttons;
-		}
+
 
 		public String getQuestion(){
 			return question;
 		}
 
-		public Button[] getAnswers(){
+		public String[] getAnswers(){
 			return answers;
 		}
 

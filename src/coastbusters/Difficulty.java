@@ -2,14 +2,26 @@ package coastbusters;
 
 public class Difficulty {
 	
-	public double length; /* in miles, roundtrip */
-	public double elevGain; /* in feet */
-	public double diffRating; /* in scale of 1 - 5 */
+	private double length; /* in miles, roundtrip */
+	private double elevGain; /* in feet */
+	private double diffRating; /* in scale of 1 - 5 */
 
 	public Difficulty(double length, double elevGain, double diff){
 		this.length = length;
 		this.elevGain = elevGain;
 		this.diffRating = diff;
+	}
+
+	public double getLength(){
+		return length;
+	}
+
+	public double getElevGain(){
+		return elevGain;
+	}
+
+	public double getDiffRating(){
+		return diffRating;
 	}
 
 }

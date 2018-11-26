@@ -25,7 +25,6 @@ public class HikeInfo //should make use of weather and reviews class
 
 	public void setDifficulty(Difficulty diff){
 		this.difficulty = diff;
-
 	}
 
 	public void setHours(Hours hours){
@@ -34,6 +33,14 @@ public class HikeInfo //should make use of weather and reviews class
 
 	public String getName(){
 		return name;
+	}
+
+	public Access getAccess(){
+		return access;
+	}
+
+	public Difficulty getDifficulty(){
+		return difficulty;
 	}
 	
 }
