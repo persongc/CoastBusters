@@ -2,12 +2,18 @@ package coastbusters;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -22,8 +28,14 @@ public class HomeScreen extends Application {
 
 	private Stage stage;
 	protected Random rand = new Random();
-	
-	Label title;
+
+	private final String IDLE_BUTTON_STYLE = "-fx-background-color: #e6c58d; -fx-border-color: #cca054; " +
+			"-fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;";
+	private final String HOVERED_BUTTON_STYLE = "-fx-background-color: #f7d193; -fx-border-color: #cca054; " +
+			"-fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;";
+	private final String BACKGROUND_COLOR = "-fx-background-color: #FFEDCF;";
+
+	private Label title = new Label("Coastbusters");
 
 	public static void main(String[] args) {
 		/* Rafi is going to hardcode hikes into Hike Database array */
@@ -136,14 +148,18 @@ public class HomeScreen extends Application {
 	public void start(Stage primaryStage) throws Exception{
 		stage = primaryStage;
 		stage.setTitle("Coastbusters");
+		title.setFont(Font.font("Futura", FontPosture.ITALIC, 40));
 		Scene scene = homeScene();
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
 
 	private Scene homeScene(){
-		Pane root = new Pane();
-		title = new Label("Coastbusters");
+		Text names = new Text();
+
+		VBox root = new VBox(45);
+
+		VBox vBox = new VBox(10);
 
 		/* Prompts the user with a questionnaire to select an ideal hike */
 		Button questionnaireButton = new Button("Find A Hike");
@@ -170,29 +186,45 @@ public class HomeScreen extends Application {
 			}
 		});
 
-		title.setLayoutX(100);
-		title.setLayoutY(0);
-		questionnaireButton.setMaxWidth(Double.MAX_VALUE);
-		questionnaireButton.setLayoutX(100);
-		questionnaireButton.setLayoutY(75);
-		randomButton.setMaxWidth(Double.MAX_VALUE);
-		randomButton.setLayoutX(100);
-		randomButton.setLayoutY(110);
-		allButton.setMaxWidth(Double.MAX_VALUE);
-		allButton.setLayoutX(100);
-		allButton.setLayoutY(145);
+		questionnaireButton.setStyle(IDLE_BUTTON_STYLE);
+		questionnaireButton.setOnMouseEntered(e -> questionnaireButton.setStyle(HOVERED_BUTTON_STYLE));
+		questionnaireButton.setOnMouseExited(e -> questionnaireButton.setStyle(IDLE_BUTTON_STYLE));
+		questionnaireButton.setPrefWidth(200);
 
-		root.getChildren().addAll(title, questionnaireButton, randomButton, allButton);
+		randomButton.setStyle(IDLE_BUTTON_STYLE);
+		randomButton.setOnMouseEntered(e -> randomButton.setStyle(HOVERED_BUTTON_STYLE));
+		randomButton.setOnMouseExited(e -> randomButton.setStyle(IDLE_BUTTON_STYLE));
+		randomButton.setPrefWidth(200);
 
-		Scene scene = new Scene(root, 300, 500);
+		allButton.setStyle(IDLE_BUTTON_STYLE);
+		allButton.setOnMouseEntered(e -> allButton.setStyle(HOVERED_BUTTON_STYLE));
+		allButton.setOnMouseExited(e -> allButton.setStyle(IDLE_BUTTON_STYLE));
+		allButton.setPrefWidth(200);
 
-		return scene;
+		vBox.setAlignment(Pos.TOP_CENTER);
+		vBox.getChildren().addAll(questionnaireButton, randomButton, allButton);
+
+		names.setText("Designed and built by Adam Havstad,\n" +
+				      "Rafael Cohn-Gruenwald, Gavin Chao,\n" +
+					  "James Kao, Elijah Pinson, and\n" +
+					  "Arun Ulagappan.");
+		names.setTextAlignment(TextAlignment.CENTER);
+		names.setFont(Font.font("Helvetica", 10));
+
+		root.setAlignment(Pos.TOP_CENTER);
+		root.getChildren().addAll(title, vBox, names);
+
+		root.setStyle(BACKGROUND_COLOR);
+
+		return new Scene(root, 300, 500);
 	}
 
 	private Scene firstQuestion(){
-
-		Pane root = new Pane();
 		Label question = new Label(questionnaire.questions[0].getQuestion());
+		question.setFont(Font.font("Helvetica",16));
+
+		HBox hBox = new HBox(50);
+		VBox vBox = new VBox(50);
 
 		Button homeButton = new Button("Home");
 		homeButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -220,21 +252,38 @@ public class HomeScreen extends Application {
 			}
 		});
 
-		question.setLayoutX(100);
-		question.setLayoutY(30);
-		a1.setLayoutX(75);
-		a1.setLayoutY(100);
-		a2.setLayoutX(150);
-		a2.setLayoutY(100);
+		a1.setStyle(IDLE_BUTTON_STYLE);
+		a1.setOnMouseEntered(e -> a1.setStyle(HOVERED_BUTTON_STYLE));
+		a1.setOnMouseExited(e -> a1.setStyle(IDLE_BUTTON_STYLE));
+		a1.setPrefWidth(75);
 
-		root.getChildren().addAll(homeButton, question, a1, a2);
+		a2.setStyle(IDLE_BUTTON_STYLE);
+		a2.setOnMouseEntered(e -> a2.setStyle(HOVERED_BUTTON_STYLE));
+		a2.setOnMouseExited(e -> a2.setStyle(IDLE_BUTTON_STYLE));
+		a2.setPrefWidth(75);
 
-		return new Scene(root, 300, 500);
+
+		hBox.getChildren().addAll(a1, a2);
+		hBox.setAlignment(Pos.CENTER);
+
+		vBox.getChildren().addAll(title, question, hBox);
+		vBox.setAlignment(Pos.TOP_CENTER);
+
+		vBox.setStyle(BACKGROUND_COLOR);
+		return new Scene(vBox, 300, 500);
+
+
+		//root.getChildren().addAll(homeButton, question, a1, a2);
+
+		//return new Scene(root, 300, 500);
 	}
 
 	private Scene secondQuestion(){
-		Pane root = new Pane();
 		Label question = new Label(questionnaire.questions[1].getQuestion());
+		question.setFont(Font.font("Helvetica",16));
+
+		HBox hBox = new HBox(50);
+		VBox vBox = new VBox(50);
 
 		Button homeButton = new Button("Home");
 		homeButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -262,21 +311,33 @@ public class HomeScreen extends Application {
 			}
 		});
 
-		question.setLayoutX(100);
-		question.setLayoutY(30);
-		a1.setLayoutX(75);
-		a1.setLayoutY(100);
-		a2.setLayoutX(150);
-		a2.setLayoutY(100);
+		a1.setStyle(IDLE_BUTTON_STYLE);
+		a1.setOnMouseEntered(e -> a1.setStyle(HOVERED_BUTTON_STYLE));
+		a1.setOnMouseExited(e -> a1.setStyle(IDLE_BUTTON_STYLE));
+		a1.setPrefWidth(75);
 
-		root.getChildren().addAll(homeButton, question, a1, a2);
+		a2.setStyle(IDLE_BUTTON_STYLE);
+		a2.setOnMouseEntered(e -> a2.setStyle(HOVERED_BUTTON_STYLE));
+		a2.setOnMouseExited(e -> a2.setStyle(IDLE_BUTTON_STYLE));
+		a2.setPrefWidth(75);
 
-		return new Scene(root, 300, 500);
+
+		hBox.getChildren().addAll(a1, a2);
+		hBox.setAlignment(Pos.CENTER);
+
+		vBox.getChildren().addAll(title, question, hBox);
+		vBox.setAlignment(Pos.TOP_CENTER);
+
+		vBox.setStyle(BACKGROUND_COLOR);
+		return new Scene(vBox, 300, 500);
 	}
 
 	private Scene thirdQuestion(){
-		Pane root = new Pane();
 		Label question = new Label(questionnaire.questions[2].getQuestion());
+		question.setFont(Font.font("Helvetica",16));
+
+		HBox hBox = new HBox(50);
+		VBox vBox = new VBox(50);
 
 		Button homeButton = new Button("Home");
 		homeButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -304,21 +365,33 @@ public class HomeScreen extends Application {
 			}
 		});
 
-		question.setLayoutX(100);
-		question.setLayoutY(30);
-		a1.setLayoutX(75);
-		a1.setLayoutY(100);
-		a2.setLayoutX(150);
-		a2.setLayoutY(100);
+		a1.setStyle(IDLE_BUTTON_STYLE);
+		a1.setOnMouseEntered(e -> a1.setStyle(HOVERED_BUTTON_STYLE));
+		a1.setOnMouseExited(e -> a1.setStyle(IDLE_BUTTON_STYLE));
+		a1.setPrefWidth(75);
 
-		root.getChildren().addAll(homeButton, question, a1, a2);
+		a2.setStyle(IDLE_BUTTON_STYLE);
+		a2.setOnMouseEntered(e -> a2.setStyle(HOVERED_BUTTON_STYLE));
+		a2.setOnMouseExited(e -> a2.setStyle(IDLE_BUTTON_STYLE));
+		a2.setPrefWidth(75);
 
-		return new Scene(root, 300, 500);
+
+		hBox.getChildren().addAll(a1, a2);
+		hBox.setAlignment(Pos.CENTER);
+
+		vBox.getChildren().addAll(title, question, hBox);
+		vBox.setAlignment(Pos.TOP_CENTER);
+
+		vBox.setStyle(BACKGROUND_COLOR);
+		return new Scene(vBox, 300, 500);
 	}
 
 	private Scene fourthQuestion(){
-		Pane root = new Pane();
 		Label question = new Label(questionnaire.questions[3].getQuestion());
+		question.setFont(Font.font("Helvetica",16));
+
+		HBox hBox = new HBox(25);
+		VBox vBox = new VBox(50);
 
 		Button homeButton = new Button("Home");
 		homeButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -373,28 +446,47 @@ public class HomeScreen extends Application {
 			}
 		});
 
+		a1.setStyle(IDLE_BUTTON_STYLE);
+		a1.setOnMouseEntered(e -> a1.setStyle(HOVERED_BUTTON_STYLE));
+		a1.setOnMouseExited(e -> a1.setStyle(IDLE_BUTTON_STYLE));
+		a1.setPrefWidth(25);
 
-		question.setLayoutX(100);
-		question.setLayoutY(30);
-		a1.setLayoutX(50);
-		a1.setLayoutY(100);
-		a2.setLayoutX(100);
-		a2.setLayoutY(100);
-		a3.setLayoutX(150);
-		a3.setLayoutY(100);
-		a4.setLayoutX(200);
-		a4.setLayoutY(100);
-		a5.setLayoutX(250);
-		a5.setLayoutY(100);
+		a2.setStyle(IDLE_BUTTON_STYLE);
+		a2.setOnMouseEntered(e -> a2.setStyle(HOVERED_BUTTON_STYLE));
+		a2.setOnMouseExited(e -> a2.setStyle(IDLE_BUTTON_STYLE));
+		a2.setPrefWidth(25);
 
-		root.getChildren().addAll(homeButton, question, a1, a2, a3, a4, a5);
+		a3.setStyle(IDLE_BUTTON_STYLE);
+		a3.setOnMouseEntered(e -> a3.setStyle(HOVERED_BUTTON_STYLE));
+		a3.setOnMouseExited(e -> a3.setStyle(IDLE_BUTTON_STYLE));
+		a3.setPrefWidth(25);
 
-		return new Scene(root, 300, 500);
+		a4.setStyle(IDLE_BUTTON_STYLE);
+		a4.setOnMouseEntered(e -> a4.setStyle(HOVERED_BUTTON_STYLE));
+		a4.setOnMouseExited(e -> a4.setStyle(IDLE_BUTTON_STYLE));
+		a4.setPrefWidth(25);
+
+		a5.setStyle(IDLE_BUTTON_STYLE);
+		a5.setOnMouseEntered(e -> a5.setStyle(HOVERED_BUTTON_STYLE));
+		a5.setOnMouseExited(e -> a5.setStyle(IDLE_BUTTON_STYLE));
+		a5.setPrefWidth(25);
+
+		hBox.getChildren().addAll(a1, a2, a3, a4, a5);
+		hBox.setAlignment(Pos.CENTER);
+
+		vBox.getChildren().addAll(title, question, hBox);
+		vBox.setAlignment(Pos.TOP_CENTER);
+
+		vBox.setStyle(BACKGROUND_COLOR);
+		return new Scene(vBox, 300, 500);
 	}
 
 	private Scene fifthQuestion(){
-		Pane root = new Pane();
 		Label question = new Label(questionnaire.questions[4].getQuestion());
+		question.setFont(Font.font("Helvetica",16));
+
+		HBox hBox = new HBox(25);
+		VBox vBox = new VBox(50);
 
 		Button homeButton = new Button("Home");
 		homeButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -440,20 +532,34 @@ public class HomeScreen extends Application {
 			}
 		});
 
-		question.setLayoutX(100);
-		question.setLayoutY(30);
-		a1.setLayoutX(62.5);
-		a1.setLayoutY(100);
-		a2.setLayoutX(125);
-		a2.setLayoutY(100);
-		a3.setLayoutX(187.5);
-		a3.setLayoutY(100);
-		a4.setLayoutX(250);
-		a4.setLayoutY(100);
+		a1.setStyle(IDLE_BUTTON_STYLE);
+		a1.setOnMouseEntered(e -> a1.setStyle(HOVERED_BUTTON_STYLE));
+		a1.setOnMouseExited(e -> a1.setStyle(IDLE_BUTTON_STYLE));
+		a1.setPrefWidth(45);
 
-		root.getChildren().addAll(homeButton, question, a1, a2, a3, a4);
+		a2.setStyle(IDLE_BUTTON_STYLE);
+		a2.setOnMouseEntered(e -> a2.setStyle(HOVERED_BUTTON_STYLE));
+		a2.setOnMouseExited(e -> a2.setStyle(IDLE_BUTTON_STYLE));
+		a2.setPrefWidth(45);
 
-		return new Scene(root, 300, 500);
+		a3.setStyle(IDLE_BUTTON_STYLE);
+		a3.setOnMouseEntered(e -> a3.setStyle(HOVERED_BUTTON_STYLE));
+		a3.setOnMouseExited(e -> a3.setStyle(IDLE_BUTTON_STYLE));
+		a3.setPrefWidth(45);
+
+		a4.setStyle(IDLE_BUTTON_STYLE);
+		a4.setOnMouseEntered(e -> a4.setStyle(HOVERED_BUTTON_STYLE));
+		a4.setOnMouseExited(e -> a4.setStyle(IDLE_BUTTON_STYLE));
+		a4.setPrefWidth(45);
+
+		hBox.getChildren().addAll(a1, a2, a3, a4);
+		hBox.setAlignment(Pos.CENTER);
+
+		vBox.getChildren().addAll(title, question, hBox);
+		vBox.setAlignment(Pos.TOP_CENTER);
+
+		vBox.setStyle(BACKGROUND_COLOR);
+		return new Scene(vBox, 300, 500);
 	}
 
 	private Scene computeOptimalHike(){
@@ -615,6 +721,8 @@ public class HomeScreen extends Application {
 				stage.setScene(displayHikeScene(hike));
 			}
 		});
+
+		button.setWrapText(true);
 	}
 
 	private Scene listAllHikes(){
