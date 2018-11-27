@@ -1,7 +1,5 @@
 package coastbusters;
 
-import java.util.ArrayList;
-
 public class HikeInfo //should make use of weather and reviews class
 {
 	private String name;

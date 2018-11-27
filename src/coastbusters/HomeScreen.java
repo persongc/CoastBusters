@@ -21,6 +21,7 @@ public class HomeScreen extends Application {
 	protected static HikeInfo[] hikes = new HikeInfo[12];
 
 	private Stage stage;
+	protected Random rand = new Random();
 	
 	Label title;
 
@@ -41,79 +42,81 @@ public class HomeScreen extends Application {
 	 */
 
 	private static void buildHikeDB(){
-		Boolean T = new Boolean("TRUE");
-		Boolean F = new Boolean("FALSE");
+		Boolean T = Boolean.TRUE;
+		Boolean F = Boolean.FALSE;
+		String sunset = "Sunset";
+		String sunrise = "Sunrise";
 
 		HikeInfo hike = new HikeInfo("Bishop Peak Trail", F, F);
 		hike.setAccess(new Access(F, F, T, F));
 		hike.setDifficulty(new Difficulty(3.5, 950, 5));
-		hike.setHours(new Hours("Sunrise", "Sunset", 2));
+		hike.setHours(new Hours(sunrise, sunset, 2));
 		hikes[0] = hike;
 
 		hike = new HikeInfo("Cerro San Luis Trail", F, T);
 		hike.setAccess(new Access(T, F, T, T));
 		hike.setDifficulty(new Difficulty(4, 1100, 5));
-		hike.setHours(new Hours("Sunrise", "Sunset", 2.25));
+		hike.setHours(new Hours(sunrise, sunset, 2.25));
 		hikes[1] = hike;
 
 		hike = new HikeInfo("Cal Poly \"P\"", F, F);
 		hike.setAccess(new Access(T, F, T, F));
 		hike.setDifficulty(new Difficulty(1, 341, 2));
-		hike.setHours(new Hours("Sunrise", "Sunset", 1));
+		hike.setHours(new Hours(sunrise, sunset, 1));
 		hikes[2] = hike;
 
 		hike = new HikeInfo("Serenity Swing", F, F);
 		hike.setAccess(new Access(T, F, T, F));
 		hike.setDifficulty(new Difficulty(3.5, 725, 3));
-		hike.setHours(new Hours("Sunrise", "Sunset", 2));
+		hike.setHours(new Hours(sunrise, sunset, 2));
 		hikes[3] = hike;
 
 		hike = new HikeInfo("Ontario Ridge Trail", F, F);
 		hike.setAccess(new Access(F, F, T, F));
 		hike.setDifficulty(new Difficulty(3, 675, 4));
-		hike.setHours(new Hours("Sunrise", "Sunset", 2.5));
+		hike.setHours(new Hours(sunrise, sunset, 2.5));
 		hikes[4] = hike;
 
 		hike = new HikeInfo("Valencia Peak Trail", F, F);
 		hike.setAccess(new Access(F, F, F, T));
 		hike.setDifficulty(new Difficulty(4.5, 1275, 3));
-		hike.setHours(new Hours("Sunrise", "Sunset", 2.75));
+		hike.setHours(new Hours(sunrise, sunset, 2.75));
 		hikes[5] = hike;
 
 		hike = new HikeInfo("Poly Canyon Design Village", F, F);
 		hike.setAccess(new Access(T, F, T, T));
 		hike.setDifficulty(new Difficulty(2.5, 300, 2));
-		hike.setHours(new Hours("Sunrise", "Sunset", 1.25));
+		hike.setHours(new Hours(sunrise, sunset, 1.25));
 		hikes[6] = hike;
 
 		hike = new HikeInfo("Hazard Peak Trail", F, F);
 		hike.setAccess(new Access(T, F, F, F));
 		hike.setDifficulty(new Difficulty(6, 950, 4));
-		hike.setHours(new Hours("Sunrise", "Sunset", 3));
+		hike.setHours(new Hours(sunrise, sunset, 3));
 		hikes[7] = hike;
 
 		hike = new HikeInfo("Bob Jones Trail", F, F);
 		hike.setAccess(new Access(T, F, T, T));
 		hike.setDifficulty(new Difficulty(5, 50, 1));
-		hike.setHours(new Hours("Sunrise", "Sunset", 2.25));
+		hike.setHours(new Hours(sunrise, sunset, 2.25));
 		hikes[8] = hike;
 
 		hike = new HikeInfo("Piedras Blancas Elephant Seal Rookery", F, F);
 		hike.setAccess(new Access(T, F, F, F));
 		hike.setDifficulty(new Difficulty(3.2, 25, 1));
-		hike.setHours(new Hours("Sunrise", "Sunset", 1.25));
+		hike.setHours(new Hours(sunrise, sunset, 1.25));
 		hikes[9] = hike;
 
 		hike = new HikeInfo("Moonstone Beach Boardwalk", F, F);
 		hike.setAccess(new Access(F, F, T, F));
 		hike.setDifficulty(new Difficulty(2.85, 40, 1));
-		hike.setHours(new Hours("Sunrise", "Sunset", 1.25));
+		hike.setHours(new Hours(sunrise, sunset, 1.25));
 		hikes[10] = hike;
 
 		hike = new HikeInfo("Headlands Trail", F, F);
 		hike.setAccess(new Access(F, F, F, F));
 		hike.setDifficulty(new Difficulty(4.5, 135, 2));
-		hike.setHours(new Hours("Sunrise", "Sunset", 2));
+		hike.setHours(new Hours(sunrise, sunset, 2));
 		hikes[11] = hike;
 	}
 
@@ -454,7 +457,6 @@ public class HomeScreen extends Application {
 	}
 
 	private Scene computeOptimalHike(){
-		HikeInfo hike;
 		int[] temp1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 		int[] temp2 = new int[12];
 		int[] temp3 = new int[12];
@@ -472,10 +474,8 @@ public class HomeScreen extends Application {
 
 		if(questionnaire.questions[1].getAnswer() == 0){
 			for(int i = 0; i < 12; i++){
-				if(temp1[i] != 0){
-					if(hikes[i].getAccess().getHorse().equals(Boolean.TRUE)){
+				if((temp1[i] != 0) && (hikes[i].getAccess().getHorse().equals(Boolean.TRUE))){
 						temp2[i] = 1;
-					}
 				}
 			}
 
@@ -485,10 +485,8 @@ public class HomeScreen extends Application {
 
 		if(questionnaire.questions[2].getAnswer() == 0){
 			for(int i = 0; i < 12; i++){
-				if(temp2[i] != 0){
-					if(hikes[i].getAccess().getBike().equals(Boolean.TRUE)){
+				if((temp2[i] != 0) && (hikes[i].getAccess().getBike().equals(Boolean.TRUE))){
 						temp3[i] = 1;
-					}
 				}
 			}
 		}else{
@@ -496,10 +494,8 @@ public class HomeScreen extends Application {
 		}
 
 		for(int i = 0; i < 12; i++){
-			if(temp3[i] != 0){
-				if(hikes[i].getDifficulty().getDiffRating() == (questionnaire.questions[3].getAnswer() + 1)){
+			if((temp3[i] != 0) && (hikes[i].getDifficulty().getDiffRating() == (questionnaire.questions[3].getAnswer() + 1))){
 					temp4[i] = 1;
-				}
 			}
 		}
 
@@ -536,7 +532,7 @@ public class HomeScreen extends Application {
 			}
 		}
 
-		if(qualifiedHikes.size() == 0){
+		if(qualifiedHikes.isEmpty()){
 			for(int i = 0; i < 12; i++){
 				if(temp4[i] == 1){
 					qualifiedHikes.add(hikes[i]);
@@ -545,17 +541,16 @@ public class HomeScreen extends Application {
 		}
 
 
-		System.out.println(Arrays.toString(temp1));
+		/*System.out.println(Arrays.toString(temp1));
 		System.out.println(Arrays.toString(temp2));
 		System.out.println(Arrays.toString(temp3));
 		System.out.println(Arrays.toString(temp4));
-		System.out.println(Arrays.toString(temp5));
+		System.out.println(Arrays.toString(temp5));*/
 
 
-		if(qualifiedHikes.size() == 0){
+		if(qualifiedHikes.isEmpty()){
 			return noHikes();
 		}else{
-			Random rand = new Random();
 			int val = rand.nextInt(qualifiedHikes.size());
 			return displayHikeScene(qualifiedHikes.get(val));
 		}
@@ -582,16 +577,14 @@ public class HomeScreen extends Application {
 
 	/* Randomly selects a hike */
 	private Scene pickRandomHike(){
-		Random rand = new Random();
 		int val = rand.nextInt(9);
 		return displayHikeScene(hikes[val]);
 	}
 
 	/* Displays the information for the hike that is being passed in as a parameter */
 	private Scene displayHikeScene(HikeInfo hike){
-		VBox Vroot = new VBox();
+		VBox vRoot = new VBox();
 		Pane root = new Pane();
-		//title = new Label("Coastbusters");
 		Label hikeName = new Label(hike.getName());
 		Button homeButton = new Button("Home");
 		homeButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -611,8 +604,8 @@ public class HomeScreen extends Application {
 		hikeName.setLayoutY(30);
 		hikeName.setLayoutX(100);
 
-		Vroot.getChildren().addAll(homeButton, displayAllHikesButton);
-		root.getChildren().addAll(Vroot, hikeName);
+		vRoot.getChildren().addAll(homeButton, displayAllHikesButton);
+		root.getChildren().addAll(vRoot, hikeName);
 		return new Scene(root, 300, 500);
 	}
 
@@ -625,8 +618,8 @@ public class HomeScreen extends Application {
 	}
 
 	private Scene listAllHikes(){
-		VBox VRoot = new VBox();
-		HBox HRoot = new HBox();
+		VBox vRoot = new VBox();
+		HBox hRoot = new HBox();
 		Button[] hikeButtons = new Button[hikes.length];
 		HikeInfo temp;
 
@@ -644,11 +637,11 @@ public class HomeScreen extends Application {
 		});
 
 		for(int i = 0; i < 12; i++){
-			VRoot.getChildren().add(hikeButtons[i]);
+			vRoot.getChildren().add(hikeButtons[i]);
 		}
 
-		HRoot.getChildren().addAll(homeButton, VRoot);
+		hRoot.getChildren().addAll(homeButton, vRoot);
 
-		return new Scene(HRoot, 300, 500);
+		return new Scene(hRoot, 300, 500);
 	}
 }
