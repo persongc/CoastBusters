@@ -1,5 +1,8 @@
 package coastbusters;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 public class HikeInfo //should make use of weather and reviews class
 {
 	private String name;
@@ -8,8 +11,9 @@ public class HikeInfo //should make use of weather and reviews class
 	private String location;
 	private Access access;
 	private Difficulty difficulty;
-	private Features features;
 	private Hours hours;
+	private Image image;
+	private ImageView imageView;
 	
 	public HikeInfo(String name, Boolean bathrooms, Boolean water) {
 		this.name = name;
@@ -49,19 +53,25 @@ public class HikeInfo //should make use of weather and reviews class
 		return difficulty;
 	}
 
-	public void setFeatures(Features features){
-		this.features = features;
-	}
-
-	public Features getFeatures(){
-		return features;
-	}
-
 	public void setHours(Hours hours){
 		this.hours = hours;
 	}
 
 	public Hours getHours(){
 		return hours;
+	}
+
+	public void setImage(String image){
+		this.image = new Image(getClass().getResourceAsStream(image));
+
+		this.imageView = new ImageView(this.image);
+	}
+
+	public Image getImage(){
+		return image;
+	}
+
+	public ImageView getImageView(){
+		return imageView;
 	}
 }

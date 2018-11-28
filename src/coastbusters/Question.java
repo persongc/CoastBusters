@@ -1,21 +1,17 @@
 package coastbusters;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-
 public class Question{
-		private String question;
+		private String q;
 		private String[] answers;
 		private int answer;
 
 		public Question(String question, String[] answers){
-			this.question = question;
+			this.q = question;
 			this.answers = answers;
 		}
 
 		public String getQuestion(){
-			return question;
+			return q;
 		}
 
 		public String[] getAnswers(){
