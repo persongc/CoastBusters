@@ -6,10 +6,11 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
@@ -17,7 +18,6 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 
@@ -37,6 +37,10 @@ public class HomeScreen extends Application {
 
 	private Label title = new Label("Coastbusters");
 
+	private ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
+
+	private Region r = new Region();
+
 	public static void main(String[] args) {
 		/* Rafi is going to hardcode hikes into Hike Database array */
 		buildQuestionnaire();
@@ -46,13 +50,11 @@ public class HomeScreen extends Application {
 	}
 
 	/*
-		HIKEINFO: "Name", Bathrooms, Water
-		ACCESS: Bike, Pass, Dog, Horse
-		DIFFICULTY: Length (mi), Elevation Gain (ft), Difficulty Rating (1-5)
-		HOURS: "open", "close", time to complete (hrs)
-
+	 *	HIKEINFO: "Name", Bathrooms, Water
+	 *	ACCESS: Bike, Pass, Dog, Horse
+	 *	DIFFICULTY: Length (mi), Elevation Gain (ft), Difficulty Rating (1-5)
+	 *	HOURS: "open", "close", time to complete (hrs)
 	 */
-
 	private static void buildHikeDB(){
 		Boolean T = Boolean.TRUE;
 		Boolean F = Boolean.FALSE;
@@ -63,72 +65,84 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(F, F, T, F));
 		hike.setDifficulty(new Difficulty(3.5, 950, 5));
 		hike.setHours(new Hours(sunrise, sunset, 2));
+		hike.setImage("Bishop_Peak.jpg");
 		hikes[0] = hike;
 
-		hike = new HikeInfo("Cerro San Luis Trail", F, T);
+		hike = new HikeInfo("Madonna Peak Trail", F, T);
 		hike.setAccess(new Access(T, F, T, T));
-		hike.setDifficulty(new Difficulty(4, 1100, 5));
+		hike.setDifficulty(new Difficulty(4, 1100, 4));
 		hike.setHours(new Hours(sunrise, sunset, 2.25));
+		hike.setImage("Madonna_Peak.jpg");
 		hikes[1] = hike;
 
 		hike = new HikeInfo("Cal Poly \"P\"", F, F);
 		hike.setAccess(new Access(T, F, T, F));
 		hike.setDifficulty(new Difficulty(1, 341, 2));
 		hike.setHours(new Hours(sunrise, sunset, 1));
+		hike.setImage("The_P.jpg");
 		hikes[2] = hike;
 
 		hike = new HikeInfo("Serenity Swing", F, F);
 		hike.setAccess(new Access(T, F, T, F));
 		hike.setDifficulty(new Difficulty(3.5, 725, 3));
 		hike.setHours(new Hours(sunrise, sunset, 2));
+		hike.setImage("Serenity_Swing.jpg");
 		hikes[3] = hike;
 
 		hike = new HikeInfo("Ontario Ridge Trail", F, F);
 		hike.setAccess(new Access(F, F, T, F));
 		hike.setDifficulty(new Difficulty(3, 675, 4));
 		hike.setHours(new Hours(sunrise, sunset, 2.5));
+		hike.setImage("Ontario_Ridge.jpg");
 		hikes[4] = hike;
 
 		hike = new HikeInfo("Valencia Peak Trail", F, F);
 		hike.setAccess(new Access(F, F, F, T));
 		hike.setDifficulty(new Difficulty(4.5, 1275, 3));
 		hike.setHours(new Hours(sunrise, sunset, 2.75));
+		hike.setImage("Valencia_Peak.jpg");
 		hikes[5] = hike;
 
 		hike = new HikeInfo("Poly Canyon Design Village", F, F);
 		hike.setAccess(new Access(T, F, T, T));
 		hike.setDifficulty(new Difficulty(2.5, 300, 2));
 		hike.setHours(new Hours(sunrise, sunset, 1.25));
+		hike.setImage("Design_Village.jpg");
 		hikes[6] = hike;
 
 		hike = new HikeInfo("Hazard Peak Trail", F, F);
 		hike.setAccess(new Access(T, F, F, F));
 		hike.setDifficulty(new Difficulty(6, 950, 4));
 		hike.setHours(new Hours(sunrise, sunset, 3));
+		hike.setImage("Hazard_Peak.jpg");
 		hikes[7] = hike;
 
 		hike = new HikeInfo("Bob Jones Trail", F, F);
 		hike.setAccess(new Access(T, F, T, T));
 		hike.setDifficulty(new Difficulty(5, 50, 1));
 		hike.setHours(new Hours(sunrise, sunset, 2.25));
+		hike.setImage("Bob_Jones.jpg");
 		hikes[8] = hike;
 
 		hike = new HikeInfo("Piedras Blancas Elephant Seal Rookery", F, F);
 		hike.setAccess(new Access(T, F, F, F));
 		hike.setDifficulty(new Difficulty(3.2, 25, 1));
 		hike.setHours(new Hours(sunrise, sunset, 1.25));
+		hike.setImage("Elephant_Seals.jpg");
 		hikes[9] = hike;
 
 		hike = new HikeInfo("Moonstone Beach Boardwalk", F, F);
 		hike.setAccess(new Access(F, F, T, F));
 		hike.setDifficulty(new Difficulty(2.85, 40, 1));
 		hike.setHours(new Hours(sunrise, sunset, 1.25));
+		hike.setImage("Moonstone_Beach.jpg");
 		hikes[10] = hike;
 
 		hike = new HikeInfo("Headlands Trail", F, F);
 		hike.setAccess(new Access(F, F, F, F));
 		hike.setDifficulty(new Difficulty(4.5, 135, 2));
 		hike.setHours(new Hours(sunrise, sunset, 2));
+		hike.setImage("Headlands_Trail.jpg");
 		hikes[11] = hike;
 	}
 
@@ -149,6 +163,10 @@ public class HomeScreen extends Application {
 		stage = primaryStage;
 		stage.setTitle("Coastbusters");
 		title.setFont(Font.font("Futura", FontPosture.ITALIC, 40));
+		image.setFitHeight(35);
+		image.setFitWidth(35);
+		HBox.setHgrow(r, Priority.ALWAYS);
+		VBox.setVgrow(r, Priority.ALWAYS);
 		Scene scene = homeScene();
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -157,7 +175,7 @@ public class HomeScreen extends Application {
 	private Scene homeScene(){
 		Text names = new Text();
 
-		VBox root = new VBox(45);
+		VBox root = new VBox(50);
 
 		VBox vBox = new VBox(10);
 
@@ -207,12 +225,14 @@ public class HomeScreen extends Application {
 		names.setText("Designed and built by Adam Havstad,\n" +
 				      "Rafael Cohn-Gruenwald, Gavin Chao,\n" +
 					  "James Kao, Elijah Pinson, and\n" +
-					  "Arun Ulagappan.");
+					  "Arun Ulagappan.\n" +
+					  "2018.");
 		names.setTextAlignment(TextAlignment.CENTER);
 		names.setFont(Font.font("Helvetica", 10));
 
 		root.setAlignment(Pos.TOP_CENTER);
-		root.getChildren().addAll(title, vBox, names);
+		root.getChildren().addAll(title, vBox, r, names);
+
 
 		root.setStyle(BACKGROUND_COLOR);
 
@@ -224,9 +244,11 @@ public class HomeScreen extends Application {
 		question.setFont(Font.font("Helvetica",16));
 
 		HBox hBox = new HBox(50);
+		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
 
-		Button homeButton = new Button("Home");
+		Button homeButton = new Button();
+		homeButton.setGraphic(image);
 		homeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -262,20 +284,18 @@ public class HomeScreen extends Application {
 		a2.setOnMouseExited(e -> a2.setStyle(IDLE_BUTTON_STYLE));
 		a2.setPrefWidth(75);
 
+		homeButton.setStyle(BACKGROUND_COLOR);
+		hBox1.getChildren().addAll(homeButton, r);
 
 		hBox.getChildren().addAll(a1, a2);
 		hBox.setAlignment(Pos.CENTER);
 
-		vBox.getChildren().addAll(title, question, hBox);
+		vBox.getChildren().addAll(title, question, hBox, r, hBox1);
 		vBox.setAlignment(Pos.TOP_CENTER);
 
 		vBox.setStyle(BACKGROUND_COLOR);
+
 		return new Scene(vBox, 300, 500);
-
-
-		//root.getChildren().addAll(homeButton, question, a1, a2);
-
-		//return new Scene(root, 300, 500);
 	}
 
 	private Scene secondQuestion(){
@@ -283,9 +303,11 @@ public class HomeScreen extends Application {
 		question.setFont(Font.font("Helvetica",16));
 
 		HBox hBox = new HBox(50);
+		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
 
-		Button homeButton = new Button("Home");
+		Button homeButton = new Button();
+		homeButton.setGraphic(image);
 		homeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -321,11 +343,13 @@ public class HomeScreen extends Application {
 		a2.setOnMouseExited(e -> a2.setStyle(IDLE_BUTTON_STYLE));
 		a2.setPrefWidth(75);
 
-
 		hBox.getChildren().addAll(a1, a2);
 		hBox.setAlignment(Pos.CENTER);
 
-		vBox.getChildren().addAll(title, question, hBox);
+		homeButton.setStyle(BACKGROUND_COLOR);
+		hBox1.getChildren().addAll(homeButton, r);
+
+		vBox.getChildren().addAll(title, question, hBox, r, hBox1);
 		vBox.setAlignment(Pos.TOP_CENTER);
 
 		vBox.setStyle(BACKGROUND_COLOR);
@@ -337,9 +361,11 @@ public class HomeScreen extends Application {
 		question.setFont(Font.font("Helvetica",16));
 
 		HBox hBox = new HBox(50);
+		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
 
-		Button homeButton = new Button("Home");
+		Button homeButton = new Button();
+		homeButton.setGraphic(image);
 		homeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -379,7 +405,10 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2);
 		hBox.setAlignment(Pos.CENTER);
 
-		vBox.getChildren().addAll(title, question, hBox);
+		homeButton.setStyle(BACKGROUND_COLOR);
+		hBox1.getChildren().addAll(homeButton, r);
+
+		vBox.getChildren().addAll(title, question, hBox, r, hBox1);
 		vBox.setAlignment(Pos.TOP_CENTER);
 
 		vBox.setStyle(BACKGROUND_COLOR);
@@ -391,9 +420,11 @@ public class HomeScreen extends Application {
 		question.setFont(Font.font("Helvetica",16));
 
 		HBox hBox = new HBox(25);
+		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
 
-		Button homeButton = new Button("Home");
+		Button homeButton = new Button();
+		homeButton.setGraphic(image);
 		homeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -474,7 +505,10 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2, a3, a4, a5);
 		hBox.setAlignment(Pos.CENTER);
 
-		vBox.getChildren().addAll(title, question, hBox);
+		homeButton.setStyle(BACKGROUND_COLOR);
+		hBox1.getChildren().addAll(homeButton, r);
+
+		vBox.getChildren().addAll(title, question, hBox, r, hBox1);
 		vBox.setAlignment(Pos.TOP_CENTER);
 
 		vBox.setStyle(BACKGROUND_COLOR);
@@ -486,9 +520,11 @@ public class HomeScreen extends Application {
 		question.setFont(Font.font("Helvetica",16));
 
 		HBox hBox = new HBox(25);
+		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
 
-		Button homeButton = new Button("Home");
+		Button homeButton = new Button();
+		homeButton.setGraphic(image);
 		homeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -555,7 +591,10 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2, a3, a4);
 		hBox.setAlignment(Pos.CENTER);
 
-		vBox.getChildren().addAll(title, question, hBox);
+		homeButton.setStyle(BACKGROUND_COLOR);
+		hBox1.getChildren().addAll(homeButton, r);
+
+		vBox.getChildren().addAll(title, question, hBox, r, hBox1);
 		vBox.setAlignment(Pos.TOP_CENTER);
 
 		vBox.setStyle(BACKGROUND_COLOR);
@@ -628,7 +667,6 @@ public class HomeScreen extends Application {
 				if(len >= desiredLen[0] && len < desiredLen[1]){
 					temp5[i] = 1;
 				}
-
 			}
 		}
 
@@ -646,14 +684,6 @@ public class HomeScreen extends Application {
 			}
 		}
 
-
-		/*System.out.println(Arrays.toString(temp1));
-		System.out.println(Arrays.toString(temp2));
-		System.out.println(Arrays.toString(temp3));
-		System.out.println(Arrays.toString(temp4));
-		System.out.println(Arrays.toString(temp5));*/
-
-
 		if(qualifiedHikes.isEmpty()){
 			return noHikes();
 		}else{
@@ -663,10 +693,14 @@ public class HomeScreen extends Application {
 	}
 
 	private Scene noHikes(){
-		Pane root = new Pane();
+		HBox hBox = new HBox();
+		VBox vBox = new VBox(50);
 
 		Label label = new Label("No Matching Hikes, Sorry!");
-		Button homeButton = new Button("Home");
+        label.setFont(Font.font("Helvetica",16));
+
+		Button homeButton = new Button();
+		homeButton.setGraphic(image);
 		homeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -674,11 +708,13 @@ public class HomeScreen extends Application {
 			}
 		});
 
-		label.setLayoutX(100);
-		label.setLayoutY(30);
-		root.getChildren().addAll(homeButton, label);
+		homeButton.setStyle(BACKGROUND_COLOR);
+		hBox.getChildren().addAll(homeButton, r);
+		vBox.getChildren().addAll(title, label, r, hBox);
+		vBox.setStyle(BACKGROUND_COLOR);
+		vBox.setAlignment(Pos.TOP_CENTER);
 
-		return new Scene(root, 300, 500);
+		return new Scene(vBox, 300, 500);
 	}
 
 	/* Randomly selects a hike */
@@ -689,30 +725,52 @@ public class HomeScreen extends Application {
 
 	/* Displays the information for the hike that is being passed in as a parameter */
 	private Scene displayHikeScene(HikeInfo hike){
-		VBox vRoot = new VBox();
-		Pane root = new Pane();
+		VBox vBox = new VBox(10);
+		HBox hBox = new HBox(200);
+		Region filler = new Region();
+		filler.setPrefHeight(40);
+
+		ImageView img;
+
 		Label hikeName = new Label(hike.getName());
-		Button homeButton = new Button("Home");
+		hikeName.setFont(Font.font("Helvetica",16));
+
+		Button homeButton = new Button();
+		homeButton.setGraphic(image);
+		homeButton.setStyle(BACKGROUND_COLOR);
 		homeButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				stage.setScene(homeScene());
 			}
 		});
 
-		/* Goes to all hikes screen */
-		Button displayAllHikesButton = new Button("All Hikes");
-		displayAllHikesButton.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				stage.setScene(listAllHikes());
-			}
-		});
+		Button refreshButton = new Button();
+		ImageView refresh = new ImageView(new Image(getClass().getResourceAsStream("Refresh.png")));
+        ColorAdjust blackout = new ColorAdjust();
+        blackout.setBrightness(-1.0);
+        refresh.setEffect(blackout);
+		refresh.setFitWidth(35);
+		refresh.setFitHeight(35);
+        refreshButton.setGraphic(refresh);
+        refreshButton.setStyle(BACKGROUND_COLOR);
+        refreshButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                stage.setScene(pickRandomHike());
+            }
+        });
+        hBox.getChildren().addAll(homeButton, refreshButton);
+        hBox.setAlignment(Pos.CENTER);
 
-		hikeName.setLayoutY(30);
-		hikeName.setLayoutX(100);
+		img = hike.getImageView();
+		img.setFitHeight(125);
+		img.setFitWidth(250);
 
-		vRoot.getChildren().addAll(homeButton, displayAllHikesButton);
-		root.getChildren().addAll(vRoot, hikeName);
-		return new Scene(root, 300, 500);
+		vBox.getChildren().addAll(title, filler, hikeName, img, r, hBox);
+		vBox.setAlignment(Pos.TOP_CENTER);
+		vBox.setStyle(BACKGROUND_COLOR);
+
+		return new Scene(vBox, 300, 500);
 	}
 
 	private void initializeHikeButtons(Button button, HikeInfo hike){
@@ -721,13 +779,33 @@ public class HomeScreen extends Application {
 				stage.setScene(displayHikeScene(hike));
 			}
 		});
+		button.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                button.setStyle(HOVERED_BUTTON_STYLE);
+            }
+        });
+		button.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                button.setStyle(IDLE_BUTTON_STYLE);
+            }
+        });
 
 		button.setWrapText(true);
 	}
 
 	private Scene listAllHikes(){
-		VBox vRoot = new VBox();
-		HBox hRoot = new HBox();
+		VBox vBox = new VBox(7.5);
+		HBox hBox1 = new HBox(7.5);
+		HBox hBox2 = new HBox(7.5);
+		HBox hBox3 = new HBox(7.5);
+		HBox hBox4 = new HBox(7.5);
+		HBox hBox5 = new HBox();
+
+		Region filler = new Region();
+		filler.setPrefHeight(40);
+
 		Button[] hikeButtons = new Button[hikes.length];
 		HikeInfo temp;
 
@@ -737,19 +815,41 @@ public class HomeScreen extends Application {
 			initializeHikeButtons(hikeButtons[i], hikes[i]);
 		}
 
-		Button homeButton = new Button("Home");
+		Button homeButton = new Button();
+		homeButton.setGraphic(image);
+		homeButton.setStyle(BACKGROUND_COLOR);
 		homeButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				stage.setScene(homeScene());
 			}
 		});
 
+
 		for(int i = 0; i < 12; i++){
-			vRoot.getChildren().add(hikeButtons[i]);
-		}
+		    hikeButtons[i].setStyle(IDLE_BUTTON_STYLE);
+		    hikeButtons[i].setPrefWidth(85);
+		    hikeButtons[i].setPrefHeight(60);
+		    hikeButtons[i].setTextAlignment(TextAlignment.CENTER);
+        }
 
-		hRoot.getChildren().addAll(homeButton, vRoot);
+		hBox1.getChildren().addAll(hikeButtons[0], hikeButtons[1], hikeButtons[2]);
+		hBox1.setAlignment(Pos.CENTER);
 
-		return new Scene(hRoot, 300, 500);
+		hBox2.getChildren().addAll(hikeButtons[3], hikeButtons[4], hikeButtons[5]);
+		hBox2.setAlignment(Pos.CENTER);
+
+		hBox3.getChildren().addAll(hikeButtons[6], hikeButtons[7], hikeButtons[8]);
+		hBox3.setAlignment(Pos.CENTER);
+
+		hBox4.getChildren().addAll(hikeButtons[9], hikeButtons[10], hikeButtons[11]);
+		hBox4.setAlignment(Pos.CENTER);
+
+		hBox5.getChildren().addAll(homeButton, r);
+
+		vBox.getChildren().addAll(title, filler, hBox1, hBox2, hBox3, hBox4, r, hBox5);
+		vBox.setStyle(BACKGROUND_COLOR);
+		vBox.setAlignment(Pos.CENTER);
+
+		return new Scene(vBox, 300, 500);
 	}
 }
