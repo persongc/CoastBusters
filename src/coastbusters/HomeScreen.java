@@ -29,10 +29,16 @@ public class HomeScreen extends Application {
 	private final String HOVERED_BUTTON_STYLE = "-fx-background-color: #f7d193; -fx-border-color: #cca054; " +
 			"-fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;";
 	private final String BACKGROUND_COLOR = "-fx-background-color: #FFEDCF;";
+	private final String BOTTOM_BUTTON_STYLE = "-fx-background-color: #e6c58d; -fx-border-color: #cca054; " +
+			"-fx-border-width: 1px;";
+	private final String CURRENT_BOTTOM_BUTTON_STYLE = "-fx-background-color: #f7d193; -fx-border-color: #cca054; " +
+			"-fx-border-width: 1px;";
 	private Label title = new Label("Coastbusters");
 	private static Button homeButton = new Button();
 	private static Button refreshButton = new Button();
 	private static Button qButton = new Button();
+	private static Button backButton = new Button();
+	private static Button allButtons = new Button();
 	private Region r = new Region();
 
 	public static void main(String[] args) {
@@ -156,7 +162,7 @@ public class HomeScreen extends Application {
 		image.setFitHeight(35);
 		homeButton.setGraphic(image);
 		homeButton.setOnAction(event -> stage.setScene(homeScene()));
-		homeButton.setStyle(BACKGROUND_COLOR);
+		homeButton.setStyle(BOTTOM_BUTTON_STYLE);
 
 		ImageView refresh = new ImageView(new Image(getClass().getResourceAsStream("Refresh.png")));
 		ColorAdjust blackout = new ColorAdjust();
@@ -165,15 +171,28 @@ public class HomeScreen extends Application {
 		refresh.setFitWidth(35);
 		refresh.setFitHeight(35);
 		refreshButton.setGraphic(refresh);
-		refreshButton.setStyle(BACKGROUND_COLOR);
+		refreshButton.setStyle(BOTTOM_BUTTON_STYLE);
 		refreshButton.setOnAction(event -> stage.setScene(pickRandomHike()));
 
 		ImageView q = new ImageView(new Image(getClass().getResourceAsStream("questionnaire.png")));
 		q.setFitHeight(35);
 		q.setFitWidth(35);
 		qButton.setGraphic(q);
-		qButton.setStyle(BACKGROUND_COLOR);
+		qButton.setStyle(BOTTOM_BUTTON_STYLE);
 		qButton.setOnAction(event -> stage.setScene(firstQuestion()));
+
+		ImageView back = new ImageView(new Image(getClass().getResourceAsStream("back.png")));
+		back.setFitWidth(35);
+		back.setFitHeight(35);
+		backButton.setGraphic(back);
+		backButton.setStyle(BOTTOM_BUTTON_STYLE);
+
+		ImageView all = new ImageView(new Image(getClass().getResourceAsStream("viewAll.png")));
+		all.setFitHeight(35);
+		all.setFitWidth(35);
+		allButtons.setGraphic(all);
+		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
+		allButtons.setOnAction(event -> stage.setScene(listAllHikes()));
 	}
 
 	public void start(Stage primaryStage){
@@ -265,7 +284,13 @@ public class HomeScreen extends Application {
 		a2.setOnMouseExited(event -> a2.setStyle(IDLE_BUTTON_STYLE));
 		a2.setPrefWidth(75);
 
-		hBox1.getChildren().addAll(homeButton, r);
+		backButton.setOnAction(event -> stage.setScene(homeScene()));
+
+		refreshButton.setDisable(true);
+		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
+		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
+		hBox1.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
+		hBox1.setAlignment(Pos.CENTER);
 
 		hBox.getChildren().addAll(a1, a2);
 		hBox.setAlignment(Pos.CENTER);
@@ -309,7 +334,12 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2);
 		hBox.setAlignment(Pos.CENTER);
 
-		hBox1.getChildren().addAll(homeButton, r);
+		backButton.setOnAction(event -> stage.setScene(firstQuestion()));
+
+		refreshButton.setDisable(true);
+		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
+		hBox1.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
+		hBox1.setAlignment(Pos.CENTER);
 
 		vBox.getChildren().addAll(title, question, hBox, r, hBox1);
 		vBox.setAlignment(Pos.TOP_CENTER);
@@ -349,7 +379,12 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2);
 		hBox.setAlignment(Pos.CENTER);
 
-		hBox1.getChildren().addAll(homeButton, r);
+		backButton.setOnAction(event -> stage.setScene(secondQuestion()));
+		refreshButton.setDisable(true);
+
+		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
+		hBox1.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
+		hBox1.setAlignment(Pos.CENTER);
 
 		vBox.getChildren().addAll(title, question, hBox, r, hBox1);
 		vBox.setAlignment(Pos.TOP_CENTER);
@@ -421,7 +456,11 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2, a3, a4, a5);
 		hBox.setAlignment(Pos.CENTER);
 
-		hBox1.getChildren().addAll(homeButton, r);
+		backButton.setOnAction(event -> stage.setScene(thirdQuestion()));
+		refreshButton.setDisable(true);
+		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
+		hBox1.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
+		hBox1.setAlignment(Pos.CENTER);
 
 		vBox.getChildren().addAll(title, question, hBox, r, hBox1);
 		vBox.setAlignment(Pos.TOP_CENTER);
@@ -481,7 +520,11 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2, a3, a4);
 		hBox.setAlignment(Pos.CENTER);
 
-		hBox1.getChildren().addAll(homeButton, r);
+		backButton.setOnAction(event -> stage.setScene(fourthQuestion()));
+		refreshButton.setDisable(true);
+		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
+		hBox1.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
+		hBox1.setAlignment(Pos.CENTER);
 
 		vBox.getChildren().addAll(title, question, hBox, r, hBox1);
 		vBox.setAlignment(Pos.TOP_CENTER);
@@ -577,18 +620,21 @@ public class HomeScreen extends Application {
 			return noHikes();
 		}else{
 			int val = rand.nextInt(qualifiedHikes.size());
-			return displayHikeScene(qualifiedHikes.get(val));
+			return displayHikeScene(qualifiedHikes.get(val), "Questionnaire");
 		}
 	}
 
 	private Scene noHikes(){
-		HBox hBox = new HBox();
+		HBox hBox = new HBox(10);
 		VBox vBox = new VBox(50);
 
 		Label label = new Label("No Matching Hikes, Sorry!");
         label.setFont(Font.font("Helvetica",16));
 
-		hBox.getChildren().addAll(homeButton, r);
+        refreshButton.setDisable(true);
+        backButton.setOnAction(event -> stage.setScene(fifthQuestion()));
+		hBox.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
+		hBox.setAlignment(Pos.CENTER);
 		vBox.getChildren().addAll(title, label, r, hBox);
 		vBox.setStyle(BACKGROUND_COLOR);
 		vBox.setAlignment(Pos.TOP_CENTER);
@@ -599,13 +645,13 @@ public class HomeScreen extends Application {
 	/* Randomly selects a hike */
 	private Scene pickRandomHike(){
 		int val = rand.nextInt(9);
-		return displayHikeScene(hikes[val]);
+		return displayHikeScene(hikes[val], "Random");
 	}
 
 	/* Displays the information for the hike that is being passed in as a parameter */
-	private Scene displayHikeScene(HikeInfo hike){
+	private Scene displayHikeScene(HikeInfo hike, String parent){
 		VBox vBox = new VBox(10);
-		HBox hBox = new HBox(75);
+		HBox hBox = new HBox();
 		Region hFiller = new Region();
 		hFiller.setPrefHeight(40);
 
@@ -614,7 +660,20 @@ public class HomeScreen extends Application {
 		Label hikeName = new Label(hike.getName());
 		hikeName.setFont(Font.font("Helvetica",16));
 
-        hBox.getChildren().addAll(homeButton, qButton, refreshButton);
+
+		qButton.setStyle(BOTTOM_BUTTON_STYLE);
+		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
+
+		refreshButton.setDisable(false);
+		if(parent.equals("Random")){
+			backButton.setOnAction(event -> stage.setScene(homeScene()));
+		}else if(parent.equals("All")){
+			backButton.setOnAction(event -> stage.setScene(listAllHikes()));
+		}else{
+			backButton.setOnAction(event -> stage.setScene(fifthQuestion()));
+		}
+
+        hBox.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
         hBox.setAlignment(Pos.CENTER);
 
 		img = hike.getImageView();
@@ -629,7 +688,7 @@ public class HomeScreen extends Application {
 	}
 
 	private void initializeHikeButtons(Button button, HikeInfo hike){
-		button.setOnAction(event -> stage.setScene(displayHikeScene(hike)));
+		button.setOnAction(event -> stage.setScene(displayHikeScene(hike, "All")));
 		button.setOnMouseEntered(event -> button.setStyle(HOVERED_BUTTON_STYLE));
 		button.setOnMouseExited(event -> button.setStyle(IDLE_BUTTON_STYLE));
 		button.setWrapText(true);
@@ -674,7 +733,12 @@ public class HomeScreen extends Application {
 		hBox4.getChildren().addAll(hikeButtons[9], hikeButtons[10], hikeButtons[11]);
 		hBox4.setAlignment(Pos.CENTER);
 
-		hBox5.getChildren().addAll(homeButton, r);
+		refreshButton.setDisable(true);
+		backButton.setOnAction(event -> stage.setScene(homeScene()));
+		allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
+		qButton.setStyle(BOTTOM_BUTTON_STYLE);
+		hBox5.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
+		hBox5.setAlignment(Pos.CENTER);
 
 		vBox.getChildren().addAll(title, filler, hBox1, hBox2, hBox3, hBox4, r, hBox5);
 		vBox.setStyle(BACKGROUND_COLOR);
