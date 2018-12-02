@@ -22,18 +22,17 @@ public class HomeScreen extends Application {
 	
 	private static Questionnaire questionnaire = new Questionnaire();
 	private static HikeInfo[] hikes = new HikeInfo[12];
-
 	private Stage stage;
 	private Random rand = new Random();
-
 	private final String IDLE_BUTTON_STYLE = "-fx-background-color: #e6c58d; -fx-border-color: #cca054; " +
 			"-fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;";
 	private final String HOVERED_BUTTON_STYLE = "-fx-background-color: #f7d193; -fx-border-color: #cca054; " +
 			"-fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;";
 	private final String BACKGROUND_COLOR = "-fx-background-color: #FFEDCF;";
-
 	private Label title = new Label("Coastbusters");
-
+	private static Button homeButton = new Button();
+	private static Button refreshButton = new Button();
+	private static Button qButton = new Button();
 	private Region r = new Region();
 
 	public static void main(String[] args) {
@@ -151,13 +150,39 @@ public class HomeScreen extends Application {
 		questionnaire.questions[4] = new Question("Ideal Hike Length?", a3); /* Hike Length in miles */
 	}
 
-	@Override
+	private void initializeBottomButtons(Stage stage){
+		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
+		image.setFitWidth(35);
+		image.setFitHeight(35);
+		homeButton.setGraphic(image);
+		homeButton.setOnAction(event -> stage.setScene(homeScene()));
+		homeButton.setStyle(BACKGROUND_COLOR);
+
+		ImageView refresh = new ImageView(new Image(getClass().getResourceAsStream("Refresh.png")));
+		ColorAdjust blackout = new ColorAdjust();
+		blackout.setBrightness(-1.0);
+		refresh.setEffect(blackout);
+		refresh.setFitWidth(35);
+		refresh.setFitHeight(35);
+		refreshButton.setGraphic(refresh);
+		refreshButton.setStyle(BACKGROUND_COLOR);
+		refreshButton.setOnAction(event -> stage.setScene(pickRandomHike()));
+
+		ImageView q = new ImageView(new Image(getClass().getResourceAsStream("questionnaire.png")));
+		q.setFitHeight(35);
+		q.setFitWidth(35);
+		qButton.setGraphic(q);
+		qButton.setStyle(BACKGROUND_COLOR);
+		qButton.setOnAction(event -> stage.setScene(firstQuestion()));
+	}
+
 	public void start(Stage primaryStage){
 		stage = primaryStage;
 		stage.setTitle("Coastbusters");
 		title.setFont(Font.font("Futura", FontPosture.ITALIC, 40));
 		HBox.setHgrow(r, Priority.ALWAYS);
 		VBox.setVgrow(r, Priority.ALWAYS);
+		initializeBottomButtons(stage);
 		Scene scene = homeScene();
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -165,9 +190,7 @@ public class HomeScreen extends Application {
 
 	private Scene homeScene(){
 		Text names = new Text();
-
 		VBox root = new VBox(50);
-
 		VBox vBox = new VBox(10);
 
 		/* Prompts the user with a questionnaire to select an ideal hike */
@@ -222,14 +245,6 @@ public class HomeScreen extends Application {
 		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
 
-		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
-		image.setFitWidth(35);
-		image.setFitHeight(35);
-		Button homeButton = new Button();
-		homeButton.setGraphic(image);
-		homeButton.setOnAction(event -> stage.setScene(homeScene()));
-		homeButton.setStyle(BACKGROUND_COLOR);
-
 		Button a1 = new Button(questionnaire.questions[0].getAnswers()[0]);
 		a1.setOnAction(event -> {
 				questionnaire.questions[0].setAnswer(0);
@@ -271,15 +286,6 @@ public class HomeScreen extends Application {
 		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
 
-		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
-		image.setFitWidth(35);
-		image.setFitHeight(35);
-		Button homeButton = new Button();
-		homeButton.setGraphic(image);
-		homeButton.setOnAction(event -> stage.setScene(homeScene()));
-		homeButton.setStyle(BACKGROUND_COLOR);
-
-
 		Button a1 = new Button(questionnaire.questions[1].getAnswers()[0]);
 		a1.setOnAction(event -> {
 			questionnaire.questions[1].setAnswer(0);
@@ -320,15 +326,6 @@ public class HomeScreen extends Application {
 		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
 
-		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
-		image.setFitHeight(35);
-		image.setFitWidth(35);
-		Button homeButton = new Button();
-		homeButton.setGraphic(image);
-		homeButton.setOnAction(event -> stage.setScene(homeScene()));
-		homeButton.setStyle(BACKGROUND_COLOR);
-
-
 		Button a1 = new Button(questionnaire.questions[2].getAnswers()[0]);
 		a1.setOnAction(event -> {
 			questionnaire.questions[2].setAnswer(0);
@@ -349,7 +346,6 @@ public class HomeScreen extends Application {
 		a2.setOnMouseExited(e -> a2.setStyle(IDLE_BUTTON_STYLE));
 		a2.setPrefWidth(75);
 
-
 		hBox.getChildren().addAll(a1, a2);
 		hBox.setAlignment(Pos.CENTER);
 
@@ -369,15 +365,6 @@ public class HomeScreen extends Application {
 		HBox hBox = new HBox(25);
 		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
-
-		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
-		image.setFitWidth(35);
-		image.setFitHeight(35);
-		Button homeButton = new Button();
-		homeButton.setGraphic(image);
-		homeButton.setOnAction(event -> stage.setScene(homeScene()));
-		homeButton.setStyle(BACKGROUND_COLOR);
-
 
 		Button a1 = new Button(questionnaire.questions[3].getAnswers()[0]);
 		a1.setOnAction(event -> {
@@ -450,14 +437,6 @@ public class HomeScreen extends Application {
 		HBox hBox = new HBox(25);
 		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
-
-		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
-		image.setFitHeight(35);
-		image.setFitWidth(35);
-		Button homeButton = new Button();
-		homeButton.setGraphic(image);
-		homeButton.setOnAction(event -> stage.setScene(homeScene()));
-		homeButton.setStyle(BACKGROUND_COLOR);
 
 		Button a1 = new Button(questionnaire.questions[4].getAnswers()[0]);
 		a1.setOnAction(event -> {
@@ -609,12 +588,6 @@ public class HomeScreen extends Application {
 		Label label = new Label("No Matching Hikes, Sorry!");
         label.setFont(Font.font("Helvetica",16));
 
-		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
-		Button homeButton = new Button();
-		homeButton.setGraphic(image);
-		homeButton.setOnAction(event -> stage.setScene(homeScene()));
-		homeButton.setStyle(BACKGROUND_COLOR);
-
 		hBox.getChildren().addAll(homeButton, r);
 		vBox.getChildren().addAll(title, label, r, hBox);
 		vBox.setStyle(BACKGROUND_COLOR);
@@ -640,31 +613,6 @@ public class HomeScreen extends Application {
 
 		Label hikeName = new Label(hike.getName());
 		hikeName.setFont(Font.font("Helvetica",16));
-
-		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
-		Button homeButton = new Button();
-		homeButton.setGraphic(image);
-		homeButton.setStyle(BACKGROUND_COLOR);
-		homeButton.setOnAction(event -> stage.setScene(homeScene()));
-
-		Button refreshButton = new Button();
-		ImageView refresh = new ImageView(new Image(getClass().getResourceAsStream("Refresh.png")));
-        ColorAdjust blackout = new ColorAdjust();
-        blackout.setBrightness(-1.0);
-        refresh.setEffect(blackout);
-		refresh.setFitWidth(35);
-		refresh.setFitHeight(35);
-        refreshButton.setGraphic(refresh);
-        refreshButton.setStyle(BACKGROUND_COLOR);
-        refreshButton.setOnAction(event -> stage.setScene(pickRandomHike()));
-
-        Button qButton = new Button();
-        ImageView q = new ImageView(new Image(getClass().getResourceAsStream("questionnaire.png")));
-        q.setFitHeight(35);
-        q.setFitWidth(35);
-        qButton.setGraphic(q);
-        qButton.setStyle(BACKGROUND_COLOR);
-        qButton.setOnAction(event -> stage.setScene(firstQuestion()));
 
         hBox.getChildren().addAll(homeButton, qButton, refreshButton);
         hBox.setAlignment(Pos.CENTER);
@@ -706,12 +654,6 @@ public class HomeScreen extends Application {
 			hikeButtons[i] = new Button(temp.getName());
 			initializeHikeButtons(hikeButtons[i], hikes[i]);
 		}
-
-		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
-		Button homeButton = new Button();
-		homeButton.setGraphic(image);
-		homeButton.setStyle(BACKGROUND_COLOR);
-		homeButton.setOnAction(event -> stage.setScene(homeScene()));
 
 		for(int i = 0; i < 12; i++){
 		    hikeButtons[i].setStyle(IDLE_BUTTON_STYLE);
