@@ -1,7 +1,5 @@
 package coastbusters;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -23,11 +20,11 @@ import java.util.Random;
 
 public class HomeScreen extends Application {
 	
-	protected static Questionnaire questionnaire = new Questionnaire();
-	protected static HikeInfo[] hikes = new HikeInfo[12];
+	private static Questionnaire questionnaire = new Questionnaire();
+	private static HikeInfo[] hikes = new HikeInfo[12];
 
 	private Stage stage;
-	protected Random rand = new Random();
+	private Random rand = new Random();
 
 	private final String IDLE_BUTTON_STYLE = "-fx-background-color: #e6c58d; -fx-border-color: #cca054; " +
 			"-fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;";
@@ -37,15 +34,13 @@ public class HomeScreen extends Application {
 
 	private Label title = new Label("Coastbusters");
 
-	private ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
-
 	private Region r = new Region();
 
 	public static void main(String[] args) {
 		/* Rafi is going to hardcode hikes into Hike Database array */
 		buildQuestionnaire();
 		buildHikeDB();
-		
+
 		launch(args);
 	}
 
@@ -56,90 +51,88 @@ public class HomeScreen extends Application {
 	 *	HOURS: "open", "close", time to complete (hrs)
 	 */
 	private static void buildHikeDB(){
-		Boolean T = Boolean.TRUE;
-		Boolean F = Boolean.FALSE;
 		String sunset = "Sunset";
 		String sunrise = "Sunrise";
 
-		HikeInfo hike = new HikeInfo("Bishop Peak Trail", F, F);
-		hike.setAccess(new Access(F, F, T, F));
+		HikeInfo hike = new HikeInfo("Bishop Peak Trail", Boolean.FALSE, Boolean.FALSE);
+		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(3.5, 950, 5));
 		hike.setHours(new Hours(sunrise, sunset, 2));
 		hike.setImage("Bishop_Peak.jpg");
 		hikes[0] = hike;
 
-		hike = new HikeInfo("Madonna Peak Trail", F, T);
-		hike.setAccess(new Access(T, F, T, T));
+		hike = new HikeInfo("Madonna Peak Trail", Boolean.FALSE, Boolean.TRUE);
+		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(4, 1100, 4));
 		hike.setHours(new Hours(sunrise, sunset, 2.25));
 		hike.setImage("Madonna_Peak.jpg");
 		hikes[1] = hike;
 
-		hike = new HikeInfo("Cal Poly \"P\"", F, F);
-		hike.setAccess(new Access(T, F, T, F));
+		hike = new HikeInfo("Cal Poly \"P\"", Boolean.FALSE, Boolean.FALSE);
+		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(1, 341, 2));
 		hike.setHours(new Hours(sunrise, sunset, 1));
 		hike.setImage("The_P.jpg");
 		hikes[2] = hike;
 
-		hike = new HikeInfo("Serenity Swing", F, F);
-		hike.setAccess(new Access(T, F, T, F));
+		hike = new HikeInfo("Serenity Swing", Boolean.FALSE, Boolean.FALSE);
+		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(3.5, 725, 3));
 		hike.setHours(new Hours(sunrise, sunset, 2));
 		hike.setImage("Serenity_Swing.jpg");
 		hikes[3] = hike;
 
-		hike = new HikeInfo("Ontario Ridge Trail", F, F);
-		hike.setAccess(new Access(F, F, T, F));
+		hike = new HikeInfo("Ontario Ridge Trail", Boolean.FALSE, Boolean.FALSE);
+		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(3, 675, 4));
 		hike.setHours(new Hours(sunrise, sunset, 2.5));
 		hike.setImage("Ontario_Ridge.jpg");
 		hikes[4] = hike;
 
-		hike = new HikeInfo("Valencia Peak Trail", F, F);
-		hike.setAccess(new Access(F, F, F, T));
+		hike = new HikeInfo("Valencia Peak Trail", Boolean.FALSE, Boolean.FALSE);
+		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.FALSE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(4.5, 1275, 3));
 		hike.setHours(new Hours(sunrise, sunset, 2.75));
 		hike.setImage("Valencia_Peak.jpg");
 		hikes[5] = hike;
 
-		hike = new HikeInfo("Poly Canyon Design Village", F, F);
-		hike.setAccess(new Access(T, F, T, T));
+		hike = new HikeInfo("Poly Canyon Design Village", Boolean.FALSE, Boolean.FALSE);
+		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(2.5, 300, 2));
 		hike.setHours(new Hours(sunrise, sunset, 1.25));
 		hike.setImage("Design_Village.jpg");
 		hikes[6] = hike;
 
-		hike = new HikeInfo("Hazard Peak Trail", F, F);
-		hike.setAccess(new Access(T, F, F, F));
+		hike = new HikeInfo("Hazard Peak Trail", Boolean.FALSE, Boolean.FALSE);
+		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(6, 950, 4));
 		hike.setHours(new Hours(sunrise, sunset, 3));
 		hike.setImage("Hazard_Peak.jpg");
 		hikes[7] = hike;
 
-		hike = new HikeInfo("Bob Jones Trail", F, F);
-		hike.setAccess(new Access(T, F, T, T));
+		hike = new HikeInfo("Bob Jones Trail", Boolean.FALSE, Boolean.FALSE);
+		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(5, 50, 1));
 		hike.setHours(new Hours(sunrise, sunset, 2.25));
 		hike.setImage("Bob_Jones.jpg");
 		hikes[8] = hike;
 
-		hike = new HikeInfo("Piedras Blancas Elephant Seal Rookery", F, F);
-		hike.setAccess(new Access(T, F, F, F));
+		hike = new HikeInfo("Piedras Blancas Elephant Seal Rookery", Boolean.FALSE, Boolean.FALSE);
+		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(3.2, 25, 1));
 		hike.setHours(new Hours(sunrise, sunset, 1.25));
 		hike.setImage("Elephant_Seals.jpg");
 		hikes[9] = hike;
 
-		hike = new HikeInfo("Moonstone Beach Boardwalk", F, F);
-		hike.setAccess(new Access(F, F, T, F));
+		hike = new HikeInfo("Moonstone Beach Boardwalk", Boolean.FALSE, Boolean.FALSE);
+		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(2.85, 40, 1));
 		hike.setHours(new Hours(sunrise, sunset, 1.25));
 		hike.setImage("Moonstone_Beach.jpg");
 		hikes[10] = hike;
 
-		hike = new HikeInfo("Headlands Trail", F, F);
-		hike.setAccess(new Access(F, F, F, F));
+		hike = new HikeInfo("Headlands Trail", Boolean.FALSE, Boolean.FALSE);
+		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(4.5, 135, 2));
 		hike.setHours(new Hours(sunrise, sunset, 2));
 		hike.setImage("Headlands_Trail.jpg");
@@ -159,12 +152,10 @@ public class HomeScreen extends Application {
 	}
 
 	@Override
-	public void start(Stage primaryStage) throws Exception{
+	public void start(Stage primaryStage){
 		stage = primaryStage;
 		stage.setTitle("Coastbusters");
 		title.setFont(Font.font("Futura", FontPosture.ITALIC, 40));
-		image.setFitHeight(35);
-		image.setFitWidth(35);
 		HBox.setHgrow(r, Priority.ALWAYS);
 		VBox.setVgrow(r, Priority.ALWAYS);
 		Scene scene = homeScene();
@@ -181,42 +172,26 @@ public class HomeScreen extends Application {
 
 		/* Prompts the user with a questionnaire to select an ideal hike */
 		Button questionnaireButton = new Button("Find A Hike");
-		questionnaireButton.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				stage.setScene(firstQuestion());
-			}
-		});
+		questionnaireButton.setOnAction(event ->stage.setScene(firstQuestion()));
+		questionnaireButton.setStyle(IDLE_BUTTON_STYLE);
+		questionnaireButton.setOnMouseEntered(event -> questionnaireButton.setStyle(HOVERED_BUTTON_STYLE));
+		questionnaireButton.setOnMouseExited(event -> questionnaireButton.setStyle(IDLE_BUTTON_STYLE));
+		questionnaireButton.setPrefWidth(200);
 
 		/* Randomly selects a hike for the user */
 		Button randomButton = new Button("Get Random Hike");
-		randomButton.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				stage.setScene(pickRandomHike());
-			}
-		});
+		randomButton.setOnAction(event -> stage.setScene(pickRandomHike()));
+		randomButton.setStyle(IDLE_BUTTON_STYLE);
+		randomButton.setOnMouseEntered(event -> randomButton.setStyle(HOVERED_BUTTON_STYLE));
+		randomButton.setOnMouseExited(event -> randomButton.setStyle(IDLE_BUTTON_STYLE));
+		randomButton.setPrefWidth(200);
 
 		/* Lists all of the hardcoded hikes */
 		Button allButton = new Button("View All Hikes");
-		allButton.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				stage.setScene(listAllHikes());
-				// Listing of all hikes
-			}
-		});
-
-		questionnaireButton.setStyle(IDLE_BUTTON_STYLE);
-		questionnaireButton.setOnMouseEntered(e -> questionnaireButton.setStyle(HOVERED_BUTTON_STYLE));
-		questionnaireButton.setOnMouseExited(e -> questionnaireButton.setStyle(IDLE_BUTTON_STYLE));
-		questionnaireButton.setPrefWidth(200);
-
-		randomButton.setStyle(IDLE_BUTTON_STYLE);
-		randomButton.setOnMouseEntered(e -> randomButton.setStyle(HOVERED_BUTTON_STYLE));
-		randomButton.setOnMouseExited(e -> randomButton.setStyle(IDLE_BUTTON_STYLE));
-		randomButton.setPrefWidth(200);
-
+		allButton.setOnAction(event -> stage.setScene(listAllHikes()));
 		allButton.setStyle(IDLE_BUTTON_STYLE);
-		allButton.setOnMouseEntered(e -> allButton.setStyle(HOVERED_BUTTON_STYLE));
-		allButton.setOnMouseExited(e -> allButton.setStyle(IDLE_BUTTON_STYLE));
+		allButton.setOnMouseEntered(event -> allButton.setStyle(HOVERED_BUTTON_STYLE));
+		allButton.setOnMouseExited(event -> allButton.setStyle(IDLE_BUTTON_STYLE));
 		allButton.setPrefWidth(200);
 
 		vBox.setAlignment(Pos.TOP_CENTER);
@@ -247,44 +222,34 @@ public class HomeScreen extends Application {
 		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
 
+		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
+		image.setFitWidth(35);
+		image.setFitHeight(35);
 		Button homeButton = new Button();
 		homeButton.setGraphic(image);
-		homeButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				stage.setScene(homeScene());
-			}
-		});
+		homeButton.setOnAction(event -> stage.setScene(homeScene()));
+		homeButton.setStyle(BACKGROUND_COLOR);
 
 		Button a1 = new Button(questionnaire.questions[0].getAnswers()[0]);
-		a1.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
+		a1.setOnAction(event -> {
 				questionnaire.questions[0].setAnswer(0);
 				stage.setScene(secondQuestion());
-			}
 		});
-
-		Button a2 = new Button(questionnaire.questions[0].getAnswers()[1]);
-		a2.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				questionnaire.questions[0].setAnswer(1);
-				stage.setScene(secondQuestion());
-			}
-		});
-
 		a1.setStyle(IDLE_BUTTON_STYLE);
-		a1.setOnMouseEntered(e -> a1.setStyle(HOVERED_BUTTON_STYLE));
-		a1.setOnMouseExited(e -> a1.setStyle(IDLE_BUTTON_STYLE));
+		a1.setOnMouseEntered(event -> a1.setStyle(HOVERED_BUTTON_STYLE));
+		a1.setOnMouseExited(event -> a1.setStyle(IDLE_BUTTON_STYLE));
 		a1.setPrefWidth(75);
 
+		Button a2 = new Button(questionnaire.questions[0].getAnswers()[1]);
+		a2.setOnAction(event -> {
+			questionnaire.questions[0].setAnswer(1);
+			stage.setScene(secondQuestion());
+		});
 		a2.setStyle(IDLE_BUTTON_STYLE);
-		a2.setOnMouseEntered(e -> a2.setStyle(HOVERED_BUTTON_STYLE));
-		a2.setOnMouseExited(e -> a2.setStyle(IDLE_BUTTON_STYLE));
+		a2.setOnMouseEntered(event -> a2.setStyle(HOVERED_BUTTON_STYLE));
+		a2.setOnMouseExited(event -> a2.setStyle(IDLE_BUTTON_STYLE));
 		a2.setPrefWidth(75);
 
-		homeButton.setStyle(BACKGROUND_COLOR);
 		hBox1.getChildren().addAll(homeButton, r);
 
 		hBox.getChildren().addAll(a1, a2);
@@ -306,47 +271,38 @@ public class HomeScreen extends Application {
 		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
 
+		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
+		image.setFitWidth(35);
+		image.setFitHeight(35);
 		Button homeButton = new Button();
 		homeButton.setGraphic(image);
-		homeButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				stage.setScene(homeScene());
-			}
-		});
+		homeButton.setOnAction(event -> stage.setScene(homeScene()));
+		homeButton.setStyle(BACKGROUND_COLOR);
+
 
 		Button a1 = new Button(questionnaire.questions[1].getAnswers()[0]);
-		a1.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				questionnaire.questions[1].setAnswer(0);
-				stage.setScene(thirdQuestion());
-			}
+		a1.setOnAction(event -> {
+			questionnaire.questions[1].setAnswer(0);
+			stage.setScene(thirdQuestion());
 		});
-
-		Button a2 = new Button(questionnaire.questions[1].getAnswers()[1]);
-		a2.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				questionnaire.questions[1].setAnswer(1);
-				stage.setScene(thirdQuestion());
-			}
-		});
-
 		a1.setStyle(IDLE_BUTTON_STYLE);
-		a1.setOnMouseEntered(e -> a1.setStyle(HOVERED_BUTTON_STYLE));
-		a1.setOnMouseExited(e -> a1.setStyle(IDLE_BUTTON_STYLE));
+		a1.setOnMouseEntered(event -> a1.setStyle(HOVERED_BUTTON_STYLE));
+		a1.setOnMouseExited(event -> a1.setStyle(IDLE_BUTTON_STYLE));
 		a1.setPrefWidth(75);
 
+		Button a2 = new Button(questionnaire.questions[1].getAnswers()[1]);
+		a2.setOnAction(event -> {
+			questionnaire.questions[1].setAnswer(1);
+			stage.setScene(thirdQuestion());
+		});
 		a2.setStyle(IDLE_BUTTON_STYLE);
-		a2.setOnMouseEntered(e -> a2.setStyle(HOVERED_BUTTON_STYLE));
-		a2.setOnMouseExited(e -> a2.setStyle(IDLE_BUTTON_STYLE));
+		a2.setOnMouseEntered(event -> a2.setStyle(HOVERED_BUTTON_STYLE));
+		a2.setOnMouseExited(event -> a2.setStyle(IDLE_BUTTON_STYLE));
 		a2.setPrefWidth(75);
 
 		hBox.getChildren().addAll(a1, a2);
 		hBox.setAlignment(Pos.CENTER);
 
-		homeButton.setStyle(BACKGROUND_COLOR);
 		hBox1.getChildren().addAll(homeButton, r);
 
 		vBox.getChildren().addAll(title, question, hBox, r, hBox1);
@@ -364,38 +320,30 @@ public class HomeScreen extends Application {
 		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
 
+		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
+		image.setFitHeight(35);
+		image.setFitWidth(35);
 		Button homeButton = new Button();
 		homeButton.setGraphic(image);
-		homeButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				stage.setScene(homeScene());
-			}
-		});
+		homeButton.setOnAction(event -> stage.setScene(homeScene()));
+		homeButton.setStyle(BACKGROUND_COLOR);
+
 
 		Button a1 = new Button(questionnaire.questions[2].getAnswers()[0]);
-		a1.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				questionnaire.questions[2].setAnswer(0);
-				stage.setScene(fourthQuestion());
-			}
+		a1.setOnAction(event -> {
+			questionnaire.questions[2].setAnswer(0);
+			stage.setScene(fourthQuestion());
 		});
-
-		Button a2 = new Button(questionnaire.questions[2].getAnswers()[1]);
-		a2.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				questionnaire.questions[2].setAnswer(1);
-				stage.setScene(fourthQuestion());
-			}
-		});
-
 		a1.setStyle(IDLE_BUTTON_STYLE);
 		a1.setOnMouseEntered(e -> a1.setStyle(HOVERED_BUTTON_STYLE));
 		a1.setOnMouseExited(e -> a1.setStyle(IDLE_BUTTON_STYLE));
 		a1.setPrefWidth(75);
 
+		Button a2 = new Button(questionnaire.questions[2].getAnswers()[1]);
+		a2.setOnAction(event -> {
+			questionnaire.questions[2].setAnswer(1);
+			stage.setScene(fourthQuestion());
+		});
 		a2.setStyle(IDLE_BUTTON_STYLE);
 		a2.setOnMouseEntered(e -> a2.setStyle(HOVERED_BUTTON_STYLE));
 		a2.setOnMouseExited(e -> a2.setStyle(IDLE_BUTTON_STYLE));
@@ -405,7 +353,6 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2);
 		hBox.setAlignment(Pos.CENTER);
 
-		homeButton.setStyle(BACKGROUND_COLOR);
 		hBox1.getChildren().addAll(homeButton, r);
 
 		vBox.getChildren().addAll(title, question, hBox, r, hBox1);
@@ -423,80 +370,62 @@ public class HomeScreen extends Application {
 		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
 
+		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
+		image.setFitWidth(35);
+		image.setFitHeight(35);
 		Button homeButton = new Button();
 		homeButton.setGraphic(image);
-		homeButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				stage.setScene(homeScene());
-			}
-		});
+		homeButton.setOnAction(event -> stage.setScene(homeScene()));
+		homeButton.setStyle(BACKGROUND_COLOR);
+
 
 		Button a1 = new Button(questionnaire.questions[3].getAnswers()[0]);
-		a1.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				questionnaire.questions[3].setAnswer(0);
-				stage.setScene(fifthQuestion());
-			}
+		a1.setOnAction(event -> {
+			questionnaire.questions[3].setAnswer(0);
+			stage.setScene(fifthQuestion());
 		});
-
-		Button a2 = new Button(questionnaire.questions[3].getAnswers()[1]);
-		a2.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				questionnaire.questions[3].setAnswer(1);
-				stage.setScene(fifthQuestion());
-			}
-		});
-
-		Button a3 = new Button(questionnaire.questions[3].getAnswers()[2]);
-		a3.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				questionnaire.questions[3].setAnswer(2);
-				stage.setScene(fifthQuestion());
-			}
-		});
-
-		Button a4 = new Button(questionnaire.questions[3].getAnswers()[3]);
-		a4.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				questionnaire.questions[3].setAnswer(3);
-				stage.setScene(fifthQuestion());
-			}
-		});
-
-		Button a5 = new Button(questionnaire.questions[3].getAnswers()[4]);
-		a5.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				questionnaire.questions[3].setAnswer(4);
-				stage.setScene(fifthQuestion());
-			}
-		});
-
 		a1.setStyle(IDLE_BUTTON_STYLE);
 		a1.setOnMouseEntered(e -> a1.setStyle(HOVERED_BUTTON_STYLE));
 		a1.setOnMouseExited(e -> a1.setStyle(IDLE_BUTTON_STYLE));
 		a1.setPrefWidth(25);
 
+		Button a2 = new Button(questionnaire.questions[3].getAnswers()[1]);
+		a2.setOnAction(event -> {
+			questionnaire.questions[3].setAnswer(1);
+			stage.setScene(fifthQuestion());
+
+		});
 		a2.setStyle(IDLE_BUTTON_STYLE);
 		a2.setOnMouseEntered(e -> a2.setStyle(HOVERED_BUTTON_STYLE));
 		a2.setOnMouseExited(e -> a2.setStyle(IDLE_BUTTON_STYLE));
 		a2.setPrefWidth(25);
 
+		Button a3 = new Button(questionnaire.questions[3].getAnswers()[2]);
+		a3.setOnAction(event -> {
+			questionnaire.questions[3].setAnswer(2);
+			stage.setScene(fifthQuestion());
+		});
 		a3.setStyle(IDLE_BUTTON_STYLE);
 		a3.setOnMouseEntered(e -> a3.setStyle(HOVERED_BUTTON_STYLE));
 		a3.setOnMouseExited(e -> a3.setStyle(IDLE_BUTTON_STYLE));
 		a3.setPrefWidth(25);
 
+		Button a4 = new Button(questionnaire.questions[3].getAnswers()[3]);
+		a4.setOnAction(event ->  {
+			questionnaire.questions[3].setAnswer(3);
+			stage.setScene(fifthQuestion());
+		});
 		a4.setStyle(IDLE_BUTTON_STYLE);
 		a4.setOnMouseEntered(e -> a4.setStyle(HOVERED_BUTTON_STYLE));
 		a4.setOnMouseExited(e -> a4.setStyle(IDLE_BUTTON_STYLE));
 		a4.setPrefWidth(25);
 
+		Button a5 = new Button(questionnaire.questions[3].getAnswers()[4]);
+		a5.setOnAction(event ->  {
+			questionnaire.questions[3].setAnswer(4);
+			stage.setScene(fifthQuestion());
+
+		});
 		a5.setStyle(IDLE_BUTTON_STYLE);
 		a5.setOnMouseEntered(e -> a5.setStyle(HOVERED_BUTTON_STYLE));
 		a5.setOnMouseExited(e -> a5.setStyle(IDLE_BUTTON_STYLE));
@@ -505,7 +434,6 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2, a3, a4, a5);
 		hBox.setAlignment(Pos.CENTER);
 
-		homeButton.setStyle(BACKGROUND_COLOR);
 		hBox1.getChildren().addAll(homeButton, r);
 
 		vBox.getChildren().addAll(title, question, hBox, r, hBox1);
@@ -523,66 +451,49 @@ public class HomeScreen extends Application {
 		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
 
+		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
+		image.setFitHeight(35);
+		image.setFitWidth(35);
 		Button homeButton = new Button();
 		homeButton.setGraphic(image);
-		homeButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				stage.setScene(homeScene());
-			}
-		});
+		homeButton.setOnAction(event -> stage.setScene(homeScene()));
+		homeButton.setStyle(BACKGROUND_COLOR);
 
 		Button a1 = new Button(questionnaire.questions[4].getAnswers()[0]);
-		a1.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				questionnaire.questions[4].setAnswer(0);
-				stage.setScene(computeOptimalHike());
-			}
+		a1.setOnAction(event -> {
+			questionnaire.questions[4].setAnswer(0);
+			stage.setScene(computeOptimalHike());
 		});
-
-		Button a2 = new Button(questionnaire.questions[4].getAnswers()[1]);
-		a2.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				questionnaire.questions[4].setAnswer(1);
-				stage.setScene(computeOptimalHike());
-			}
-		});
-
-		Button a3 = new Button(questionnaire.questions[4].getAnswers()[2]);
-		a3.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				questionnaire.questions[4].setAnswer(2);
-				stage.setScene(computeOptimalHike());
-			}
-		});
-
-		Button a4 = new Button(questionnaire.questions[4].getAnswers()[3]);
-		a4.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				questionnaire.questions[4].setAnswer(3);
-				stage.setScene(computeOptimalHike());
-			}
-		});
-
 		a1.setStyle(IDLE_BUTTON_STYLE);
 		a1.setOnMouseEntered(e -> a1.setStyle(HOVERED_BUTTON_STYLE));
 		a1.setOnMouseExited(e -> a1.setStyle(IDLE_BUTTON_STYLE));
 		a1.setPrefWidth(45);
 
+		Button a2 = new Button(questionnaire.questions[4].getAnswers()[1]);
+		a2.setOnAction(event ->  {
+			questionnaire.questions[4].setAnswer(1);
+			stage.setScene(computeOptimalHike());
+		});
 		a2.setStyle(IDLE_BUTTON_STYLE);
 		a2.setOnMouseEntered(e -> a2.setStyle(HOVERED_BUTTON_STYLE));
 		a2.setOnMouseExited(e -> a2.setStyle(IDLE_BUTTON_STYLE));
 		a2.setPrefWidth(45);
 
+		Button a3 = new Button(questionnaire.questions[4].getAnswers()[2]);
+		a3.setOnAction(event -> {
+			questionnaire.questions[4].setAnswer(2);
+			stage.setScene(computeOptimalHike());
+		});
 		a3.setStyle(IDLE_BUTTON_STYLE);
 		a3.setOnMouseEntered(e -> a3.setStyle(HOVERED_BUTTON_STYLE));
 		a3.setOnMouseExited(e -> a3.setStyle(IDLE_BUTTON_STYLE));
 		a3.setPrefWidth(45);
 
+		Button a4 = new Button(questionnaire.questions[4].getAnswers()[3]);
+		a4.setOnAction(event -> {
+			questionnaire.questions[4].setAnswer(3);
+			stage.setScene(computeOptimalHike());
+		});
 		a4.setStyle(IDLE_BUTTON_STYLE);
 		a4.setOnMouseEntered(e -> a4.setStyle(HOVERED_BUTTON_STYLE));
 		a4.setOnMouseExited(e -> a4.setStyle(IDLE_BUTTON_STYLE));
@@ -591,7 +502,6 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2, a3, a4);
 		hBox.setAlignment(Pos.CENTER);
 
-		homeButton.setStyle(BACKGROUND_COLOR);
 		hBox1.getChildren().addAll(homeButton, r);
 
 		vBox.getChildren().addAll(title, question, hBox, r, hBox1);
@@ -699,16 +609,12 @@ public class HomeScreen extends Application {
 		Label label = new Label("No Matching Hikes, Sorry!");
         label.setFont(Font.font("Helvetica",16));
 
+		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
 		Button homeButton = new Button();
 		homeButton.setGraphic(image);
-		homeButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				stage.setScene(homeScene());
-			}
-		});
-
+		homeButton.setOnAction(event -> stage.setScene(homeScene()));
 		homeButton.setStyle(BACKGROUND_COLOR);
+
 		hBox.getChildren().addAll(homeButton, r);
 		vBox.getChildren().addAll(title, label, r, hBox);
 		vBox.setStyle(BACKGROUND_COLOR);
@@ -726,23 +632,20 @@ public class HomeScreen extends Application {
 	/* Displays the information for the hike that is being passed in as a parameter */
 	private Scene displayHikeScene(HikeInfo hike){
 		VBox vBox = new VBox(10);
-		HBox hBox = new HBox(200);
-		Region filler = new Region();
-		filler.setPrefHeight(40);
+		HBox hBox = new HBox(75);
+		Region hFiller = new Region();
+		hFiller.setPrefHeight(40);
 
 		ImageView img;
 
 		Label hikeName = new Label(hike.getName());
 		hikeName.setFont(Font.font("Helvetica",16));
 
+		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
 		Button homeButton = new Button();
 		homeButton.setGraphic(image);
 		homeButton.setStyle(BACKGROUND_COLOR);
-		homeButton.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				stage.setScene(homeScene());
-			}
-		});
+		homeButton.setOnAction(event -> stage.setScene(homeScene()));
 
 		Button refreshButton = new Button();
 		ImageView refresh = new ImageView(new Image(getClass().getResourceAsStream("Refresh.png")));
@@ -753,20 +656,24 @@ public class HomeScreen extends Application {
 		refresh.setFitHeight(35);
         refreshButton.setGraphic(refresh);
         refreshButton.setStyle(BACKGROUND_COLOR);
-        refreshButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                stage.setScene(pickRandomHike());
-            }
-        });
-        hBox.getChildren().addAll(homeButton, refreshButton);
+        refreshButton.setOnAction(event -> stage.setScene(pickRandomHike()));
+
+        Button qButton = new Button();
+        ImageView q = new ImageView(new Image(getClass().getResourceAsStream("questionnaire.png")));
+        q.setFitHeight(35);
+        q.setFitWidth(35);
+        qButton.setGraphic(q);
+        qButton.setStyle(BACKGROUND_COLOR);
+        qButton.setOnAction(event -> stage.setScene(firstQuestion()));
+
+        hBox.getChildren().addAll(homeButton, qButton, refreshButton);
         hBox.setAlignment(Pos.CENTER);
 
 		img = hike.getImageView();
 		img.setFitHeight(125);
 		img.setFitWidth(250);
 
-		vBox.getChildren().addAll(title, filler, hikeName, img, r, hBox);
+		vBox.getChildren().addAll(title, hFiller, hikeName, img, r, hBox);
 		vBox.setAlignment(Pos.TOP_CENTER);
 		vBox.setStyle(BACKGROUND_COLOR);
 
@@ -774,24 +681,9 @@ public class HomeScreen extends Application {
 	}
 
 	private void initializeHikeButtons(Button button, HikeInfo hike){
-		button.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				stage.setScene(displayHikeScene(hike));
-			}
-		});
-		button.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                button.setStyle(HOVERED_BUTTON_STYLE);
-            }
-        });
-		button.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                button.setStyle(IDLE_BUTTON_STYLE);
-            }
-        });
-
+		button.setOnAction(event -> stage.setScene(displayHikeScene(hike)));
+		button.setOnMouseEntered(event -> button.setStyle(HOVERED_BUTTON_STYLE));
+		button.setOnMouseExited(event -> button.setStyle(IDLE_BUTTON_STYLE));
 		button.setWrapText(true);
 	}
 
@@ -815,15 +707,11 @@ public class HomeScreen extends Application {
 			initializeHikeButtons(hikeButtons[i], hikes[i]);
 		}
 
+		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Home.png")));
 		Button homeButton = new Button();
 		homeButton.setGraphic(image);
 		homeButton.setStyle(BACKGROUND_COLOR);
-		homeButton.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				stage.setScene(homeScene());
-			}
-		});
-
+		homeButton.setOnAction(event -> stage.setScene(homeScene()));
 
 		for(int i = 0; i < 12; i++){
 		    hikeButtons[i].setStyle(IDLE_BUTTON_STYLE);
