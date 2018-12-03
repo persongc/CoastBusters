@@ -1,4 +1,4 @@
-package coastbusters;
+package logic;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

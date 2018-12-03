@@ -1,4 +1,4 @@
-package coastbusters;
+package logic;
 
 public class Hours {
 	private String open; /* opening time */

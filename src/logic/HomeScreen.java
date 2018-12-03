@@ -1,4 +1,4 @@
-package coastbusters;
+package logic;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -24,15 +24,16 @@ public class HomeScreen extends Application {
 	private static HikeInfo[] hikes = new HikeInfo[12];
 	private Stage stage;
 	private Random rand = new Random();
-	private final String IDLE_BUTTON_STYLE = "-fx-background-color: #e6c58d; -fx-border-color: #cca054; " +
+	private static final String IDLE_BUTTON_STYLE = "-fx-background-color: #e6c58d; -fx-border-color: #cca054; " +
 			"-fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;";
-	private final String HOVERED_BUTTON_STYLE = "-fx-background-color: #f7d193; -fx-border-color: #cca054; " +
+	private static final String HOVERED_BUTTON_STYLE = "-fx-background-color: #f7d193; -fx-border-color: #cca054; " +
 			"-fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;";
-	private final String BACKGROUND_COLOR = "-fx-background-color: #FFEDCF;";
-	private final String BOTTOM_BUTTON_STYLE = "-fx-background-color: #e6c58d; -fx-border-color: #cca054; " +
+	private static final String BACKGROUND_COLOR = "-fx-background-color: #FFEDCF;";
+	private static final String BOTTOM_BUTTON_STYLE = "-fx-background-color: #e6c58d; -fx-border-color: #cca054; " +
 			"-fx-border-width: 1px;";
-	private final String CURRENT_BOTTOM_BUTTON_STYLE = "-fx-background-color: #f7d193; -fx-border-color: #cca054; " +
+	private static final String CURRENT_BOTTOM_BUTTON_STYLE = "-fx-background-color: #f7d193; -fx-border-color: #cca054; " +
 			"-fx-border-width: 1px;";
+	private static final String HELVETICA = "Helvetica";
 	private Label title = new Label("Coastbusters");
 	private static Button homeButton = new Button();
 	private static Button refreshButton = new Button();
@@ -246,7 +247,7 @@ public class HomeScreen extends Application {
 					  "Arun Ulagappan.\n" +
 					  "2018.");
 		names.setTextAlignment(TextAlignment.CENTER);
-		names.setFont(Font.font("Helvetica", 10));
+		names.setFont(Font.font(HELVETICA, 10));
 
 		root.setAlignment(Pos.TOP_CENTER);
 		root.getChildren().addAll(title, vBox, r, names);
@@ -306,7 +307,7 @@ public class HomeScreen extends Application {
 
 	private Scene secondQuestion(){
 		Label question = new Label(questionnaire.questions[1].getQuestion());
-		question.setFont(Font.font("Helvetica",16));
+		question.setFont(Font.font(HELVETICA,16));
 
 		HBox hBox = new HBox(50);
 		HBox hBox1 = new HBox();
@@ -351,7 +352,7 @@ public class HomeScreen extends Application {
 
 	private Scene thirdQuestion(){
 		Label question = new Label(questionnaire.questions[2].getQuestion());
-		question.setFont(Font.font("Helvetica",16));
+		question.setFont(Font.font(HELVETICA,16));
 
 		HBox hBox = new HBox(50);
 		HBox hBox1 = new HBox();
@@ -396,7 +397,7 @@ public class HomeScreen extends Application {
 
 	private Scene fourthQuestion(){
 		Label question = new Label(questionnaire.questions[3].getQuestion());
-		question.setFont(Font.font("Helvetica",16));
+		question.setFont(Font.font(HELVETICA,16));
 
 		HBox hBox = new HBox(25);
 		HBox hBox1 = new HBox();
@@ -472,7 +473,7 @@ public class HomeScreen extends Application {
 
 	private Scene fifthQuestion(){
 		Label question = new Label(questionnaire.questions[4].getQuestion());
-		question.setFont(Font.font("Helvetica",16));
+		question.setFont(Font.font(HELVETICA,16));
 
 		HBox hBox = new HBox(25);
 		HBox hBox1 = new HBox();
@@ -630,7 +631,7 @@ public class HomeScreen extends Application {
 		VBox vBox = new VBox(50);
 
 		Label label = new Label("No Matching Hikes, Sorry!");
-        label.setFont(Font.font("Helvetica",16));
+        label.setFont(Font.font(HELVETICA,16));
 
         refreshButton.setDisable(true);
         backButton.setOnAction(event -> stage.setScene(fifthQuestion()));
@@ -659,7 +660,7 @@ public class HomeScreen extends Application {
 		ImageView img;
 
 		Label hikeName = new Label(hike.getName());
-		hikeName.setFont(Font.font("Helvetica",16));
+		hikeName.setFont(Font.font(HELVETICA,16));
 
 
 		qButton.setStyle(BOTTOM_BUTTON_STYLE);

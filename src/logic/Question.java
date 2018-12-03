@@ -1,4 +1,4 @@
-package coastbusters;
+package logic;
 
 public class Question{
 		private String q;
