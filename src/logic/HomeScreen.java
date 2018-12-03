@@ -659,6 +659,21 @@ public class HomeScreen extends Application {
 
 		ImageView img;
 
+		Button viewHikeInfo = new Button("View Hike Info");
+		//viewHikeInfo.setOnAction(event -> stage.setScene(viewHike()));
+		viewHikeInfo.setStyle(IDLE_BUTTON_STYLE);
+		viewHikeInfo.setOnMouseEntered(event -> viewHikeInfo.setStyle(HOVERED_BUTTON_STYLE));
+		viewHikeInfo.setOnMouseExited(event -> viewHikeInfo.setStyle(IDLE_BUTTON_STYLE));
+		viewHikeInfo.setPrefWidth(200);
+
+		Button viewWeather = new Button("View Weather");
+		//viewWeather.setOnAction(event -> stage.setScene(viewWeather()));
+		viewWeather.setStyle(IDLE_BUTTON_STYLE);
+		viewWeather.setOnMouseEntered(event -> viewWeather.setStyle(HOVERED_BUTTON_STYLE));
+		viewWeather.setOnMouseExited(event -> viewWeather.setStyle(IDLE_BUTTON_STYLE));
+		viewWeather.setPrefWidth(200);
+
+
 		Label hikeName = new Label(hike.getName());
 		hikeName.setFont(Font.font(HELVETICA,16));
 
@@ -687,7 +702,7 @@ public class HomeScreen extends Application {
 		img.setFitHeight(125);
 		img.setFitWidth(250);
 
-		vBox.getChildren().addAll(title, hFiller, hikeName, img, r, hBox);
+		vBox.getChildren().addAll(title, hFiller, hikeName, img, viewHikeInfo, viewWeather, r, hBox);
 		vBox.setAlignment(Pos.TOP_CENTER);
 		vBox.setStyle(BACKGROUND_COLOR);
 
