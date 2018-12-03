@@ -14,6 +14,12 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -287,10 +293,18 @@ public class HomeScreen extends Application {
 		a2.setPrefWidth(75);
 
 		backButton.setOnAction(event -> stage.setScene(homeScene()));
+		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
 
 		refreshButton.setDisable(true);
 		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
+		qButton.setOnMouseExited(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
+		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
+
 		hBox1.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
 		hBox1.setAlignment(Pos.CENTER);
 
@@ -336,10 +350,18 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2);
 		hBox.setAlignment(Pos.CENTER);
 
-		backButton.setOnAction(event -> stage.setScene(firstQuestion()));
+		backButton.setOnAction(event -> stage.setScene(homeScene()));
+		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
 
 		refreshButton.setDisable(true);
 		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
+		qButton.setOnMouseExited(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
+		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
 		hBox1.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
 		hBox1.setAlignment(Pos.CENTER);
 
@@ -381,10 +403,18 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2);
 		hBox.setAlignment(Pos.CENTER);
 
-		backButton.setOnAction(event -> stage.setScene(secondQuestion()));
+		backButton.setOnAction(event -> stage.setScene(homeScene()));
+		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
 		refreshButton.setDisable(true);
-
 		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
+		qButton.setOnMouseExited(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
+		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
+
 		hBox1.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
 		hBox1.setAlignment(Pos.CENTER);
 
@@ -458,9 +488,18 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2, a3, a4, a5);
 		hBox.setAlignment(Pos.CENTER);
 
-		backButton.setOnAction(event -> stage.setScene(thirdQuestion()));
+		backButton.setOnAction(event -> stage.setScene(homeScene()));
+		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
 		refreshButton.setDisable(true);
 		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
+		qButton.setOnMouseExited(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
+		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
+
 		hBox1.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
 		hBox1.setAlignment(Pos.CENTER);
 
@@ -522,9 +561,18 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2, a3, a4);
 		hBox.setAlignment(Pos.CENTER);
 
-		backButton.setOnAction(event -> stage.setScene(fourthQuestion()));
+		backButton.setOnAction(event -> stage.setScene(homeScene()));
+		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
 		refreshButton.setDisable(true);
 		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
+		qButton.setOnMouseExited(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
+		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
+
 		hBox1.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
 		hBox1.setAlignment(Pos.CENTER);
 
@@ -667,7 +715,7 @@ public class HomeScreen extends Application {
 		viewHikeInfo.setPrefWidth(200);
 
 		Button viewWeather = new Button("View Weather");
-		//viewWeather.setOnAction(event -> stage.setScene(viewWeather()));
+		viewWeather.setOnAction(event -> stage.setScene(viewWeather(hike)));
 		viewWeather.setStyle(IDLE_BUTTON_STYLE);
 		viewWeather.setOnMouseEntered(event -> viewWeather.setStyle(HOVERED_BUTTON_STYLE));
 		viewWeather.setOnMouseExited(event -> viewWeather.setStyle(IDLE_BUTTON_STYLE));
@@ -679,9 +727,22 @@ public class HomeScreen extends Application {
 
 
 		qButton.setStyle(BOTTOM_BUTTON_STYLE);
+		qButton.setOnMouseEntered(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		qButton.setOnMouseExited(event -> qButton.setStyle(BOTTOM_BUTTON_STYLE));
 		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
-
+		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
+		backButton.setStyle(BOTTOM_BUTTON_STYLE);
+		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
+		homeButton.setStyle(BOTTOM_BUTTON_STYLE);
+		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
 		refreshButton.setDisable(false);
+		refreshButton.setStyle(BOTTOM_BUTTON_STYLE);
+		refreshButton.setOnMouseEntered(event -> refreshButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		refreshButton.setOnMouseExited(event -> refreshButton.setStyle(BOTTOM_BUTTON_STYLE));
+
 		switch(parent){
 			case "Random":
 				backButton.setOnAction(event -> stage.setScene(homeScene()));
@@ -757,8 +818,15 @@ public class HomeScreen extends Application {
 
 		refreshButton.setDisable(true);
 		backButton.setOnAction(event -> stage.setScene(homeScene()));
+		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
 		allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
+		allButtons.setOnMouseExited(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		qButton.setStyle(BOTTOM_BUTTON_STYLE);
+		qButton.setOnMouseEntered(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		qButton.setOnMouseExited(event -> qButton.setStyle(BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
 		hBox5.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
 		hBox5.setAlignment(Pos.CENTER);
 
@@ -767,5 +835,90 @@ public class HomeScreen extends Application {
 		vBox.setAlignment(Pos.CENTER);
 
 		return new Scene(vBox, 300, 500);
+	}
+
+	private Scene viewWeather(HikeInfo hike){
+		Label label;
+		VBox root = new VBox();
+		try{
+			label = new Label(getWeather());
+		} catch(IOException e){
+			label = new Label("Weather cannot be displayed");
+		}
+
+
+		root.getChildren().addAll(title, label);
+		root.setAlignment(Pos.TOP_CENTER);
+		root.setStyle(BACKGROUND_COLOR);
+
+		return new Scene(root, 300, 500);
+
+	}
+
+	private static String weather(String hikeinfourl) throws IOException {
+		String temp = null;
+		try
+		{
+			URL url = new URL(hikeinfourl);
+
+			URLConnection con = url.openConnection();
+
+			InputStream is =con.getInputStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+
+			String line = null;
+			while ((line = br.readLine()) != null) {
+				temp += line;
+			}
+		}
+		catch(IOException e)
+		{
+			return "Weather can not be displayed";
+		}
+
+		Random r = new Random();
+		int low = 10;
+		int high = 100;
+		int result = r.nextInt(high-low) + low;
+		int num = (result % 100) / 10;
+
+		if (num == 1)
+		{
+			temp = "Weather Conditions: Rain with temperature at 55.58 degrees F";
+		}
+		else if (num == 2)
+		{
+			temp = "Weather Conditions: Rain with temperature at 48.85 degrees F";
+		}
+		else if (num == 3)
+		{
+			temp = "Weather Conditions: Partly Cloudy with temperature at 63.43 degrees F";
+		}
+		else if (num == 4)
+		{
+			temp = "Weather Conditions: Clear Sky with temperature at 52.87 degrees F";
+		}
+		else if (num == 5)
+		{
+			temp = "Weather Conditions: Rain with temperature at 48.98 degrees F";
+		}
+		else if (num == 6)
+		{
+			temp = "Weather Conditions: Partly Cloudy with temperature at 58.97 degrees F";
+		}
+		else
+		{
+			temp = "Weather Conditions: Rain with temperature at 65.48 degrees F";
+		}
+		return temp;
+	}
+
+	private static String getWeather() throws IOException
+	{
+		//http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2
+		String s = weather("https://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b6907d289e10d714a6e88b30761fae2");
+		//String s = weather("a");
+		return s;
 	}
 }
