@@ -203,6 +203,7 @@ public class HomeScreen extends Application {
 		VBox.setVgrow(r, Priority.ALWAYS);
 		initializeBottomButtons(stage);
 		Scene scene = homeScene();
+		//Scene scene = noHikes();
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
@@ -625,7 +626,7 @@ public class HomeScreen extends Application {
 	}
 
 	private Scene noHikes(){
-		HBox hBox = new HBox(10);
+		HBox hBox = new HBox();
 		VBox vBox = new VBox(50);
 
 		Label label = new Label("No Matching Hikes, Sorry!");
@@ -665,12 +666,17 @@ public class HomeScreen extends Application {
 		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
 
 		refreshButton.setDisable(false);
-		if(parent.equals("Random")){
-			backButton.setOnAction(event -> stage.setScene(homeScene()));
-		}else if(parent.equals("All")){
-			backButton.setOnAction(event -> stage.setScene(listAllHikes()));
-		}else{
-			backButton.setOnAction(event -> stage.setScene(fifthQuestion()));
+		switch(parent){
+			case "Random":
+				backButton.setOnAction(event -> stage.setScene(homeScene()));
+				break;
+			case "All":
+				backButton.setOnAction(event -> stage.setScene(listAllHikes()));
+				break;
+			default:
+				backButton.setOnAction(event -> stage.setScene(fifthQuestion()));
+				break;
+
 		}
 
         hBox.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
