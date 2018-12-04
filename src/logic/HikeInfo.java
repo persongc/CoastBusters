@@ -16,7 +16,7 @@ public class HikeInfo //should make use of weather and reviews class
 	private Hours hours;
 	private Image image;
 	private ImageView imageView;
-	private String hikeURL;
+	private Weather weather;
 	
 	public HikeInfo(String name, Boolean bathrooms, Boolean water) {
 		this.name = name;
@@ -70,19 +70,15 @@ public class HikeInfo //should make use of weather and reviews class
 		this.imageView = new ImageView(this.image);
 	}
 
-	public Image getImage(){
-		return image;
-	}
-
 	public ImageView getImageView(){
 		return imageView;
 	}
 
-	public void setURL(String url){
-		this.hikeURL = url;
+	public void setWeather(Weather weather){
+		this.weather = weather;
 	}
 
-	public String getURL(){
-		return hikeURL;
+	public Weather getWeather(){
+		return weather;
 	}
 }

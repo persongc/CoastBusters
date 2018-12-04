@@ -13,7 +13,6 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +21,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Random;
-
 
 public class HomeScreen extends Application {
 	
@@ -70,6 +68,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(3.5, 950, 5));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 2));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2"));
 		hike.setImage("Bishop_Peak.jpg");
 		
 		return hike;
@@ -82,6 +81,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(4, 1100, 4));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 2.25));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2"));
 		hike.setImage("Madonna_Peak.jpg");
 		return hike;
 	}
@@ -93,6 +93,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(3, 675, 4));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 2.5));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93424,us&appid=f63269cfb2876c2790032ef911956ac2"));
 		hike.setImage("Ontario_Ridge.jpg");
 		return hike;
 	}
@@ -104,6 +105,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(3.5, 725, 3));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 2));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2"));
 		hike.setImage("Serenity_Swing.jpg");
 		return hike;
 	}
@@ -115,6 +117,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.FALSE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(4.5, 1275, 3));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 2.75));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93402,us&appid=f63269cfb2876c2790032ef911956ac2"));
 		hike.setImage("Valencia_Peak.jpg");
 		return hike;
 	}
@@ -126,6 +129,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(2.5, 300, 2));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 1.25));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2"));
 		hike.setImage("Design_Village.jpg");
 		return hike;
 	}
@@ -137,6 +141,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(6, 950, 4));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 3));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93412,us&appid=f63269cfb2876c2790032ef911956ac2"));
 		hike.setImage("Hazard_Peak.jpg");
 		return hike;
 	}
@@ -148,6 +153,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(5, 50, 1));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 2.25));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93424,us&appid=f63269cfb2876c2790032ef911956ac2"));
 		hike.setImage("Bob_Jones.jpg");
 		return hike;
 	}
@@ -159,6 +165,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(3.2, 25, 1));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 1.25));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93452,us&appid=f63269cfb2876c2790032ef911956ac2"));
 		hike.setImage("Elephant_Seals.jpg");
 		return hike;
 	}
@@ -170,6 +177,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(2.85, 40, 1));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 1.25));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93428,us&appid=f63269cfb2876c2790032ef911956ac2"));
 		hike.setImage("Moonstone_Beach.jpg");
 		return hike;
 	}
@@ -181,6 +189,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(4.5, 135, 2));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 2));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2"));
 		hike.setImage("Headlands_Trail.jpg");
 		return hike;
 	}
@@ -192,6 +201,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(1, 341, 2));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 1));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2"));
 		hike.setImage("The_P.jpg");
 		return hike;
 	}
@@ -199,40 +209,28 @@ public class HomeScreen extends Application {
 	
 	
 	private static void buildHikeDB(){
-		
 		hikes[0] = createBishopPeakTrail();
 
-		
 		hikes[1] = createMadonnaPeakTrail();
 
-		
 		hikes[2] = createPHike();
 
-		
 		hikes[3] = createSerenitySwing();
 
-		
 		hikes[4] = createOntarioRidgeTrail();
 
-		
 		hikes[5] = createValenciaPeakTrail();
 
-		
 		hikes[6] = createPolyCanyonDesignVillage();
 
-		
 		hikes[7] = createHazardPeakTrail();
 
-		
 		hikes[8] = createBobJonesTrail();
 
-		
 		hikes[9] = createPiedrasBlancas();
 
-		
 		hikes[10] = createMoonstoneBeach();
 
-		
 		hikes[11] = createHeadlandsTrail();
 	}
 
@@ -294,10 +292,55 @@ public class HomeScreen extends Application {
 		HBox.setHgrow(r, Priority.ALWAYS);
 		VBox.setVgrow(r, Priority.ALWAYS);
 		initializeBottomButtons(stage);
-		Scene scene = homeScene();
-		//Scene scene = noHikes();
+		Scene scene = introduction();
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+
+	private Scene introduction(){
+		VBox vBox = new VBox(10);
+		HBox hBox = new HBox();
+
+		Region fill = new Region();
+		fill.setPrefWidth(100);
+		Region fill1 = new Region();
+		fill1.setPrefHeight(25);
+		Region fill2 = new Region();
+		fill2.setPrefHeight(80);
+
+		Button letsGo = new Button("Let's Go!");
+		letsGo.setOnAction(event -> stage.setScene(homeScene()));
+		letsGo.setStyle(IDLE_BUTTON_STYLE);
+		letsGo.setOnMouseEntered(event -> letsGo.setStyle(HOVERED_BUTTON_STYLE));
+		letsGo.setOnMouseExited(event -> letsGo.setStyle(IDLE_BUTTON_STYLE));
+		letsGo.setPrefWidth(175);
+
+		VBox vBox1 = new VBox(20);
+
+		Text intro = new Text();
+		intro.setText("Welcome to Coastbusters!");
+		intro.setFont(Font.font(HELVETICA, 20));
+
+		Text intro1 = new Text();
+		intro1.setText("In this app you can:\n\n" +
+				       "1. Answer a questionnaire\n" +
+					   "   to allow us to suggest\n" +
+					   "   a place to hike.\n\n" +
+					   "2. Get a random hike.\n\n" +
+					   "3. View our curated hikes\n" +
+					   "   and select one yourself.");
+		intro1.setFont(Font.font(HELVETICA, 16));
+		vBox1.getChildren().addAll(intro, intro1);
+		vBox1.setAlignment(Pos.CENTER);
+
+		hBox.getChildren().addAll(letsGo);
+		hBox.setAlignment(Pos.CENTER);
+
+		vBox.getChildren().addAll(title, fill1, vBox1, fill2, hBox);
+		vBox.setAlignment(Pos.TOP_CENTER);
+		vBox.setStyle(BACKGROUND_COLOR);
+
+		return new Scene(vBox, 300, 500);
 	}
 
 	private Scene homeScene(){
@@ -788,19 +831,19 @@ public class HomeScreen extends Application {
 		VBox vBox = new VBox(10);
 		HBox hBox = new HBox();
 		Region hFiller = new Region();
-		hFiller.setPrefHeight(40);
-
-		ImageView img;
+		hFiller.setPrefHeight(20);
+		Region hFiller2 = new Region();
+		hFiller2.setPrefHeight(20);
 
 		Button viewHikeInfo = new Button("View Hike Info");
-		//viewHikeInfo.setOnAction(event -> stage.setScene(viewHike()));
+		viewHikeInfo.setOnAction(event -> stage.setScene(viewHike(hike, parent)));
 		viewHikeInfo.setStyle(IDLE_BUTTON_STYLE);
 		viewHikeInfo.setOnMouseEntered(event -> viewHikeInfo.setStyle(HOVERED_BUTTON_STYLE));
 		viewHikeInfo.setOnMouseExited(event -> viewHikeInfo.setStyle(IDLE_BUTTON_STYLE));
 		viewHikeInfo.setPrefWidth(200);
 
 		Button viewWeather = new Button("View Weather");
-		viewWeather.setOnAction(event -> stage.setScene(viewWeather(hike)));
+		viewWeather.setOnAction(event -> stage.setScene(viewWeather(hike, parent)));
 		viewWeather.setStyle(IDLE_BUTTON_STYLE);
 		viewWeather.setOnMouseEntered(event -> viewWeather.setStyle(HOVERED_BUTTON_STYLE));
 		viewWeather.setOnMouseExited(event -> viewWeather.setStyle(IDLE_BUTTON_STYLE));
@@ -844,15 +887,52 @@ public class HomeScreen extends Application {
         hBox.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
         hBox.setAlignment(Pos.CENTER);
 
+		ImageView img;
 		img = hike.getImageView();
 		img.setFitHeight(125);
 		img.setFitWidth(250);
 
-		vBox.getChildren().addAll(title, hFiller, hikeName, img, viewHikeInfo, viewWeather, r, hBox);
+		Button imageButton = new Button();
+		imageButton.setGraphic(img);
+		imageButton.setOnAction(event -> stage.setScene(imageScene(hike, parent)));
+		imageButton.setStyle(BACKGROUND_COLOR);
+
+		vBox.getChildren().addAll(title, hFiller, hikeName, imageButton, hFiller2, viewHikeInfo, viewWeather, r, hBox);
 		vBox.setAlignment(Pos.TOP_CENTER);
 		vBox.setStyle(BACKGROUND_COLOR);
 
 		return new Scene(vBox, 300, 500);
+	}
+
+	private Scene imageScene(HikeInfo hike, String parent){
+		VBox root = new VBox();
+		HBox hBox = new HBox();
+
+		refreshButton.setDisable(true);
+		backButton.setOnAction(event -> stage.setScene(displayHikeScene(hike, parent)));
+		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
+		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
+		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
+		qButton.setStyle(BOTTOM_BUTTON_STYLE);
+		qButton.setOnMouseEntered(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		qButton.setOnMouseExited(event -> qButton.setStyle(BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
+		hBox.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
+		hBox.setAlignment(Pos.CENTER);
+
+
+		ImageView img = hike.getImageView();
+		img.setFitHeight(512);
+		img.setFitWidth(1024);
+
+		root.getChildren().addAll(title, img, hBox);
+		root.setStyle(BACKGROUND_COLOR);
+		root.setAlignment(Pos.CENTER);
+
+		return new Scene(root, 1050, 625);
 	}
 
 	private void initializeHikeButtons(Button button, HikeInfo hike){
@@ -922,44 +1002,171 @@ public class HomeScreen extends Application {
 		return new Scene(vBox, 300, 500);
 	}
 
-	private Scene viewWeather(HikeInfo hike){
-		Label label;
-		VBox root = new VBox();
+	private Scene viewHike(HikeInfo hike, String parent){
+		VBox root = new VBox(20);
+		VBox answers = new VBox(5);
+		VBox questions = new VBox(5);
+		HBox hBox = new HBox();
+		HBox results = new HBox(20);
+		Region fill = new Region();
+		fill.setPrefHeight(25);
+
+		Text name = new Text(hike.getName());
+		name.setFont(Font.font(HELVETICA, 20));
+
+		Text diff = new Text();
+		diff.setText("" + hike.getDifficulty().getLength() + " miles long. " + hike.getDifficulty().getElevGain() + " ft elevation gain.\n" +
+				"Estimated completion time is " + hike.getHours().getTime() + " hours.");
+		diff.setFont(Font.font(HELVETICA, 14));
+
+		Text h1 = new Text("Horse Friendly?");
+		h1.setFont(Font.font(HELVETICA, 14));
+		Text b1 = new Text("Bike Friendly?");
+		b1.setFont(Font.font(HELVETICA, 14));
+		Text d1 = new Text("Dog Friendly?");
+		d1.setFont(Font.font(HELVETICA, 14));
+		Text p1 = new Text("Pass Required?");
+		p1.setFont(Font.font(HELVETICA, 14));
+		Text ba1 = new Text("Bathrooms Available?");
+		ba1.setFont(Font.font(HELVETICA, 14));
+		Text w1 = new Text("Water Available?");
+		w1.setFont(Font.font(HELVETICA, 14));
+		Text ho1 = new Text("Hours Open:");
+		ho1.setFont(Font.font(HELVETICA, 14));
+
+		Text h2 = ((hike.getAccess().getHorse()) ? new Text("Yes.") : new Text("No."));
+		h2.setFont(Font.font(HELVETICA, 14));
+		Text b2 = ((hike.getAccess().getBike()) ? new Text("Yes.") : new Text("No."));
+		b2.setFont(Font.font(HELVETICA, 14));
+		Text d2 = ((hike.getAccess().getDog()) ? new Text("Yes.") : new Text("No."));
+		d2.setFont(Font.font(HELVETICA, 14));
+		Text p2 = ((hike.getAccess().getPass()) ? new Text("Yes.") : new Text("No."));
+		p2.setFont(Font.font(HELVETICA, 14));
+		Text ba2 = ((hike.getBathrooms()) ? new Text("Yes.") : new Text("No."));
+		ba2.setFont(Font.font(HELVETICA, 14));
+		Text w2 = ((hike.getWater()) ? new Text("Yes.") : new Text("No."));
+		w2.setFont(Font.font(HELVETICA, 14));
+		Text ho2 = new Text("" + hike.getHours().getOpen() + " to " + hike.getHours().getClose());
+		ho2.setFont(Font.font(HELVETICA, 14));
+
+		refreshButton.setDisable(true);
+		backButton.setOnAction(event -> stage.setScene(displayHikeScene(hike, parent)));
+		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
+		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
+		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
+		qButton.setStyle(BOTTOM_BUTTON_STYLE);
+		qButton.setOnMouseEntered(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		qButton.setOnMouseExited(event -> qButton.setStyle(BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
+		hBox.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
+		hBox.setAlignment(Pos.CENTER);
+
+		answers.getChildren().addAll(h1, b1, d1, p1, ba1, w1, ho1);
+		questions.getChildren().addAll(h2, b2, d2, p2, ba2, w2, ho2);
+		results.getChildren().addAll(answers, questions);
+		results.setAlignment(Pos.CENTER);
+
+		root.getChildren().addAll(title, fill, name, diff, results, r, hBox);
+		root.setStyle(BACKGROUND_COLOR);
+		root.setAlignment(Pos.CENTER);
+
+		return new Scene(root, 300, 500);
+	}
+
+	private Scene viewWeather(HikeInfo hike, String parent){
+		Label label = new Label(hike.getName());
+		label.setFont(Font.font(HELVETICA, 20));
+		VBox root = new VBox(10);
+		VBox vBox = new VBox(5);
+		HBox hBox = new HBox();
+
 		try{
-			label = new Label(getWeather());
+			weather(hike.getWeather());
+
+			ImageView image = new ImageView(new Image(getClass().getResourceAsStream(hike.getWeather().getForecast())));
+			image.setFitWidth(100);
+			image.setFitHeight(100);
+
+			Text t = new Text();
+			t.setText("Current Weather");
+			t.setFont(Font.font(HELVETICA, 20));
+
+			Text t1 = new Text();
+			t1.setText("Temperature: " + hike.getWeather().getCurrTemp());
+			t1.setFont(Font.font(HELVETICA, 16));
+
+			Text t2 = new Text();
+			t2.setText("Daily High: " + hike.getWeather().getHigh());
+			t2.setFont(Font.font(HELVETICA, 16));
+
+			Text t3 = new Text();
+			t3.setText("Daily Low: " + hike.getWeather().getLow());
+			t3.setFont(Font.font(HELVETICA, 16));
+
+			Text t4 = new Text();
+			t4.setText("Windspeeds: " + hike.getWeather().getWind());
+			t4.setFont(Font.font(HELVETICA, 16));
+
+			vBox.getChildren().addAll(t, image, t1, t2, t3, t4);
+			vBox.setAlignment(Pos.CENTER);
+
 		} catch(IOException e){
-			label = new Label("Weather cannot be displayed");
+			Text t = new Text("Weather cannot be displayed.\n" +
+							  "Please check your internet connection.");
+			vBox.getChildren().addAll(t);
+			vBox.setAlignment(Pos.CENTER);
 		}
 
+		refreshButton.setDisable(true);
+		backButton.setOnAction(event -> stage.setScene(displayHikeScene(hike, parent)));
+		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
+		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
+		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
+		qButton.setStyle(BOTTOM_BUTTON_STYLE);
+		qButton.setOnMouseEntered(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		qButton.setOnMouseExited(event -> qButton.setStyle(BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
+		hBox.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
+		hBox.setAlignment(Pos.CENTER);
 
-		root.getChildren().addAll(title, label);
+		root.getChildren().addAll(title, label, vBox, r, hBox);
 		root.setAlignment(Pos.TOP_CENTER);
 		root.setStyle(BACKGROUND_COLOR);
 
 		return new Scene(root, 300, 500);
-
 	}
 
-	private static String weather(String hikeinfourl) throws IOException {
-		String temp = null;
+	private static void weather(Weather hikeWeather) throws IOException {
+		String temp = "";
 		try
 		{
-			URL url = new URL(hikeinfourl);
+			URL url = new URL(hikeWeather.getURL());
 
 			URLConnection con = url.openConnection();
 
 			InputStream is =con.getInputStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
-
-			String line = null;
+			String line;
 			while ((line = br.readLine()) != null) {
 				temp += line;
 			}
+			System.out.println(temp);
 		}
 		catch(IOException e)
 		{
-			return "Weather can not be displayed";
+			hikeWeather.setForecast(null);
+			hikeWeather.setCurrTemp(null);
+			hikeWeather.setHigh(null);
+			hikeWeather.setLow(null);
+			hikeWeather.setWind(null);
+			return;
 		}
 
 		Random r = new Random();
@@ -970,40 +1177,59 @@ public class HomeScreen extends Application {
 
 		if (num == 1)
 		{
-			temp = "Weather Conditions: Rain with temperature at 55.58 degrees F";
+			hikeWeather.setForecast("Cloudy.jpg");
+			hikeWeather.setCurrTemp("55 ºF");
+			hikeWeather.setHigh("57 ºF");
+			hikeWeather.setLow("50 ºF");
+			hikeWeather.setWind("1 mph");
 		}
 		else if (num == 2)
 		{
-			temp = "Weather Conditions: Rain with temperature at 48.85 degrees F";
+			hikeWeather.setForecast("Rain.jpg");
+			hikeWeather.setCurrTemp("49 ºF");
+			hikeWeather.setHigh("51 ºF");
+			hikeWeather.setLow("43 ºF");
+			hikeWeather.setWind("3 mph");
 		}
 		else if (num == 3)
 		{
-			temp = "Weather Conditions: Partly Cloudy with temperature at 63.43 degrees F";
+			hikeWeather.setForecast("Partly Cloudy.jpg");
+			hikeWeather.setCurrTemp("63 ºF");
+			hikeWeather.setHigh("70 ºF");
+			hikeWeather.setLow("60 ºF");
+			hikeWeather.setWind("0 mph");
 		}
 		else if (num == 4)
 		{
-			temp = "Weather Conditions: Clear Sky with temperature at 52.87 degrees F";
+			hikeWeather.setForecast("Sunny.jpg");
+			hikeWeather.setCurrTemp("52 ºF");
+			hikeWeather.setHigh("57 ºF");
+			hikeWeather.setLow("50 ºF");
+			hikeWeather.setWind("4 mph");
 		}
 		else if (num == 5)
 		{
-			temp = "Weather Conditions: Rain with temperature at 48.98 degrees F";
+			hikeWeather.setForecast("Rain.jpg");
+			hikeWeather.setCurrTemp("49 ºF");
+			hikeWeather.setHigh("50 ºF");
+			hikeWeather.setLow("39 ºF");
+			hikeWeather.setWind("4 mph");
 		}
 		else if (num == 6)
 		{
-			temp = "Weather Conditions: Partly Cloudy with temperature at 58.97 degrees F";
+			hikeWeather.setForecast("Sunny.jpg");
+			hikeWeather.setCurrTemp("58 ºF");
+			hikeWeather.setHigh("61 ºF");
+			hikeWeather.setLow("55 ºF");
+			hikeWeather.setWind("2 mph");
 		}
 		else
 		{
-			temp = "Weather Conditions: Rain with temperature at 65.48 degrees F";
+			hikeWeather.setForecast("Rain.jpg");
+			hikeWeather.setCurrTemp("62 ºF");
+			hikeWeather.setHigh("65 ºF");
+			hikeWeather.setLow("52 ºF");
+			hikeWeather.setWind("5 mph");
 		}
-		return temp;
-	}
-
-	private static String getWeather() throws IOException
-	{
-		//http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2
-		String s = weather("https://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b6907d289e10d714a6e88b30761fae2");
-		//String s = weather("a");
-		return s;
 	}
 }
