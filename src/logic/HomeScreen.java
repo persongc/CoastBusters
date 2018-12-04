@@ -47,7 +47,9 @@ public class HomeScreen extends Application {
 	private static Button backButton = new Button();
 	private static Button allButtons = new Button();
 	private Region r = new Region();
-
+	private static final String SUNSET = "Sunset";
+	private static final String SUNRISE = "Sunrise";
+	
 	public static void main(String[] args) {
 		/* Rafi is going to hardcode hikes into Hike Database array */
 		buildQuestionnaire();
@@ -62,93 +64,176 @@ public class HomeScreen extends Application {
 	 *	DIFFICULTY: Length (mi), Elevation Gain (ft), Difficulty Rating (1-5)
 	 *	HOURS: "open", "close", time to complete (hrs)
 	 */
-	private static void buildHikeDB(){
-		String sunset = "Sunset";
-		String sunrise = "Sunrise";
-
+	private static HikeInfo createBishopPeakTrail()
+	{
 		HikeInfo hike = new HikeInfo("Bishop Peak Trail", Boolean.FALSE, Boolean.FALSE);
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(3.5, 950, 5));
-		hike.setHours(new Hours(sunrise, sunset, 2));
+		hike.setHours(new Hours(SUNRISE, SUNSET, 2));
 		hike.setImage("Bishop_Peak.jpg");
-		hikes[0] = hike;
-
+		
+		return hike;
+	}
+	
+	private static HikeInfo createMadonnaPeakTrail()
+	{
+		HikeInfo hike;
 		hike = new HikeInfo("Madonna Peak Trail", Boolean.FALSE, Boolean.TRUE);
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(4, 1100, 4));
-		hike.setHours(new Hours(sunrise, sunset, 2.25));
+		hike.setHours(new Hours(SUNRISE, SUNSET, 2.25));
 		hike.setImage("Madonna_Peak.jpg");
-		hikes[1] = hike;
-
-		hike = new HikeInfo("Cal Poly \"P\"", Boolean.FALSE, Boolean.FALSE);
-		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
-		hike.setDifficulty(new Difficulty(1, 341, 2));
-		hike.setHours(new Hours(sunrise, sunset, 1));
-		hike.setImage("The_P.jpg");
-		hikes[2] = hike;
-
-		hike = new HikeInfo("Serenity Swing", Boolean.FALSE, Boolean.FALSE);
-		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
-		hike.setDifficulty(new Difficulty(3.5, 725, 3));
-		hike.setHours(new Hours(sunrise, sunset, 2));
-		hike.setImage("Serenity_Swing.jpg");
-		hikes[3] = hike;
-
+		return hike;
+	}
+	
+	private static HikeInfo createOntarioRidgeTrail()
+	{
+		HikeInfo hike;
 		hike = new HikeInfo("Ontario Ridge Trail", Boolean.FALSE, Boolean.FALSE);
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(3, 675, 4));
-		hike.setHours(new Hours(sunrise, sunset, 2.5));
+		hike.setHours(new Hours(SUNRISE, SUNSET, 2.5));
 		hike.setImage("Ontario_Ridge.jpg");
-		hikes[4] = hike;
-
+		return hike;
+	}
+	
+	private static HikeInfo createSerenitySwing()
+	{
+		HikeInfo hike;
+		hike = new HikeInfo("Serenity Swing", Boolean.FALSE, Boolean.FALSE);
+		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
+		hike.setDifficulty(new Difficulty(3.5, 725, 3));
+		hike.setHours(new Hours(SUNRISE, SUNSET, 2));
+		hike.setImage("Serenity_Swing.jpg");
+		return hike;
+	}
+	
+	private static HikeInfo createValenciaPeakTrail()
+	{
+		HikeInfo hike;
 		hike = new HikeInfo("Valencia Peak Trail", Boolean.FALSE, Boolean.FALSE);
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.FALSE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(4.5, 1275, 3));
-		hike.setHours(new Hours(sunrise, sunset, 2.75));
+		hike.setHours(new Hours(SUNRISE, SUNSET, 2.75));
 		hike.setImage("Valencia_Peak.jpg");
-		hikes[5] = hike;
-
+		return hike;
+	}
+	
+	private static HikeInfo createPolyCanyonDesignVillage()
+	{
+		HikeInfo hike;
 		hike = new HikeInfo("Poly Canyon Design Village", Boolean.FALSE, Boolean.FALSE);
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(2.5, 300, 2));
-		hike.setHours(new Hours(sunrise, sunset, 1.25));
+		hike.setHours(new Hours(SUNRISE, SUNSET, 1.25));
 		hike.setImage("Design_Village.jpg");
-		hikes[6] = hike;
-
+		return hike;
+	}
+	
+	private static HikeInfo createHazardPeakTrail()
+	{
+		HikeInfo hike;
 		hike = new HikeInfo("Hazard Peak Trail", Boolean.FALSE, Boolean.FALSE);
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(6, 950, 4));
-		hike.setHours(new Hours(sunrise, sunset, 3));
+		hike.setHours(new Hours(SUNRISE, SUNSET, 3));
 		hike.setImage("Hazard_Peak.jpg");
-		hikes[7] = hike;
-
+		return hike;
+	}
+	
+	private static HikeInfo createBobJonesTrail()
+	{
+		HikeInfo hike;
 		hike = new HikeInfo("Bob Jones Trail", Boolean.FALSE, Boolean.FALSE);
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(5, 50, 1));
-		hike.setHours(new Hours(sunrise, sunset, 2.25));
+		hike.setHours(new Hours(SUNRISE, SUNSET, 2.25));
 		hike.setImage("Bob_Jones.jpg");
-		hikes[8] = hike;
-
+		return hike;
+	}
+	
+	private static HikeInfo createPiedrasBlancas()
+	{
+		HikeInfo hike;
 		hike = new HikeInfo("Piedras Blancas Elephant Seal Rookery", Boolean.FALSE, Boolean.FALSE);
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(3.2, 25, 1));
-		hike.setHours(new Hours(sunrise, sunset, 1.25));
+		hike.setHours(new Hours(SUNRISE, SUNSET, 1.25));
 		hike.setImage("Elephant_Seals.jpg");
-		hikes[9] = hike;
-
+		return hike;
+	}
+	
+	private static HikeInfo createMoonstoneBeach()
+	{
+		HikeInfo hike;
 		hike = new HikeInfo("Moonstone Beach Boardwalk", Boolean.FALSE, Boolean.FALSE);
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(2.85, 40, 1));
-		hike.setHours(new Hours(sunrise, sunset, 1.25));
+		hike.setHours(new Hours(SUNRISE, SUNSET, 1.25));
 		hike.setImage("Moonstone_Beach.jpg");
-		hikes[10] = hike;
-
+		return hike;
+	}
+	
+	private static HikeInfo createHeadlandsTrail()
+	{
+		HikeInfo hike;
 		hike = new HikeInfo("Headlands Trail", Boolean.FALSE, Boolean.FALSE);
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(4.5, 135, 2));
-		hike.setHours(new Hours(sunrise, sunset, 2));
+		hike.setHours(new Hours(SUNRISE, SUNSET, 2));
 		hike.setImage("Headlands_Trail.jpg");
-		hikes[11] = hike;
+		return hike;
+	}
+	
+	private static HikeInfo createPHike()
+	{
+		HikeInfo hike;
+		hike = new HikeInfo("Cal Poly \"P\"", Boolean.FALSE, Boolean.FALSE);
+		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
+		hike.setDifficulty(new Difficulty(1, 341, 2));
+		hike.setHours(new Hours(SUNRISE, SUNSET, 1));
+		hike.setImage("The_P.jpg");
+		return hike;
+	}
+	
+	
+	
+	private static void buildHikeDB(){
+		
+		hikes[0] = createBishopPeakTrail();
+
+		
+		hikes[1] = createMadonnaPeakTrail();
+
+		
+		hikes[2] = createPHike();
+
+		
+		hikes[3] = createSerenitySwing();
+
+		
+		hikes[4] = createOntarioRidgeTrail();
+
+		
+		hikes[5] = createValenciaPeakTrail();
+
+		
+		hikes[6] = createPolyCanyonDesignVillage();
+
+		
+		hikes[7] = createHazardPeakTrail();
+
+		
+		hikes[8] = createBobJonesTrail();
+
+		
+		hikes[9] = createPiedrasBlancas();
+
+		
+		hikes[10] = createMoonstoneBeach();
+
+		
+		hikes[11] = createHeadlandsTrail();
 	}
 
 	private static void buildQuestionnaire(){
