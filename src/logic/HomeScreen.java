@@ -243,7 +243,7 @@ public class HomeScreen extends Application {
 		questionnaire.questions[1] = new Question("Horse Friendly?", a1); /* Horse Friendly Y/N */
 		questionnaire.questions[2] = new Question("Bike Friendly?", a1); /* Bike Friendly Y/N */
 		questionnaire.questions[3] = new Question("Difficulty?", a2); /* Difficulty Scale: 1-5 */
-		questionnaire.questions[4] = new Question("Ideal Hike Length?", a3); /* Hike Length in miles */
+		questionnaire.questions[4] = new Question("Ideal Hike Length (miles)?", a3); /* Hike Length in miles */
 	}
 
 	private void initializeBottomButtons(Stage stage){
