@@ -481,7 +481,7 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2);
 		hBox.setAlignment(Pos.CENTER);
 
-		backButton.setOnAction(event -> stage.setScene(homeScene()));
+		backButton.setOnAction(event -> stage.setScene(firstQuestion()));
 		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
 
@@ -534,7 +534,7 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2);
 		hBox.setAlignment(Pos.CENTER);
 
-		backButton.setOnAction(event -> stage.setScene(homeScene()));
+		backButton.setOnAction(event -> stage.setScene(secondQuestion()));
 		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
 		refreshButton.setDisable(true);
@@ -619,7 +619,7 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2, a3, a4, a5);
 		hBox.setAlignment(Pos.CENTER);
 
-		backButton.setOnAction(event -> stage.setScene(homeScene()));
+		backButton.setOnAction(event -> stage.setScene(thirdQuestion()));
 		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
 		refreshButton.setDisable(true);
@@ -649,10 +649,17 @@ public class HomeScreen extends Application {
 		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
 
+
 		Button a1 = new Button(questionnaire.questions[4].getAnswers()[0]);
 		a1.setOnAction(event -> {
 			questionnaire.questions[4].setAnswer(0);
-			stage.setScene(computeOptimalHike());
+			HikeInfo selectedHike = computeOptimalHike();
+			if(selectedHike.getName().equals("Invalid")){
+				stage.setScene(noHikes());
+			} else {
+				stage.setScene(displayHikeScene(selectedHike, "Questionnaire"));
+			}
+
 		});
 		a1.setStyle(IDLE_BUTTON_STYLE);
 		a1.setOnMouseEntered(e -> a1.setStyle(HOVERED_BUTTON_STYLE));
@@ -662,7 +669,12 @@ public class HomeScreen extends Application {
 		Button a2 = new Button(questionnaire.questions[4].getAnswers()[1]);
 		a2.setOnAction(event ->  {
 			questionnaire.questions[4].setAnswer(1);
-			stage.setScene(computeOptimalHike());
+			HikeInfo selectedHike = computeOptimalHike();
+			if(selectedHike.getName().equals("Invalid")){
+				stage.setScene(noHikes());
+			} else {
+				stage.setScene(displayHikeScene(selectedHike, "Questionnaire"));
+			}
 		});
 		a2.setStyle(IDLE_BUTTON_STYLE);
 		a2.setOnMouseEntered(e -> a2.setStyle(HOVERED_BUTTON_STYLE));
@@ -672,7 +684,12 @@ public class HomeScreen extends Application {
 		Button a3 = new Button(questionnaire.questions[4].getAnswers()[2]);
 		a3.setOnAction(event -> {
 			questionnaire.questions[4].setAnswer(2);
-			stage.setScene(computeOptimalHike());
+			HikeInfo selectedHike = computeOptimalHike();
+			if(selectedHike.getName().equals("Invalid")){
+				stage.setScene(noHikes());
+			} else {
+				stage.setScene(displayHikeScene(selectedHike, "Questionnaire"));
+			}
 		});
 		a3.setStyle(IDLE_BUTTON_STYLE);
 		a3.setOnMouseEntered(e -> a3.setStyle(HOVERED_BUTTON_STYLE));
@@ -682,7 +699,12 @@ public class HomeScreen extends Application {
 		Button a4 = new Button(questionnaire.questions[4].getAnswers()[3]);
 		a4.setOnAction(event -> {
 			questionnaire.questions[4].setAnswer(3);
-			stage.setScene(computeOptimalHike());
+			HikeInfo selectedHike = computeOptimalHike();
+			if(selectedHike.getName().equals("Invalid")){
+				stage.setScene(noHikes());
+			} else {
+				stage.setScene(displayHikeScene(selectedHike, "Questionnaire"));
+			}
 		});
 		a4.setStyle(IDLE_BUTTON_STYLE);
 		a4.setOnMouseEntered(e -> a4.setStyle(HOVERED_BUTTON_STYLE));
@@ -692,7 +714,7 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2, a3, a4);
 		hBox.setAlignment(Pos.CENTER);
 
-		backButton.setOnAction(event -> stage.setScene(homeScene()));
+		backButton.setOnAction(event -> stage.setScene(fourthQuestion()));
 		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
 		refreshButton.setDisable(true);
@@ -714,14 +736,8 @@ public class HomeScreen extends Application {
 		return new Scene(vBox, 300, 500);
 	}
 
-	private Scene computeOptimalHike(){
+	private int[] computeFirstQ(){
 		int[] temp1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-		int[] temp2 = new int[12];
-		int[] temp3 = new int[12];
-		int[] temp4 = new int[12];
-		int[] temp5 = new int[12];
-		ArrayList<HikeInfo> qualifiedHikes = new ArrayList<>();
-
 		if(questionnaire.questions[0].getAnswer() == 0){
 			for(int i = 0; i < 12; i++){
 				if(hikes[i].getAccess().getDog().equals(Boolean.FALSE)){
@@ -729,33 +745,44 @@ public class HomeScreen extends Application {
 				}
 			}
 		}
+		return temp1;
+	}
 
-		if(questionnaire.questions[1].getAnswer() == 0){
-			for(int i = 0; i < 12; i++){
-				if((temp1[i] != 0) && (hikes[i].getAccess().getHorse().equals(Boolean.TRUE))){
-						temp2[i] = 1;
-				}
+	private int[] computeSecondQ(int[] temp){
+		int[] temp2 = new int[12];
+		for(int i = 0; i < 12; i++){
+			if((temp[i] != 0) && (hikes[i].getAccess().getHorse().equals(Boolean.TRUE))){
+				temp2[i] = 1;
 			}
-
-		}else{
-			temp2 = temp1;
 		}
+		return temp2;
+	}
 
-		if(questionnaire.questions[2].getAnswer() == 0){
-			for(int i = 0; i < 12; i++){
-				if((temp2[i] != 0) && (hikes[i].getAccess().getBike().equals(Boolean.TRUE))){
-						temp3[i] = 1;
-				}
-			}
-		}else{
-			temp3 = temp2;
-		}
+	private int[] computeThirdQ(int[] temp){
+		int[] temp3 = new int[12];
 
 		for(int i = 0; i < 12; i++){
-			if((temp3[i] != 0) && (hikes[i].getDifficulty().getDiffRating() == (questionnaire.questions[3].getAnswer() + 1))){
-					temp4[i] = 1;
+			if((temp[i] != 0) && (hikes[i].getAccess().getBike().equals(Boolean.TRUE))){
+				temp3[i] = 1;
 			}
 		}
+		return temp3;
+	}
+
+	private int[] computeFourthQ(int[] temp){
+		int[] temp4 = new int[12];
+
+		for(int i = 0; i < 12; i++){
+			if((temp[i] != 0) && (hikes[i].getDifficulty().getDiffRating() == (questionnaire.questions[3].getAnswer() + 1))){
+				temp4[i] = 1;
+			}
+		}
+
+		return temp4;
+	}
+
+	private int[] computeFifthQ(int[] temp){
+		int[] temp5 = new int[12];
 
 		double len;
 		double[] desiredLen = new double[2];
@@ -775,13 +802,42 @@ public class HomeScreen extends Application {
 		}
 
 		for(int i = 0; i < 12; i++){
-			if(temp4[i] != 0){
+			if(temp[i] != 0){
 				len = hikes[i].getDifficulty().getLength();
 				if(len >= desiredLen[0] && len < desiredLen[1]){
 					temp5[i] = 1;
 				}
 			}
 		}
+
+		return temp5;
+	}
+
+	private HikeInfo computeOptimalHike(){
+		int[] temp1;
+		int[] temp2;
+		int[] temp3;
+		int[] temp4;
+		int[] temp5;
+		ArrayList<HikeInfo> qualifiedHikes = new ArrayList<>();
+
+		temp1 = computeFirstQ();
+
+		if(questionnaire.questions[1].getAnswer() == 0){
+			temp2 = computeSecondQ(temp1);
+		}else{
+			temp2 = temp1;
+		}
+
+		if(questionnaire.questions[2].getAnswer() == 0){
+			temp3 = computeThirdQ(temp2);
+		}else{
+			temp3 = temp2;
+		}
+
+		temp4 = computeFourthQ(temp3);
+
+		temp5 = computeFifthQ(temp4);
 
 		for(int i = 0; i < 12; i++){
 			if(temp5[i] == 1){
@@ -798,10 +854,10 @@ public class HomeScreen extends Application {
 		}
 
 		if(qualifiedHikes.isEmpty()){
-			return noHikes();
+			return new HikeInfo();
 		}else{
 			int val = rand.nextInt(qualifiedHikes.size());
-			return displayHikeScene(qualifiedHikes.get(val), "Questionnaire");
+			return qualifiedHikes.get(val);
 		}
 	}
 
@@ -1186,62 +1242,62 @@ public class HomeScreen extends Application {
 		int result = r.nextInt(high-low) + low;
 		int num = (result % 100) / 10;
 		
-		final String FIFTYF = "50 ºF";
+		final String FIFTYF = "50 ?F";
 		final String RAIN = "Rain.jpg";
 		if (num == 1)
 		{
 			hikeWeather.setForecast("Cloudy.jpg");
-			hikeWeather.setCurrTemp("55 ºF");
-			hikeWeather.setHigh("57 ºF");
+			hikeWeather.setCurrTemp("55 ?F");
+			hikeWeather.setHigh("57 ?F");
 			hikeWeather.setLow(FIFTYF);
 			hikeWeather.setWind("1 mph");
 		}
 		else if (num == 2)
 		{
 			hikeWeather.setForecast(RAIN);
-			hikeWeather.setCurrTemp("49 ºF");
-			hikeWeather.setHigh("51 ºF");
-			hikeWeather.setLow("43 ºF");
+			hikeWeather.setCurrTemp("49 ?F");
+			hikeWeather.setHigh("51 ?F");
+			hikeWeather.setLow("43 ?F");
 			hikeWeather.setWind("3 mph");
 		}
 		else if (num == 3)
 		{
 			hikeWeather.setForecast("Partly Cloudy.jpg");
-			hikeWeather.setCurrTemp("63 ºF");
-			hikeWeather.setHigh("70 ºF");
-			hikeWeather.setLow("60 ºF");
+			hikeWeather.setCurrTemp("63 ?F");
+			hikeWeather.setHigh("70 ?F");
+			hikeWeather.setLow("60 ?F");
 			hikeWeather.setWind("0 mph");
 		}
 		else if (num == 4)
 		{
 			hikeWeather.setForecast("Sunny.jpg");
-			hikeWeather.setCurrTemp("52 ºF");
-			hikeWeather.setHigh("57 ºF");
+			hikeWeather.setCurrTemp("52 ?F");
+			hikeWeather.setHigh("57 ?F");
 			hikeWeather.setLow(FIFTYF);
 			hikeWeather.setWind("4 mph");
 		}
 		else if (num == 5)
 		{
 			hikeWeather.setForecast(RAIN);
-			hikeWeather.setCurrTemp("49 ºF");
+			hikeWeather.setCurrTemp("49 ?F");
 			hikeWeather.setHigh(FIFTYF);
-			hikeWeather.setLow("39 ºF");
+			hikeWeather.setLow("39 ?F");
 			hikeWeather.setWind("4 mph");
 		}
 		else if (num == 6)
 		{
 			hikeWeather.setForecast("Sunny.jpg");
-			hikeWeather.setCurrTemp("58 ºF");
-			hikeWeather.setHigh("61 ºF");
-			hikeWeather.setLow("55 ºF");
+			hikeWeather.setCurrTemp("58 ?F");
+			hikeWeather.setHigh("61 ?F");
+			hikeWeather.setLow("55 ?F");
 			hikeWeather.setWind("2 mph");
 		}
 		else
 		{
 			hikeWeather.setForecast(RAIN);
-			hikeWeather.setCurrTemp("62 ºF");
-			hikeWeather.setHigh("65 ºF");
-			hikeWeather.setLow("52 ºF");
+			hikeWeather.setCurrTemp("62 ?F");
+			hikeWeather.setHigh("65 ?F");
+			hikeWeather.setLow("52 ?F");
 			hikeWeather.setWind("5 mph");
 		}
 	}
