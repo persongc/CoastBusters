@@ -68,7 +68,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(3.5, 950, 5));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 2));
-		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2"));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2", 0));
 		hike.setImage("Bishop_Peak.jpg");
 		
 		return hike;
@@ -81,7 +81,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(4, 1100, 4));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 2.25));
-		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2"));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2", 0));
 		hike.setImage("Madonna_Peak.jpg");
 		return hike;
 	}
@@ -93,7 +93,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(3, 675, 4));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 2.5));
-		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93424,us&appid=f63269cfb2876c2790032ef911956ac2"));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93424,us&appid=f63269cfb2876c2790032ef911956ac2",0));
 		hike.setImage("Ontario_Ridge.jpg");
 		return hike;
 	}
@@ -105,7 +105,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(3.5, 725, 3));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 2));
-		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2"));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2", 0));
 		hike.setImage("Serenity_Swing.jpg");
 		return hike;
 	}
@@ -117,7 +117,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.FALSE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(4.5, 1275, 3));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 2.75));
-		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93402,us&appid=f63269cfb2876c2790032ef911956ac2"));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93402,us&appid=f63269cfb2876c2790032ef911956ac2",0));
 		hike.setImage("Valencia_Peak.jpg");
 		return hike;
 	}
@@ -129,7 +129,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(2.5, 300, 2));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 1.25));
-		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2"));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2", 0));
 		hike.setImage("Design_Village.jpg");
 		return hike;
 	}
@@ -141,7 +141,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(6, 950, 4));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 3));
-		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93412,us&appid=f63269cfb2876c2790032ef911956ac2"));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93412,us&appid=f63269cfb2876c2790032ef911956ac2", 0));
 		hike.setImage("Hazard_Peak.jpg");
 		return hike;
 	}
@@ -153,7 +153,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.TRUE));
 		hike.setDifficulty(new Difficulty(5, 50, 1));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 2.25));
-		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93424,us&appid=f63269cfb2876c2790032ef911956ac2"));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93424,us&appid=f63269cfb2876c2790032ef911956ac2", 0));
 		hike.setImage("Bob_Jones.jpg");
 		return hike;
 	}
@@ -165,7 +165,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(3.2, 25, 1));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 1.25));
-		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93452,us&appid=f63269cfb2876c2790032ef911956ac2"));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93452,us&appid=f63269cfb2876c2790032ef911956ac2",0));
 		hike.setImage("Elephant_Seals.jpg");
 		return hike;
 	}
@@ -177,7 +177,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(2.85, 40, 1));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 1.25));
-		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93428,us&appid=f63269cfb2876c2790032ef911956ac2"));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93428,us&appid=f63269cfb2876c2790032ef911956ac2", 0));
 		hike.setImage("Moonstone_Beach.jpg");
 		return hike;
 	}
@@ -189,7 +189,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(4.5, 135, 2));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 2));
-		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2"));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2", 0));
 		hike.setImage("Headlands_Trail.jpg");
 		return hike;
 	}
@@ -201,7 +201,7 @@ public class HomeScreen extends Application {
 		hike.setAccess(new Access(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
 		hike.setDifficulty(new Difficulty(1, 341, 2));
 		hike.setHours(new Hours(SUNRISE, SUNSET, 1));
-		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2"));
+		hike.setWeather(new Weather("http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2", 0));
 		hike.setImage("The_P.jpg");
 		return hike;
 	}
@@ -478,7 +478,7 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2);
 		hBox.setAlignment(Pos.CENTER);
 
-		backButton.setOnAction(event -> stage.setScene(homeScene()));
+		backButton.setOnAction(event -> stage.setScene(firstQuestion()));
 		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
 
@@ -531,7 +531,7 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2);
 		hBox.setAlignment(Pos.CENTER);
 
-		backButton.setOnAction(event -> stage.setScene(homeScene()));
+		backButton.setOnAction(event -> stage.setScene(secondQuestion()));
 		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
 		refreshButton.setDisable(true);
@@ -616,7 +616,7 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2, a3, a4, a5);
 		hBox.setAlignment(Pos.CENTER);
 
-		backButton.setOnAction(event -> stage.setScene(homeScene()));
+		backButton.setOnAction(event -> stage.setScene(thirdQuestion()));
 		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
 		refreshButton.setDisable(true);
@@ -689,7 +689,7 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2, a3, a4);
 		hBox.setAlignment(Pos.CENTER);
 
-		backButton.setOnAction(event -> stage.setScene(homeScene()));
+		backButton.setOnAction(event -> stage.setScene(fourthQuestion()));
 		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
 		refreshButton.setDisable(true);
@@ -1084,7 +1084,9 @@ public class HomeScreen extends Application {
 		HBox hBox = new HBox();
 
 		try{
-			weather(hike.getWeather());
+			if(hike.getWeather().getSet() == 0){
+				weather(hike.getWeather());
+			}
 
 			ImageView image = new ImageView(new Image(getClass().getResourceAsStream(hike.getWeather().getForecast())));
 			image.setFitWidth(100);
@@ -1157,7 +1159,6 @@ public class HomeScreen extends Application {
 			while ((line = br.readLine()) != null) {
 				temp += line;
 			}
-			System.out.println(temp);
 		}
 		catch(IOException e)
 		{
@@ -1174,6 +1175,8 @@ public class HomeScreen extends Application {
 		int high = 100;
 		int result = r.nextInt(high-low) + low;
 		int num = (result % 100) / 10;
+
+		hikeWeather.setSet(1);
 
 		if (num == 1)
 		{

@@ -7,9 +7,11 @@ public class Weather {
     private String high;
     private String low;
     private String wind;
+    private int set;
 
-    public Weather(String url){
+    public Weather(String url, int set){
         this.URL = url;
+        this.set = set;
     }
 
     public String getURL() {
@@ -54,5 +56,13 @@ public class Weather {
 
     public void setWind(String wind) {
         this.wind = wind;
+    }
+
+    public int getSet() {
+        return set;
+    }
+
+    public void setSet(int set) {
+        this.set = set;
     }
 }
