@@ -14,15 +14,16 @@ public class HikeInfo //should make use of weather and reviews class
 	private Hours hours;
 	private ImageView imageView;
 	private Weather weather;
-
-	public HikeInfo(){
-		this.name = "Invalid";
-	}
-
+	
 	public HikeInfo(String name, Boolean bathrooms, Boolean water) {
 		this.name = name;
 		this.bathrooms = bathrooms;
 		this.water = water;
+	}
+	
+	public HikeInfo()
+	{
+		this.name = "Invalid";
 	}
 
 	public String getName(){

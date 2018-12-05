@@ -395,6 +395,20 @@ public class HomeScreen extends Application {
 		return new Scene(root, 300, 500);
 	}
 
+	private void createQBottom()
+	{
+
+		refreshButton.setDisable(true);
+		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
+		qButton.setOnMouseExited(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
+		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
+		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
+		
+	}
+	
 	private Scene firstQuestion(){
 		Label question = new Label(questionnaire.questions[0].getQuestion());
 		question.setFont(Font.font(HELVETICA,16));
@@ -423,19 +437,13 @@ public class HomeScreen extends Application {
 		a2.setOnMouseExited(event -> a2.setStyle(IDLE_BUTTON_STYLE));
 		a2.setPrefWidth(75);
 
+
 		backButton.setOnAction(event -> stage.setScene(homeScene()));
 		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
-
-		refreshButton.setDisable(true);
-		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
-		qButton.setOnMouseExited(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
-		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
-		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
-
+		
+		createQBottom();
+		
 		hBox1.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
 		hBox1.setAlignment(Pos.CENTER);
 
@@ -484,15 +492,9 @@ public class HomeScreen extends Application {
 		backButton.setOnAction(event -> stage.setScene(firstQuestion()));
 		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
-
-		refreshButton.setDisable(true);
-		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
-		qButton.setOnMouseExited(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
-		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
-		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
+		
+		createQBottom();
+		
 		hBox1.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
 		hBox1.setAlignment(Pos.CENTER);
 
@@ -537,15 +539,9 @@ public class HomeScreen extends Application {
 		backButton.setOnAction(event -> stage.setScene(secondQuestion()));
 		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
-		refreshButton.setDisable(true);
-		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
-		qButton.setOnMouseExited(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
-		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
-		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
-
+		
+		createQBottom();
+		
 		hBox1.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
 		hBox1.setAlignment(Pos.CENTER);
 
@@ -619,18 +615,13 @@ public class HomeScreen extends Application {
 		hBox.getChildren().addAll(a1, a2, a3, a4, a5);
 		hBox.setAlignment(Pos.CENTER);
 
+
 		backButton.setOnAction(event -> stage.setScene(thirdQuestion()));
 		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
-		refreshButton.setDisable(true);
-		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
-		qButton.setOnMouseExited(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
-		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
-		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
-
+		
+		createQBottom();
+		
 		hBox1.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
 		hBox1.setAlignment(Pos.CENTER);
 
@@ -642,6 +633,8 @@ public class HomeScreen extends Application {
 	}
 
 	private Scene fifthQuestion(){
+		final String INVALID = "Invalid";
+		final String QUESTIONNAIRE = "Questionnaire";
 		Label question = new Label(questionnaire.questions[4].getQuestion());
 		question.setFont(Font.font(HELVETICA,16));
 
@@ -649,15 +642,14 @@ public class HomeScreen extends Application {
 		HBox hBox1 = new HBox();
 		VBox vBox = new VBox(50);
 
-
 		Button a1 = new Button(questionnaire.questions[4].getAnswers()[0]);
 		a1.setOnAction(event -> {
 			questionnaire.questions[4].setAnswer(0);
 			HikeInfo selectedHike = computeOptimalHike();
-			if(selectedHike.getName().equals("Invalid")){
+			if(selectedHike.getName().equals(INVALID)){
 				stage.setScene(noHikes());
 			} else {
-				stage.setScene(displayHikeScene(selectedHike, "Questionnaire"));
+				stage.setScene(displayHikeScene(selectedHike, QUESTIONNAIRE));
 			}
 
 		});
@@ -670,10 +662,10 @@ public class HomeScreen extends Application {
 		a2.setOnAction(event ->  {
 			questionnaire.questions[4].setAnswer(1);
 			HikeInfo selectedHike = computeOptimalHike();
-			if(selectedHike.getName().equals("Invalid")){
+			if(selectedHike.getName().equals(INVALID)){
 				stage.setScene(noHikes());
 			} else {
-				stage.setScene(displayHikeScene(selectedHike, "Questionnaire"));
+				stage.setScene(displayHikeScene(selectedHike, QUESTIONNAIRE));
 			}
 		});
 		a2.setStyle(IDLE_BUTTON_STYLE);
@@ -685,10 +677,10 @@ public class HomeScreen extends Application {
 		a3.setOnAction(event -> {
 			questionnaire.questions[4].setAnswer(2);
 			HikeInfo selectedHike = computeOptimalHike();
-			if(selectedHike.getName().equals("Invalid")){
+			if(selectedHike.getName().equals(INVALID)){
 				stage.setScene(noHikes());
 			} else {
-				stage.setScene(displayHikeScene(selectedHike, "Questionnaire"));
+				stage.setScene(displayHikeScene(selectedHike, QUESTIONNAIRE));
 			}
 		});
 		a3.setStyle(IDLE_BUTTON_STYLE);
@@ -700,10 +692,10 @@ public class HomeScreen extends Application {
 		a4.setOnAction(event -> {
 			questionnaire.questions[4].setAnswer(3);
 			HikeInfo selectedHike = computeOptimalHike();
-			if(selectedHike.getName().equals("Invalid")){
+			if(selectedHike.getName().equals(INVALID)){
 				stage.setScene(noHikes());
 			} else {
-				stage.setScene(displayHikeScene(selectedHike, "Questionnaire"));
+				stage.setScene(displayHikeScene(selectedHike, QUESTIONNAIRE));
 			}
 		});
 		a4.setStyle(IDLE_BUTTON_STYLE);
@@ -717,15 +709,9 @@ public class HomeScreen extends Application {
 		backButton.setOnAction(event -> stage.setScene(fourthQuestion()));
 		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
-		refreshButton.setDisable(true);
-		qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE);
-		qButton.setOnMouseExited(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
-		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
-		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
-
+		
+		createQBottom();
+		
 		hBox1.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
 		hBox1.setAlignment(Pos.CENTER);
 
@@ -963,10 +949,8 @@ public class HomeScreen extends Application {
 		return new Scene(vBox, 300, 500);
 	}
 
-	private Scene imageScene(HikeInfo hike, String parent){
-		VBox root = new VBox();
-		HBox hBox = new HBox();
-
+	private void genBottomButtons(HikeInfo hike, String parent)
+	{
 		refreshButton.setDisable(true);
 		backButton.setOnAction(event -> stage.setScene(displayHikeScene(hike, parent)));
 		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
@@ -979,9 +963,16 @@ public class HomeScreen extends Application {
 		qButton.setOnMouseExited(event -> qButton.setStyle(BOTTOM_BUTTON_STYLE));
 		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
+	}
+	
+	private Scene imageScene(HikeInfo hike, String parent){
+		VBox root = new VBox();
+		HBox hBox = new HBox();
+
 		hBox.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
 		hBox.setAlignment(Pos.CENTER);
 
+		genBottomButtons(hike, parent);
 
 		ImageView img = hike.getImageView();
 		img.setFitHeight(512);
@@ -1051,6 +1042,7 @@ public class HomeScreen extends Application {
 		qButton.setOnMouseExited(event -> qButton.setStyle(BOTTOM_BUTTON_STYLE));
 		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
 		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
+		
 		hBox5.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
 		hBox5.setAlignment(Pos.CENTER);
 
@@ -1108,18 +1100,8 @@ public class HomeScreen extends Application {
 		Text ho2 = new Text("" + hike.getHours().getOpen() + " to " + hike.getHours().getClose());
 		ho2.setFont(Font.font(HELVETICA, 14));
 
-		refreshButton.setDisable(true);
-		backButton.setOnAction(event -> stage.setScene(displayHikeScene(hike, parent)));
-		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
-		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
-		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
-		qButton.setStyle(BOTTOM_BUTTON_STYLE);
-		qButton.setOnMouseEntered(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		qButton.setOnMouseExited(event -> qButton.setStyle(BOTTOM_BUTTON_STYLE));
-		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
+		genBottomButtons(hike, parent);
+		
 		hBox.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
 		hBox.setAlignment(Pos.CENTER);
 
@@ -1179,18 +1161,8 @@ public class HomeScreen extends Application {
 			vBox.setAlignment(Pos.CENTER);
 		}
 
-		refreshButton.setDisable(true);
-		backButton.setOnAction(event -> stage.setScene(displayHikeScene(hike, parent)));
-		backButton.setOnMouseEntered(event -> backButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		backButton.setOnMouseExited(event -> backButton.setStyle(BOTTOM_BUTTON_STYLE));
-		allButtons.setStyle(BOTTOM_BUTTON_STYLE);
-		allButtons.setOnMouseEntered(event -> allButtons.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		allButtons.setOnMouseExited(event -> allButtons.setStyle(BOTTOM_BUTTON_STYLE));
-		qButton.setStyle(BOTTOM_BUTTON_STYLE);
-		qButton.setOnMouseEntered(event -> qButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		qButton.setOnMouseExited(event -> qButton.setStyle(BOTTOM_BUTTON_STYLE));
-		homeButton.setOnMouseEntered(event -> homeButton.setStyle(CURRENT_BOTTOM_BUTTON_STYLE));
-		homeButton.setOnMouseExited(event -> homeButton.setStyle(BOTTOM_BUTTON_STYLE));
+		genBottomButtons(hike, parent);
+		
 		hBox.getChildren().addAll(refreshButton, backButton, qButton, allButtons, homeButton);
 		hBox.setAlignment(Pos.CENTER);
 
@@ -1242,62 +1214,62 @@ public class HomeScreen extends Application {
 		int result = r.nextInt(high-low) + low;
 		int num = (result % 100) / 10;
 		
-		final String FIFTYF = "50 ?F";
+		final String FIFTYF = "50 ºF";
 		final String RAIN = "Rain.jpg";
 		if (num == 1)
 		{
 			hikeWeather.setForecast("Cloudy.jpg");
-			hikeWeather.setCurrTemp("55 ?F");
-			hikeWeather.setHigh("57 ?F");
+			hikeWeather.setCurrTemp("55 ºF");
+			hikeWeather.setHigh("57 ºF");
 			hikeWeather.setLow(FIFTYF);
 			hikeWeather.setWind("1 mph");
 		}
 		else if (num == 2)
 		{
 			hikeWeather.setForecast(RAIN);
-			hikeWeather.setCurrTemp("49 ?F");
-			hikeWeather.setHigh("51 ?F");
-			hikeWeather.setLow("43 ?F");
+			hikeWeather.setCurrTemp("49 ºF");
+			hikeWeather.setHigh("51 ºF");
+			hikeWeather.setLow("43 ºF");
 			hikeWeather.setWind("3 mph");
 		}
 		else if (num == 3)
 		{
 			hikeWeather.setForecast("Partly Cloudy.jpg");
-			hikeWeather.setCurrTemp("63 ?F");
-			hikeWeather.setHigh("70 ?F");
-			hikeWeather.setLow("60 ?F");
+			hikeWeather.setCurrTemp("63 ºF");
+			hikeWeather.setHigh("70 ºF");
+			hikeWeather.setLow("60 ºF");
 			hikeWeather.setWind("0 mph");
 		}
 		else if (num == 4)
 		{
 			hikeWeather.setForecast("Sunny.jpg");
-			hikeWeather.setCurrTemp("52 ?F");
-			hikeWeather.setHigh("57 ?F");
+			hikeWeather.setCurrTemp("52 ºF");
+			hikeWeather.setHigh("57 ºF");
 			hikeWeather.setLow(FIFTYF);
 			hikeWeather.setWind("4 mph");
 		}
 		else if (num == 5)
 		{
 			hikeWeather.setForecast(RAIN);
-			hikeWeather.setCurrTemp("49 ?F");
+			hikeWeather.setCurrTemp("49 ºF");
 			hikeWeather.setHigh(FIFTYF);
-			hikeWeather.setLow("39 ?F");
+			hikeWeather.setLow("39 ºF");
 			hikeWeather.setWind("4 mph");
 		}
 		else if (num == 6)
 		{
 			hikeWeather.setForecast("Sunny.jpg");
-			hikeWeather.setCurrTemp("58 ?F");
-			hikeWeather.setHigh("61 ?F");
-			hikeWeather.setLow("55 ?F");
+			hikeWeather.setCurrTemp("58 ºF");
+			hikeWeather.setHigh("61 ºF");
+			hikeWeather.setLow("55 ºF");
 			hikeWeather.setWind("2 mph");
 		}
 		else
 		{
 			hikeWeather.setForecast(RAIN);
-			hikeWeather.setCurrTemp("62 ?F");
-			hikeWeather.setHigh("65 ?F");
-			hikeWeather.setLow("52 ?F");
+			hikeWeather.setCurrTemp("62 ºF");
+			hikeWeather.setHigh("65 ºF");
+			hikeWeather.setLow("52 ºF");
 			hikeWeather.setWind("5 mph");
 		}
 	}
