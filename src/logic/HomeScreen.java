@@ -52,12 +52,11 @@ public class HomeScreen extends Application {
 	private static final String WEATHERAPI = "http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2";
 	private static Random rand = new SecureRandom();
 	
-	public static void main() {
-		/* Rafi is going to hardcode hikes into Hike Database array */
+	public static void main(String[]args) {
 		buildQuestionnaire();
 		buildHikeDB();
 
-		launch();
+		launch(args);
 	}
 
 	/*
@@ -66,7 +65,7 @@ public class HomeScreen extends Application {
 	 *	DIFFICULTY: Length (mi), Elevation Gain (ft), Difficulty Rating (1-5)
 	 *	HOURS: "open", "close", time to complete (hrs)
 	 */
-	private static HikeInfo createBishopPeakTrail()
+	protected static HikeInfo createBishopPeakTrail()
 	{
 		HikeInfo hike = new HikeInfo("Bishop Peak Trail", Boolean.FALSE, Boolean.FALSE);
 		hike.setAccess(new Access(Boolean.FALSE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE));
@@ -78,7 +77,7 @@ public class HomeScreen extends Application {
 		return hike;
 	}
 	
-	private static HikeInfo createMadonnaPeakTrail()
+	protected static HikeInfo createMadonnaPeakTrail()
 	{
 		HikeInfo hike;
 		hike = new HikeInfo("Madonna Peak Trail", Boolean.FALSE, Boolean.TRUE);
@@ -90,7 +89,7 @@ public class HomeScreen extends Application {
 		return hike;
 	}
 	
-	private static HikeInfo createOntarioRidgeTrail()
+	protected static HikeInfo createOntarioRidgeTrail()
 	{
 		HikeInfo hike;
 		hike = new HikeInfo("Ontario Ridge Trail", Boolean.FALSE, Boolean.FALSE);
@@ -102,7 +101,7 @@ public class HomeScreen extends Application {
 		return hike;
 	}
 	
-	private static HikeInfo createSerenitySwing()
+	protected static HikeInfo createSerenitySwing()
 	{
 		HikeInfo hike;
 		hike = new HikeInfo("Serenity Swing", Boolean.FALSE, Boolean.FALSE);
@@ -114,7 +113,7 @@ public class HomeScreen extends Application {
 		return hike;
 	}
 	
-	private static HikeInfo createValenciaPeakTrail()
+	protected static HikeInfo createValenciaPeakTrail()
 	{
 		HikeInfo hike;
 		hike = new HikeInfo("Valencia Peak Trail", Boolean.FALSE, Boolean.FALSE);
@@ -126,7 +125,7 @@ public class HomeScreen extends Application {
 		return hike;
 	}
 	
-	private static HikeInfo createPolyCanyonDesignVillage()
+	protected static HikeInfo createPolyCanyonDesignVillage()
 	{
 		HikeInfo hike;
 		hike = new HikeInfo("Poly Canyon Design Village", Boolean.FALSE, Boolean.FALSE);
@@ -138,7 +137,7 @@ public class HomeScreen extends Application {
 		return hike;
 	}
 	
-	private static HikeInfo createHazardPeakTrail()
+	protected static HikeInfo createHazardPeakTrail()
 	{
 		HikeInfo hike;
 		hike = new HikeInfo("Hazard Peak Trail", Boolean.FALSE, Boolean.FALSE);
@@ -150,7 +149,7 @@ public class HomeScreen extends Application {
 		return hike;
 	}
 	
-	private static HikeInfo createBobJonesTrail()
+	protected static HikeInfo createBobJonesTrail()
 	{
 		HikeInfo hike;
 		hike = new HikeInfo("Bob Jones Trail", Boolean.FALSE, Boolean.FALSE);
@@ -162,7 +161,7 @@ public class HomeScreen extends Application {
 		return hike;
 	}
 	
-	private static HikeInfo createPiedrasBlancas()
+	protected static HikeInfo createPiedrasBlancas()
 	{
 		HikeInfo hike;
 		hike = new HikeInfo("Piedras Blancas Elephant Seal Rookery", Boolean.FALSE, Boolean.FALSE);
@@ -174,7 +173,7 @@ public class HomeScreen extends Application {
 		return hike;
 	}
 	
-	private static HikeInfo createMoonstoneBeach()
+	protected static HikeInfo createMoonstoneBeach()
 	{
 		HikeInfo hike;
 		hike = new HikeInfo("Moonstone Beach Boardwalk", Boolean.FALSE, Boolean.FALSE);
@@ -186,7 +185,7 @@ public class HomeScreen extends Application {
 		return hike;
 	}
 	
-	private static HikeInfo createHeadlandsTrail()
+	protected static HikeInfo createHeadlandsTrail()
 	{
 		HikeInfo hike;
 		hike = new HikeInfo("Headlands Trail", Boolean.FALSE, Boolean.FALSE);
@@ -198,7 +197,7 @@ public class HomeScreen extends Application {
 		return hike;
 	}
 	
-	private static HikeInfo createPHike()
+	protected static HikeInfo createPHike()
 	{
 		HikeInfo hike;
 		hike = new HikeInfo("Cal Poly \"P\"", Boolean.FALSE, Boolean.FALSE);
@@ -212,7 +211,7 @@ public class HomeScreen extends Application {
 	
 	
 	
-	private static void buildHikeDB(){
+	protected static void buildHikeDB(){
 		hikes[0] = createBishopPeakTrail();
 
 		hikes[1] = createMadonnaPeakTrail();
@@ -238,7 +237,7 @@ public class HomeScreen extends Application {
 		hikes[11] = createHeadlandsTrail();
 	}
 
-	private static void buildQuestionnaire(){
+	protected static void buildQuestionnaire(){
 		String[] a1 = {"Yes", "No"};
 		String[] a2 = {"1", "2", "3", "4", "5"}; /* Difficulty scale: 1-5 */
 		String[] a3 = {"1-2", "3-4", "5-6", "7+"}; /* Length of hike in miles */
@@ -800,7 +799,7 @@ public class HomeScreen extends Application {
 		return temp5;
 	}
 
-	private HikeInfo computeOptimalHike(){
+	protected HikeInfo computeOptimalHike(){
 		int[] temp1;
 		int[] temp2;
 		int[] temp3;
