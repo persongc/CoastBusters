@@ -64,9 +64,12 @@ public class HikeInfo //should make use of weather and reviews class
 	public void setImage(String image){
 		Image imageTemp = new Image(getClass().getResourceAsStream(image));
 
+<<<<<<< HEAD
 		this.imageView = new ImageView(imageTemp);
 	}
 
+=======
+>>>>>>> e526ce002304808f864c9a0a1901db02bb855f96
 	public ImageView getImageView(){
 		return imageView;
 	}
