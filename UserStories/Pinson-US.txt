@@ -1,0 +1,10 @@
+User Stories
+
+1. As a resident of PCV, I want to know which hikes are within walking distance
+of me, so that I can reach them without a car.
+
+2. As an out-of-shape person, I want to know what hikes aren't challenging, so
+I can enjoy myself without struggling to complete the trail.
+
+3. As a user, I want to know if the weather will interfere with a hike, so I
+can decide whether or not to hike a specifc trail.

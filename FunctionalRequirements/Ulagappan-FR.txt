@@ -1,0 +1,3 @@
+1. The system shall provide the user with whether a trail is dog friendly or not dog friendly by displaying the dog friendliness below the trail name.
+2. The system shall provide the user with the length of the trail, in miles, to the right of the trail name.
+3. The system shall provide the user with an image of each trailhead below both the trail name and dog friendliness information.

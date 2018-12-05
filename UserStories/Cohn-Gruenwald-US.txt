@@ -1,0 +1,9 @@
+User Stories:
+1. As a busy student, I want a way to search for trails based on shortest 
+   length of time to complete, so I can get some quick exercise in between 
+   classes.
+2. As a user, I want a way to get the directions to the trail, so that I know 
+   how to get there.
+3. As a visitor to California, I want a way to search for trails in the area 
+   that I will be staying, so that I can plan my trip in advance.
+

@@ -1,0 +1,3 @@
+1. As a pet owner, I need to know what trails are pet friendly, so I can bring my pet with me on the hike.
+2. As a biker, I need to know what trails are accessible by bike, so I can bike them.
+3. As I don’t have a car, I want to know which trails are close to me, so I can walk to them instead of driving.

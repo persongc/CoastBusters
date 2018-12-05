@@ -1,0 +1,7 @@
+Functional Requirements
+1. The system shall provide the distance between a user's location* and hiking trails.
+	* Location is entered by the user or pulled from a GPS service.
+
+2. The system shall provide a difficulty rating of each hike.
+
+3. The sytem shall provide information about the weather in the area of the hike.

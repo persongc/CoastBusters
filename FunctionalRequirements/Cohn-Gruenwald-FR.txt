@@ -1,0 +1,8 @@
+Functional Requirements:
+1. The system shall provide the user with an option to search for trails 
+   based on length of hike.
+2. The system shall provide the user with directions to the trailhead of 
+   their choice.
+3. The system shall provide the user with an option to search for trails 
+   based on location.
+

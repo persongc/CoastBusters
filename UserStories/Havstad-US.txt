@@ -1,0 +1,6 @@
+As a photographer, I want to filter hikes by amount of wildlife and quality of scenery, so I don’t waste a day on a boring trail.
+
+As an athlete, I want to rank hikes by difficulty, so I can challenge myself and avoid a literal walk in the park.
+
+As a user with no sense of direction, I want guided routes that lead me directly to the trailhead, so I don’t get lost or confused by a cluttered map.
+

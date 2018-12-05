@@ -1,0 +1,9 @@
+1. As a hiker, I want to search for hiking trails by bike accessibility,
+so that I can ride my bike on hiking trails.
+
+2. As a beginner hiker, I want to find short and easy hiking trails, so that
+I can build up to more difficult hikes later on.
+
+3. As a hiker with a busy schedule, I want to search for hiking trails by
+operational hours, so that I can find a hiking trail that is open and fits
+my schedule.

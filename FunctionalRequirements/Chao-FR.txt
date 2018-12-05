@@ -1,0 +1,14 @@
+The system shall provide information* about the hike when the user clicks or
+taps on a "more information" option.
+
+The system shall provide the distance from the user's current or
+an entered location to the hike trail.
+
+The system shall categorize hike trail searches by information.
+
+*Information about the hike includes:
+    Passes Required
+    Length of the hike
+    Hours open
+    Pet Accessibility
+    Vehicle Accessibility

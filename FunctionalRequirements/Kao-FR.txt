@@ -1,0 +1,3 @@
+The system shall provide suggestions of hiking trails in California to users. 
+The system shall provide information that dictates if a person can bring his/her dog to each displayed hiking trail. 
+The system shall provide the length in kilometers of all displayed hiking paths. 

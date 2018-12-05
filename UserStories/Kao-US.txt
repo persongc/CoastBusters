@@ -1,0 +1,3 @@
+As a non-athletic person, I want to run searches for hikes, so that I can find the hikes path with the shortest distance.
+As a California resident, I want to find places to hike, so that I can have a possible idea of where to hike over the weekend. 
+As a dog owner, I want to find information on hiking paths, so that I know if I can bring my dog.  

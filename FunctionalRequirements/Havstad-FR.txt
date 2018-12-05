@@ -1,0 +1,6 @@
+The system shall provide images of animals seen near the selected trail and information on how to respond to a sighting.
+
+The system shall provide directions to the trail head as well as along the trail itself.
+
+The system shall provide the possibility to search for 50 different trail features including pet friendly, altitude, length, etc.
+
