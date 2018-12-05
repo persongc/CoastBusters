@@ -1192,11 +1192,6 @@ public class HomeScreen extends Application {
 				}
 				line = temp.toString();
 			}
-			
-			Logger log = Logger.getGlobal();
-			log.log(Level.INFO,line);
-			
-			
 		}
 		catch(IOException e)
 		{
