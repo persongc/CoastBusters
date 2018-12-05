@@ -3,8 +3,6 @@ package logic;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.net.URL;
-
 public class HikeInfo //should make use of weather and reviews class
 {
 	private String name;
@@ -14,9 +12,8 @@ public class HikeInfo //should make use of weather and reviews class
 	private Access access;
 	private Difficulty difficulty;
 	private Hours hours;
-	private Image image;
 	private ImageView imageView;
-	private String hikeURL;
+	private Weather weather;
 	
 	public HikeInfo(String name, Boolean bathrooms, Boolean water) {
 		this.name = name;
@@ -65,24 +62,20 @@ public class HikeInfo //should make use of weather and reviews class
 	}
 
 	public void setImage(String image){
-		this.image = new Image(getClass().getResourceAsStream(image));
+		Image imageTemp = new Image(getClass().getResourceAsStream(image));
 
-		this.imageView = new ImageView(this.image);
-	}
-
-	public Image getImage(){
-		return image;
+		this.imageView = new ImageView(imageTemp);
 	}
 
 	public ImageView getImageView(){
 		return imageView;
 	}
 
-	public void setURL(String url){
-		this.hikeURL = url;
+	public void setWeather(Weather weather){
+		this.weather = weather;
 	}
 
-	public String getURL(){
-		return hikeURL;
+	public Weather getWeather(){
+		return weather;
 	}
 }
