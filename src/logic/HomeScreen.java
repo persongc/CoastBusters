@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
@@ -29,7 +30,6 @@ public class HomeScreen extends Application {
 	private static Questionnaire questionnaire = new Questionnaire();
 	private static HikeInfo[] hikes = new HikeInfo[12];
 	private Stage stage;
-	private Random rand = new Random();
 	private static final String IDLE_BUTTON_STYLE = "-fx-background-color: #e6c58d; -fx-border-color: #cca054; " +
 			"-fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;";
 	private static final String HOVERED_BUTTON_STYLE = "-fx-background-color: #f7d193; -fx-border-color: #cca054; " +
@@ -50,13 +50,14 @@ public class HomeScreen extends Application {
 	private static final String SUNSET = "Sunset";
 	private static final String SUNRISE = "Sunrise";
 	private static final String WEATHERAPI = "http://api.openweathermap.org/data/2.5/weather?zip=93401,us&appid=f63269cfb2876c2790032ef911956ac2";
+	private static Random rand = new SecureRandom();
 	
-	public static void main(String[] args) {
+	public static void main() {
 		/* Rafi is going to hardcode hikes into Hike Database array */
 		buildQuestionnaire();
 		buildHikeDB();
 
-		launch(args);
+		launch();
 	}
 
 	/*
@@ -1192,6 +1193,11 @@ public class HomeScreen extends Application {
 				}
 				line = temp.toString();
 			}
+			
+			Logger log = Logger.getGlobal();
+			log.log(Level.INFO,line);
+			
+			
 		}
 		catch(IOException e)
 		{
@@ -1203,17 +1209,14 @@ public class HomeScreen extends Application {
 			return;
 		}
 
-		Random r = new Random();
+		
 		int low = 10;
 		int high = 100;
-		int result = r.nextInt(high-low) + low;
+		int result = rand.nextInt(high-low) + low;
 		int num = (result % 100) / 10;
 		
 		final String FIFTYF = "50 ºF";
 		final String RAIN = "Rain.jpg";
-
-		hikeWeather.setSet(1);
-
 		if (num == 1)
 		{
 			hikeWeather.setForecast("Cloudy.jpg");
