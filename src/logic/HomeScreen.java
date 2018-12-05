@@ -1211,6 +1211,9 @@ public class HomeScreen extends Application {
 		
 		final String FIFTYF = "50 ºF";
 		final String RAIN = "Rain.jpg";
+
+		hikeWeather.setSet(1);
+
 		if (num == 1)
 		{
 			hikeWeather.setForecast("Cloudy.jpg");
